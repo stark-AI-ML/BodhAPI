@@ -1,13 +1,21 @@
 import * as service from "./general.service.js";
+import RedisKeyGenerator from "../../../utils/redisKeyGenerator.js";
+import * as validation from "./general.validation.js";
 
-/**
- * Get today's news
- * Query params: limit (default: 60)
- */
 export const getTodayNews = async (req, res) => {
   try {
-    const limit = req.query.limit ? parseInt(req.query.limit) : 60;
-    const data = await service.getGeneralTodayNews("general_today_60", limit);
+    const limitValidation = validation.validateTodayNews(req);
+    if (!limitValidation.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: limitValidation.error,
+      });
+    }
+
+    const limit = limitValidation.value;
+    const key = RedisKeyGenerator.todayKey("general", limit);
+    const data = await service.getGeneralTodayNews(key, limit);
 
     res.status(200).json({
       success: true,
@@ -23,14 +31,20 @@ export const getTodayNews = async (req, res) => {
   }
 };
 
-/**
- * Get top news
- * Query params: limit (default: 40)
- */
 export const getTopNews = async (req, res) => {
   try {
-    const limit = req.query.limit ? parseInt(req.query.limit) : 40;
-    const data = await service.getGeneralTopNews("general_top_40", limit);
+    const limitValidation = validation.validateTopNews(req);
+    if (!limitValidation.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: limitValidation.error,
+      });
+    }
+
+    const limit = limitValidation.value;
+    const key = RedisKeyGenerator.topKey("general", limit);
+    const data = await service.getGeneralTopNews(key, limit);
 
     res.status(200).json({
       success: true,
@@ -46,23 +60,19 @@ export const getTopNews = async (req, res) => {
   }
 };
 
-/**
- * Get crime news by severity
- * Query params: severity (required), limit (default: 30)
- */
 export const getCrimeNews = async (req, res) => {
   try {
-    const { severity } = req.query;
-
-    if (!severity) {
+    const validation_result = validation.validateCrimeNews(req);
+    if (!validation_result.isValid) {
       return res.status(400).json({
         success: false,
-        message: "Crime severity parameter is required",
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
       });
     }
 
-    const limit = req.query.limit ? parseInt(req.query.limit) : 30;
-    const key = `general_crime_${severity}_${limit}`;
+    const { severity, limit } = validation_result;
+    const key = RedisKeyGenerator.crimeKey("general", severity, limit);
 
     const data = await service.getCrimeNews(key, limit);
 
@@ -80,24 +90,24 @@ export const getCrimeNews = async (req, res) => {
   }
 };
 
-/**
- * Get news by entities (person and/or organization)
- * Query params: person, organization, limit (default: 30)
- */
 export const getEntitiesNews = async (req, res) => {
   try {
-    const { person, organization } = req.query;
-
-    if (!person && !organization) {
+    const validation_result = validation.validateEntitiesNews(req);
+    if (!validation_result.isValid) {
       return res.status(400).json({
         success: false,
-        message:
-          "At least one entity parameter (person or organization) is required",
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
       });
     }
 
-    const limit = req.query.limit ? parseInt(req.query.limit) : 30;
-    const key = `general_entities_${person || "any"}_${organization || "any"}_${limit}`;
+    const { person, organization, limit } = validation_result;
+    const key = RedisKeyGenerator.entitiesKey(
+      "general",
+      person,
+      organization,
+      limit,
+    );
 
     const data = await service.getEntitiesNews(key, limit);
 
@@ -115,15 +125,19 @@ export const getEntitiesNews = async (req, res) => {
   }
 };
 
-/**
- * Get news by sentiment
- * Query params: sentiment (default: POSITIVE), limit (default: 30)
- */
 export const getSentimentNews = async (req, res) => {
   try {
-    const sentiment = req.query.sentiment || "POSITIVE";
-    const limit = req.query.limit ? parseInt(req.query.limit) : 30;
-    const key = `general_sentiment_${sentiment}_${limit}`;
+    const validation_result = validation.validateSentimentNews(req);
+    if (!validation_result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
+      });
+    }
+
+    const { sentiment, limit } = validation_result;
+    const key = RedisKeyGenerator.sentimentKey("general", sentiment, limit);
 
     const data = await service.getSentimentsNews(key, limit);
 
@@ -141,23 +155,19 @@ export const getSentimentNews = async (req, res) => {
   }
 };
 
-/**
- * Get news by state
- * Query params: state (required), limit (default: 30)
- */
 export const getStateNews = async (req, res) => {
   try {
-    const { state } = req.query;
-
-    if (!state) {
+    const validation_result = validation.validateStateNews(req);
+    if (!validation_result.isValid) {
       return res.status(400).json({
         success: false,
-        message: "State parameter is required",
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
       });
     }
 
-    const limit = req.query.limit ? parseInt(req.query.limit) : 30;
-    const key = `general_state_${state}_${limit}`;
+    const { state, limit } = validation_result;
+    const key = RedisKeyGenerator.stateKey("general", state, limit);
 
     const data = await service.getStateNews(key, limit);
 

@@ -1,6 +1,18 @@
-// import e from "express";
+import express from "express";
+import * as controller from "./general.controller.js";
 
-// import ge
-// const route = e.Router();
+const router = express.Router();
 
-// route.get('v1/General/',)
+router.get("/general/v1/today", controller.getTodayNews);
+
+router.get("/general/v1/top", controller.getTopNews);
+
+router.get("/general/v1/crime", controller.getCrimeNews);
+
+router.get("/general/v1/sentiment", controller.getSentimentNews);
+
+router.get("/general/v1/state", controller.getStateNews);
+
+router.get("/general/v1/entities", controller.getEntitiesNews);
+
+export default router;
