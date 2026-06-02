@@ -7,6 +7,8 @@ router.get("/general/v1/today", controller.getTodayNews);
 
 router.get("/general/v1/top", controller.getTopNews);
 
+console.log("under the route");
+
 router.get("/general/v1/crime", controller.getCrimeNews);
 
 router.get("/general/v1/sentiment", controller.getSentimentNews);

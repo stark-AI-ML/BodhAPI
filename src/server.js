@@ -21,17 +21,15 @@ const HOST = process.env.HOST || "localhost";
 // ============================================
 
 const server = app.listen(PORT, HOST, () => {
-  console.log(`
-╔════════════════════════════════════════════╗
-║          BodhAPI Server Started             ║
-╚════════════════════════════════════════════╝
-  
-  🚀 Server:  http://${HOST}:${PORT}
-  📝 Environment: ${process.env.NODE_ENV || "development"}
-  🔐 Security: Enabled
-  
-═══════════════════════════════════════════════
-  `);
+  //   console.log(`
+  // ╔════════════════════════════════════════════╗
+  // ║          BodhAPI Server Started             ║
+  // ╚════════════════════════════════════════════╝
+  //   🚀 Server:  http://${HOST}:${PORT}
+  //   📝 Environment: ${process.env.NODE_ENV || "development"}
+  //   🔐 Security: Enabled
+  // ═══════════════════════════════════════════════
+  //   `);
 });
 
 // ============================================

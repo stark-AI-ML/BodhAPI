@@ -1,16 +1,11 @@
 import express from "express";
-import { securityMiddleware } from "./middleware/general/securityValidation.js";
-import { createValidationMiddleware } from "./middleware/general/generalValidation.js";
+import { initializeSecurityMiddleware } from "./middleware/securityPipeline.js";
 import generalRoutes from "./modules/v1/general/general.route.js";
 
 const app = express();
 
-// Body parsing middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Security middleware (detect attacks, sanitize input)
-app.use(securityMiddleware);
+// Initialize comprehensive security middleware pipeline
+initializeSecurityMiddleware(app);
 
 // General API routes
 app.use("/api", generalRoutes);

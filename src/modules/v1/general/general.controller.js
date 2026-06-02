@@ -32,6 +32,7 @@ export const getTodayNews = async (req, res) => {
 };
 
 export const getTopNews = async (req, res) => {
+  // console.log("under Top news controller");
   try {
     const limitValidation = validation.validateTopNews(req);
     if (!limitValidation.isValid) {

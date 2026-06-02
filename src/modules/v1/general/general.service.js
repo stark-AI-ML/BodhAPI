@@ -31,12 +31,21 @@ export const getGeneralTopNews = async (
 
   if (!cachedNews) {
     const news = await fetchTopNews(limit);
-    await setKey(key, news, ttl);
+
+    try {
+      await setKey(key, news, ttl);
+    } catch (error) {
+      // i have to write the log file update here and also i think you must connect this thing with slack
+    }
+    console.log(news);
+
     return news;
   } else {
     return cachedNews;
   }
 };
+
+// console.log(await getGeneralTopNews());
 
 export const getGeneralTodayNews = async (
   key = "general_today_60",
@@ -47,7 +56,13 @@ export const getGeneralTodayNews = async (
 
   if (!cachedNews) {
     const news = await fetchTodayNews(limit);
-    await setKey(key, news, ttl);
+
+    try {
+      await setKey(key, news, ttl);
+    } catch (error) {
+      // i have to write the log file update here and also i think you must connect this thing with slack
+    }
+    console.log(news);
     return news;
   } else {
     return cachedNews;
@@ -63,7 +78,13 @@ export const getCrimeNews = async (
 
   if (!cachedNews) {
     const news = await fetchCrimeNews(limit);
-    await setKey(key, news, ttl);
+
+    try {
+      await setKey(key, news, ttl);
+    } catch (error) {
+      // i have to write the log file update here and also i think you must connect this thing with slack
+    }
+
     return news;
   } else {
     return cachedNews;

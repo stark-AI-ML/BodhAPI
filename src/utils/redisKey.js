@@ -8,7 +8,6 @@ const redis = new Redis({
 
 export async function setKey(key, value, ttlSeconds = null) {
   try {
-    // Arrays are objects, so stringify works fine
     const stringValue = JSON.stringify(value);
 
     if (ttlSeconds) {
@@ -17,9 +16,9 @@ export async function setKey(key, value, ttlSeconds = null) {
       await redis.set(key, stringValue);
     }
 
-    console.log(`✅ Key "${key}" set successfully`);
+    console.log(`Key "${key}" set successfully`);
   } catch (err) {
-    console.error(`❌ Error setting key "${key}":`, err);
+    console.error(`Error setting key "${key}":`, err);
     throw err;
   }
 }
@@ -32,7 +31,7 @@ export async function getKey(key) {
     // Always try to parse JSON (array or object)
     return JSON.parse(value);
   } catch (err) {
-    console.error(`❌ Error getting key "${key}":`, err);
+    console.error(`Error getting key "${key}":`, err);
     throw err;
   }
 }
