@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BodhAPI Docs | Indian News Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f15;
+            --surface: #141a23;
+            --surface2: #1a202b;
+            --border: #2a3340;
+            --text: #e1e8f0;
+            --text2: #9bacc9;
+            --text3: #6b7d95;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-glow: rgba(59,130,246,0.15);
+            --green: #22c55e;
+            --orange: #f59e0b;
+            --red: #ef4444;
+            --purple: #a78bfa;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(0,0,0,0.4);
+            --font: 'Inter', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --header-h: 64px;
+            --sidebar-w: 260px;
+            --console-w: 420px;
+            /* JSON syntax colors */
+            --json-key: #f472b6;
+            --json-string: #22c55e;
+            --json-number: #f59e0b;
+            --json-boolean: #a78bfa;
+            --json-null: #a78bfa;
+            --json-punctuation: #6b7d95;
+        }
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface2: #f1f5f9;
+            --border: #e2e8f0;
+            --text: #0f172a;
+            --text2: #475569;
+            --text3: #94a3b8;
+            --accent-glow: rgba(59,130,246,0.1);
+            --json-key: #d63384;
+            --json-string: #0d6efd;
+            --json-number: #fd7e14;
+            --json-boolean: #6f42c1;
+            --json-null: #6f42c1;
+            --json-punctuation: #6c757d;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+        /* ── Header ───────────────── */
+        .header {
+            position: fixed; top:0; left:0; right:0; height: var(--header-h);
+            background: var(--surface); border-bottom:1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding:0 24px; z-index: 100; backdrop-filter: blur(12px);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .logo {
+            font-weight: 700; font-size: 1.4rem; letter-spacing: -0.5px;
+            display: flex; align-items: center; gap: 8px; color: var(--text);
+        }
+        .logo span { color: var(--accent); }
+        .header-right {
+            display: flex; align-items: center; gap: 20px;
+        }
+        .request-badge {
+            background: var(--surface2); border:1px solid var(--border);
+            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+            color: var(--text2); display: flex; align-items: center; gap: 6px;
+        }
+        .request-badge .count { font-weight: 600; color: var(--accent); }
+        .user-area {
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+        }
+        .avatar-circle {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--accent); display: flex; align-items: center;
+            justify-content: center; color: white; font-weight: 700; font-size: 0.9rem;
+            transition: box-shadow 0.2s;
+        }
+        .avatar-circle:hover { box-shadow: 0 0 0 4px var(--accent-glow); }
+        .api-key-display {
+            font-size: 0.8rem; color: var(--text2); max-width: 140px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .theme-btn {
+            background: none; border:1px solid var(--border); color: var(--text2);
+            padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+        /* ── Sidebar ──────────────── */
+        .sidebar {
+            position: fixed; top: var(--header-h); left:0; bottom:0;
+            width: var(--sidebar-w); background: var(--surface);
+            border-right:1px solid var(--border); overflow-y: auto;
+            padding: 20px 0; z-index: 50; transition: background 0.3s;
+        }
+        .sidebar nav { display: flex; flex-direction: column; gap: 4px; padding:0 12px; }
+        .sidebar .section-title {
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--text3); padding: 12px 8px 4px;
+        }
+        .sidebar a {
+            display: block; padding: 8px 12px; border-radius: 8px; color: var(--text2);
+            text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+        }
+        .sidebar a:hover { background: var(--surface2); color: var(--text); }
+        .sidebar a.active { background: var(--accent-glow); color: var(--accent); font-weight: 500; }
+        /* ── Main Content ─────────── */
+        .main {
+            margin-left: var(--sidebar-w); margin-top: var(--header-h);
+            flex:1; padding: 40px 48px 80px; max-width: 800px; transition: margin 0.3s;
+        }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin: 40px 0 12px; color: var(--text); }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+        p { color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+        code { font-family: var(--mono); font-size: 0.85em; background: var(--surface2); padding: 2px 6px; border-radius: 4px; }
+        pre { background: var(--surface2); border:1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; margin: 16px 0; }
+        pre code { background: none; padding:0; }
+        .endpoint-card {
+            background: var(--surface); border:1px solid var(--border); border-radius: 14px;
+            padding: 20px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: border-color 0.2s;
+        }
+        .endpoint-card:hover { border-color: var(--accent); }
+        .endpoint-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+        }
+        .method {
+            font-weight: 700; font-size: 0.7rem; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 6px; color: white; background: var(--accent);
+        }
+        .path { font-family: var(--mono); font-weight: 500; font-size: 0.95rem; }
+        table { width:100%; border-collapse: collapse; margin: 16px 0; font-size:0.85rem; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom:1px solid var(--border); }
+        th { color: var(--text3); font-weight: 600; }
+        .param-required { color: var(--red); font-weight: 600; }
+        .copy-btn {
+            background: var(--surface2); border:1px solid var(--border); color: var(--text2);
+            padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;
+            transition: all 0.2s; margin-left: auto;
+        }
+        .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+        /* ── JSON Syntax Highlighting ── */
+        .json-key { color: var(--json-key); }
+        .json-string { color: var(--json-string); }
+        .json-number { color: var(--json-number); }
+        .json-boolean { color: var(--json-boolean); }
+        .json-null { color: var(--json-null); }
+        .json-punctuation { color: var(--json-punctuation); }
+        /* ── Console Panel ────────── */
+        .console-toggle {
+            position: fixed; bottom: 24px; right: 24px; z-index: 200;
+            background: var(--accent); color: white; border: none; width: 52px; height: 52px;
+            border-radius: 50%; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            cursor: pointer; font-size: 1.4rem; display: flex; align-items: center;
+            justify-content: center; transition: transform 0.2s;
+        }
+        .console-toggle:hover { transform: scale(1.05); }
+        .console-panel {
+            position: fixed; top: var(--header-h); right: 0; bottom:0;
+            width: var(--console-w); background: var(--surface);
+            border-left:1px solid var(--border); box-shadow: -8px 0 30px rgba(0,0,0,0.3);
+            z-index: 150; transform: translateX(100%); transition: transform 0.3s ease;
+            display: flex; flex-direction: column;
+        }
+        .console-panel.open { transform: translateX(0); }
+        .console-header {
+            padding: 16px 20px; border-bottom:1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .console-body { flex:1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+        select, input {
+            width: 100%; padding: 10px 12px; background: var(--surface2);
+            border:1px solid var(--border); border-radius: 8px; color: var(--text);
+            font-family: var(--font); font-size: 0.85rem; outline: none;
+            transition: border-color 0.2s;
+        }
+        select:focus, input:focus { border-color: var(--accent); }
+        .param-group { display: flex; flex-direction: column; gap: 4px; }
+        .param-group label { font-size: 0.8rem; color: var(--text2); font-weight: 500; }
+        .btn {
+            background: var(--accent); color: white; border: none; padding: 10px 18px;
+            border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s;
+            font-size: 0.85rem; width: 100%;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .response-area {
+            background: var(--surface2); border:1px solid var(--border); border-radius: 10px;
+            padding: 14px; max-height: 280px; overflow-y: auto; font-family: var(--mono);
+            font-size: 0.8rem; white-space: pre-wrap; color: var(--text2); line-height: 1.5;
+        }
+        /* Login Modal */
+        .login-modal {
+            position: fixed; inset:0; background: rgba(0,0,0,0.6); display: flex;
+            align-items: center; justify-content: center; z-index: 300;
+            backdrop-filter: blur(4px); visibility: hidden; opacity:0; transition:0.3s;
+        }
+        .login-modal.open { visibility: visible; opacity:1; }
+        .modal-content {
+            background: var(--surface); border:1px solid var(--border); border-radius: 16px;
+            padding: 32px; width: 380px; text-align: center; box-shadow: var(--shadow);
+        }
+        .modal-content h3 { margin-bottom: 12px; }
+        .modal-content .key-box {
+            background: var(--surface2); padding: 12px; border-radius: 8px;
+            font-family: var(--mono); word-break: break-all; margin: 16px 0;
+            border:1px solid var(--border);
+        }
+        /* responsive */
+        @media (max-width: 1024px) {
+            .console-panel { width: 100%; }
+            .sidebar { display: none; }
+            .main { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo"><span>बो</span> BodhAPI</div>
+        <div class="header-right">
+            <div class="request-badge" id="requestBadge">
+                ⚡ <span class="count" id="requestCount">0</span>/10 requests
+            </div>
+            <div class="user-area" id="userArea">
+                <div class="avatar-circle" id="avatarCircle">?</div>
+                <span class="api-key-display" id="apiKeyDisplay">Sign in</span>
+            </div>
+            <button class="theme-btn" id="themeToggle">🌓 Theme</button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav>
+            <div class="section-title">General News</div>
+            <a href="#general-today">GET /today</a>
+            <a href="#general-top">GET /top</a>
+            <a href="#general-crime">GET /crime</a>
+            <a href="#general-sentiment">GET /sentiment</a>
+            <a href="#general-state">GET /state</a>
+            <a href="#general-entities">GET /entities</a>
+            <a href="#general-emergency">GET /emergency</a>
+            <a href="#general-category">GET /category</a>
+            <a href="#general-search">GET /search</a>
+            <a href="#general-tags">GET /tags</a>
+            <div class="section-title">Business News</div>
+            <a href="#business-today">GET /today</a>
+            <a href="#business-top">GET /top</a>
+            <a href="#business-tech">GET /tech</a>
+            <a href="#business-finance">GET /finance</a>
+            <a href="#business-sentiment">GET /sentiment</a>
+            <a href="#business-state">GET /state</a>
+        </nav>
+    </aside>
+
+    <!-- Main Documentation -->
+    <main class="main" id="mainContent">
+        <h1>📡 BodhAPI Documentation</h1>
+        <p>High-performance REST API for Indian news intelligence. Base URL: <code>http://localhost:5000/api</code></p>
+
+        <!-- General News Section -->
+        <h2>General News</h2>
+        <p>All general news endpoints cover every category unless filtered.</p>
+
+        <!-- Today -->
+        <div class="endpoint-card" id="general-today">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/today</span></div>
+            <p>Today's news ordered by importance.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Default</th></tr><tr><td>limit</td><td>number</td><td>30</td></tr></table>
+            <pre><code>GET /api/general/v1/today?limit=20</code></pre>
+        </div>
+        <!-- Top -->
+        <div class="endpoint-card" id="general-top">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/top</span></div>
+            <p>High‑importance news (score ≥ 7) from last 3 days.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Default</th></tr><tr><td>limit</td><td>number</td><td>30</td></tr></table>
+            <pre><code>GET /api/general/v1/top?limit=10</code></pre>
+        </div>
+        <!-- Crime -->
+        <div class="endpoint-card" id="general-crime">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/crime</span></div>
+            <p>Crime news by severity.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>severity</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/crime?severity=EXTREME&limit=15</code></pre>
+        </div>
+        <!-- Sentiment -->
+        <div class="endpoint-card" id="general-sentiment">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/sentiment</span></div>
+            <p>News by sentiment (Positive, Neutral, Negative).</p>
+            <table><tr><th>Param</th><th>Type</th><th>Default</th></tr><tr><td>sentiment</td><td>string</td><td>Positive</td></tr><tr><td>limit</td><td>number</td><td>30</td></tr></table>
+            <pre><code>GET /api/general/v1/sentiment?sentiment=Negative&limit=20</code></pre>
+        </div>
+        <!-- State -->
+        <div class="endpoint-card" id="general-state">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/state</span></div>
+            <p>News for a specific Indian state.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>state</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/state?state=Maharashtra&limit=25</code></pre>
+        </div>
+        <!-- Entities -->
+        <div class="endpoint-card" id="general-entities">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/entities</span></div>
+            <p>News mentioning a person or organization.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>person</td><td>string</td><td>at least one</td></tr><tr><td>organization</td><td>string</td><td>at least one</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/entities?person=Modi&organization=BJP</code></pre>
+        </div>
+        <!-- Emergency -->
+        <div class="endpoint-card" id="general-emergency">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/emergency</span></div>
+            <p>News by emergency type.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>type</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/emergency?type=NATURAL_DISASTER</code></pre>
+        </div>
+        <!-- Category -->
+        <div class="endpoint-card" id="general-category">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/category</span></div>
+            <p>News by category (Economy, Politics, etc.).</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>category</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/category?category=Politics</code></pre>
+        </div>
+        <!-- Search -->
+        <div class="endpoint-card" id="general-search">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/search</span></div>
+            <p>Full‑text search on headlines (last 7 days).</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>q</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/search?q=trade+deal</code></pre>
+        </div>
+        <!-- Tags -->
+        <div class="endpoint-card" id="general-tags">
+            <div class="endpoint-header"><span class="method">GET</span><span class="path">/general/v1/tags</span></div>
+            <p>News by tag keyword.</p>
+            <table><tr><th>Param</th><th>Type</th><th>Required</th></tr><tr><td>tag</td><td>string</td><td class="param-required">yes</td></tr><tr><td>limit</td><td>number</td><td>no</td></tr></table>
+            <pre><code>GET /api/general/v1/tags?tag=AI</code></pre>
+        </div>
+
+        <!-- Business News Section -->
+        <h2>Business News</h2>
+        <p>Business endpoints filter Economy &amp; Infrastructure categories.</p>
+        <div class="endpoint-card" id="business-today"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/today</span></div><pre><code>GET /api/business/v1/today?limit=20</code></pre></div>
+        <div class="endpoint-card" id="business-top"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/top</span></div><pre><code>GET /api/business/v1/top</code></pre></div>
+        <div class="endpoint-card" id="business-tech"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/tech</span></div><pre><code>GET /api/business/v1/tech</code></pre></div>
+        <div class="endpoint-card" id="business-finance"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/finance</span></div><pre><code>GET /api/business/v1/finance</code></pre></div>
+        <div class="endpoint-card" id="business-sentiment"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/sentiment</span></div><pre><code>GET /api/business/v1/sentiment?sentiment=Positive</code></pre></div>
+        <div class="endpoint-card" id="business-state"><div class="endpoint-header"><span class="method">GET</span><span class="path">/business/v1/state</span></div><pre><code>GET /api/business/v1/state?state=Karnataka</code></pre></div>
+    </main>
+
+    <!-- API Console Toggle Button -->
+    <button class="console-toggle" id="consoleToggle" title="API Console">⌨️</button>
+
+    <!-- Console Panel -->
+    <div class="console-panel" id="consolePanel">
+        <div class="console-header">
+            <strong>🧪 API Console</strong>
+            <button class="copy-btn" id="closeConsole">✕</button>
+        </div>
+        <div class="console-body">
+            <div class="param-group">
+                <label>Endpoint</label>
+                <select id="consoleEndpoint">
+                    <option value="general/today">General /today</option>
+                    <option value="general/top">General /top</option>
+                    <option value="general/crime">General /crime</option>
+                    <option value="general/sentiment">General /sentiment</option>
+                    <option value="general/state">General /state</option>
+                    <option value="general/entities">General /entities</option>
+                    <option value="general/emergency">General /emergency</option>
+                    <option value="general/category">General /category</option>
+                    <option value="general/search">General /search</option>
+                    <option value="general/tags">General /tags</option>
+                    <option value="business/today">Business /today</option>
+                    <option value="business/top">Business /top</option>
+                    <option value="business/tech">Business /tech</option>
+                    <option value="business/finance">Business /finance</option>
+                    <option value="business/sentiment">Business /sentiment</option>
+                    <option value="business/state">Business /state</option>
+                </select>
+            </div>
+            <div id="dynamicParams"></div>
+            <button class="btn" id="sendRequest">🚀 Send Request</button>
+            <div class="response-area" id="responseArea">Response will appear here…</div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <h3>🔐 Get Your API Key</h3>
+            <p>You’ve used your 10 free requests. Sign in to continue.</p>
+            <button class="btn" id="generateKeyBtn">Generate Free API Key</button>
+            <div class="key-box" id="keyDisplay" style="display:none;"></div>
+            <p style="font-size:0.75rem; color:var(--text3);">Key stored locally. Use it in the <code>Authorization</code> header.</p>
+            <button class="btn" id="closeModal" style="background:var(--surface2); color:var(--text); margin-top:8px;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ── State ──────────────────────────
+            const MAX_FREE_REQUESTS = 10;
+            let requestCount = parseInt(sessionStorage.getItem('bodh_req_count') || '0');
+            let apiKey = localStorage.getItem('bodh_api_key') || null;
+            let isLoggedIn = !!apiKey;
+
+            // ── UI Elements ────────────────────
+            const requestCountEl = document.getElementById('requestCount');
+            const requestBadge = document.getElementById('requestBadge');
+            const avatarCircle = document.getElementById('avatarCircle');
+            const apiKeyDisplay = document.getElementById('apiKeyDisplay');
+            const userArea = document.getElementById('userArea');
+            const consolePanel = document.getElementById('consolePanel');
+            const consoleToggle = document.getElementById('consoleToggle');
+            const closeConsole = document.getElementById('closeConsole');
+            const dynamicParams = document.getElementById('dynamicParams');
+            const sendBtn = document.getElementById('sendRequest');
+            const responseArea = document.getElementById('responseArea');
+            const loginModal = document.getElementById('loginModal');
+            const generateKeyBtn = document.getElementById('generateKeyBtn');
+            const keyDisplay = document.getElementById('keyDisplay');
+            const closeModalBtn = document.getElementById('closeModal');
+            const themeToggle = document.getElementById('themeToggle');
+            const consoleEndpoint = document.getElementById('consoleEndpoint');
+
+            // ── JSON Syntax Highlighter ────────
+            function highlightJSON(obj) {
+                // Convert to formatted JSON string
+                let json = JSON.stringify(obj, null, 2);
+                // Escape HTML entities first
+                json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                // Wrap tokens in spans with classes
+                // Match strings (both keys and values)
+                json = json.replace(/("(?:[^"\\]|\\.)*")/g, function(match) {
+                    // If the string is followed by a colon, it's a key
+                    if (/^\s*"/.test(match) && /":\s*/.test(json.substring(json.indexOf(match) + match.length))) {
+                        return '<span class="json-key">' + match + '</span>';
+                    }
+                    return '<span class="json-string">' + match + '</span>';
+                });
+                // Match numbers
+                json = json.replace(/\b(-?\d+\.?\d*([eE][+-]?\d+)?)\b/g, '<span class="json-number">$1</span>');
+                // Match booleans
+                json = json.replace(/\b(true|false)\b/g, '<span class="json-boolean">$1</span>');
+                // Match null
+                json = json.replace(/\bnull\b/g, '<span class="json-null">null</span>');
+                // Add punctuation styling (optional, but can leave as default text color)
+                return json;
+            }
+
+            // ── Helper Functions ───────────────
+            function updateUI() {
+                requestCountEl.textContent = requestCount;
+                if (isLoggedIn) {
+                    avatarCircle.textContent = '🔑';
+                    apiKeyDisplay.textContent = apiKey.substring(0,16)+'…';
+                    requestBadge.style.opacity = '0.5';
+                } else {
+                    avatarCircle.textContent = '?';
+                    apiKeyDisplay.textContent = 'Sign in';
+                    requestBadge.style.opacity = '1';
+                    if (requestCount >= MAX_FREE_REQUESTS) {
+                        loginModal.classList.add('open');
+                    }
+                }
+                sessionStorage.setItem('bodh_req_count', requestCount);
+            }
+
+            function incrementRequest() {
+                if (!isLoggedIn) {
+                    requestCount++;
+                    updateUI();
+                }
+            }
+
+            // ── Mock API Responses ────────────
+            function mockResponse(endpoint, params) {
+                const baseNews = {
+                    headline: "India's GDP grows 7.2% in Q4",
+                    summary: "Strong performance in manufacturing and services.",
+                    category: "Economy",
+                    sentiment: "Positive",
+                    importance_score: 8,
+                    broadcast_date: "2026-06-02"
+                };
+                const newsArray = Array.from({length: parseInt(params.limit) || 2}, (_,i) => ({
+                    ...baseNews,
+                    headline: `${baseNews.headline} #${i+1}`,
+                    importance_score: Math.floor(Math.random()*10)
+                }));
+                return {
+                    success: true,
+                    data: newsArray,
+                    message: `Fetched ${endpoint} results successfully.`
+                };
+            }
+
+            function buildUrl(endpoint, params) {
+                const base = '/api/' + endpoint;
+                const qs = Object.entries(params).map(([k,v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+                return qs ? base + '?' + qs : base;
+            }
+
+            // ── Dynamic Params Rendering ──────
+            const paramConfig = {
+                'general/today': ['limit'],
+                'general/top': ['limit'],
+                'general/crime': ['severity', 'limit'],
+                'general/sentiment': ['sentiment', 'limit'],
+                'general/state': ['state', 'limit'],
+                'general/entities': ['person', 'organization', 'limit'],
+                'general/emergency': ['type', 'limit'],
+                'general/category': ['category', 'limit'],
+                'general/search': ['q', 'limit'],
+                'general/tags': ['tag', 'limit'],
+                'business/today': ['limit'],
+                'business/top': ['limit'],
+                'business/tech': ['limit'],
+                'business/finance': ['limit'],
+                'business/sentiment': ['sentiment', 'limit'],
+                'business/state': ['state', 'limit'],
+            };
+
+            function renderParams(endpoint) {
+                const fields = paramConfig[endpoint] || ['limit'];
+                let html = '';
+                fields.forEach(f => {
+                    html += `<div class="param-group">
+                        <label>${f}</label>
+                        <input type="text" id="param_${f}" placeholder="${f}" value="${f==='limit'?'5':''}">
+                    </div>`;
+                });
+                dynamicParams.innerHTML = html;
+            }
+            consoleEndpoint.addEventListener('change', () => renderParams(consoleEndpoint.value));
+            renderParams(consoleEndpoint.value);
+
+            // ── Send Request ──────────────────
+            sendBtn.addEventListener('click', () => {
+                if (!isLoggedIn && requestCount >= MAX_FREE_REQUESTS) {
+                    loginModal.classList.add('open');
+                    return;
+                }
+                const endpoint = consoleEndpoint.value;
+                const fields = paramConfig[endpoint] || ['limit'];
+                const params = {};
+                fields.forEach(f => {
+                    const el = document.getElementById('param_'+f);
+                    if (el && el.value.trim()) params[f] = el.value.trim();
+                });
+                const url = buildUrl(endpoint, params);
+                const responseObj = mockResponse(endpoint, params);
+                const fullResponse = { request: url, ...responseObj };
+                // Apply syntax highlighting and set innerHTML
+                responseArea.innerHTML = highlightJSON(fullResponse);
+                incrementRequest();
+            });
+
+            // ── Console Toggle ────────────────
+            consoleToggle.addEventListener('click', () => consolePanel.classList.toggle('open'));
+            closeConsole.addEventListener('click', () => consolePanel.classList.remove('open'));
+
+            // ── Login / Key Generation ────────
+            function generateKey() {
+                const key = 'bodh_' + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15);
+                localStorage.setItem('bodh_api_key', key);
+                apiKey = key;
+                isLoggedIn = true;
+                requestCount = 0;
+                updateUI();
+                keyDisplay.textContent = key;
+                keyDisplay.style.display = 'block';
+                generateKeyBtn.style.display = 'none';
+            }
+            generateKeyBtn.addEventListener('click', generateKey);
+            closeModalBtn.addEventListener('click', () => loginModal.classList.remove('open'));
+            userArea.addEventListener('click', () => {
+                if (isLoggedIn) {
+                    alert('API Key: ' + apiKey + '\nUse it in Authorization header.');
+                } else {
+                    loginModal.classList.add('open');
+                }
+            });
+
+            // ── Theme Toggle ──────────────────
+            themeToggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                const curr = html.getAttribute('data-theme');
+                html.setAttribute('data-theme', curr === 'dark' ? 'light' : 'dark');
+            });
+
+            // ── Sidebar active state ──────────
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('.sidebar a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // ── Init ──────────────────────────
+            updateUI();
+            if (isLoggedIn) {
+                keyDisplay.textContent = apiKey;
+                keyDisplay.style.display = 'block';
+                generateKeyBtn.style.display = 'none';
+            }
+        })();
+    </script>
+</body>
+</html>

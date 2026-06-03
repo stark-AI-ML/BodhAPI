@@ -1,24 +1,28 @@
-/**
- * General Module Validations
- * Uses universal validations from middleware for security
- * Includes module-specific validations (severity, sentiment, state, entities)
- *
- * Note: Converts new `ok` format to `isValid` for backward compatibility
- */
-
 import {
   validateLimit,
   validateString,
   validateEnum,
 } from "../../../middleware/general/generalValidation.js";
 
-// Module-specific constants
-const VALID_CRIME_SEVERITIES = ["LOW", "MEDIUM", "HIGH", "EXTREME"];
-const VALID_SENTIMENTS = ["POSITIVE", "NEGATIVE", "NEUTRAL"];
+// Module-specific constants (must match DB enums from schema.sql)
+const VALID_CRIME_SEVERITIES = ["NONE", "LOW", "MODERATE", "EXTREME"];
+const VALID_SENTIMENTS = ["Positive", "Negative", "Neutral"];
+const VALID_EMERGENCY_TYPES = [
+  "PUBLIC_HEALTH",
+  "NATURAL_DISASTER",
+  "WAR_CONFLICT",
+  "CIVIL_UNREST",
+];
+const VALID_CATEGORIES = [
+  "Economy",
+  "Infrastructure",
+  "Politics",
+  "Crime",
+  "Science",
+  "Geopolitics",
+  "Emergency",
+];
 
-/**
- * Helper: Convert new validation format (ok) to old format (isValid)
- */
 const convertFormat = (validation) => {
   return {
     isValid: validation.ok,
@@ -27,26 +31,21 @@ const convertFormat = (validation) => {
   };
 };
 
-/**
- * Validate crime severity
- * @param {string} severity - Severity level to validate
- * @returns {object} { isValid: boolean, value: string, error: string }
- */
 export const validateCrimeSeverity = (severity) => {
   const result = validateEnum(severity, VALID_CRIME_SEVERITIES, {
     caseSensitive: false,
     fieldName: "crime severity",
   });
-  return convertFormat(result);
+
+  if (!result.ok) {
+    return convertFormat(result);
+  }
+
+  // Uppercase to match DB enum
+  return { isValid: true, value: result.value.toUpperCase() };
 };
 
-/**
- * Validate sentiment
- * @param {string} sentiment - Sentiment to validate
- * @param {string} defaultValue - Default value if not provided
- * @returns {object} { isValid: boolean, value: string, error: string }
- */
-export const validateSentiment = (sentiment, defaultValue = "POSITIVE") => {
+export const validateSentiment = (sentiment, defaultValue = "Positive") => {
   if (!sentiment) {
     return { isValid: true, value: defaultValue };
   }
@@ -55,14 +54,64 @@ export const validateSentiment = (sentiment, defaultValue = "POSITIVE") => {
     caseSensitive: false,
     fieldName: "sentiment",
   });
+
+  if (!result.ok) {
+    return convertFormat(result);
+  }
+
+  const normalized =
+    result.value.charAt(0).toUpperCase() + result.value.slice(1).toLowerCase(); // positive to Postive
+  return { isValid: true, value: normalized };
+};
+
+export const validateEmergencyType = (emergencyType) => {
+  const result = validateEnum(emergencyType, VALID_EMERGENCY_TYPES, {
+    caseSensitive: false,
+    fieldName: "emergency type",
+  });
+
+  if (!result.ok) {
+    return convertFormat(result);
+  }
+
+  return { isValid: true, value: result.value.toUpperCase() };
+};
+
+export const validateCategory = (category) => {
+  const result = validateEnum(category, VALID_CATEGORIES, {
+    caseSensitive: false,
+    fieldName: "category",
+  });
+
+  if (!result.ok) {
+    return convertFormat(result);
+  }
+
+  const normalized =
+    result.value.charAt(0).toUpperCase() + result.value.slice(1).toLowerCase();
+  return { isValid: true, value: normalized };
+};
+
+export const validateSearchQuery = (query) => {
+  const result = validateString(query, {
+    required: true,
+    minLength: 2,
+    maxLength: 200,
+    fieldName: "search query",
+  });
   return convertFormat(result);
 };
 
-/**
- * Validate state name with security checks
- * @param {string} state - State name to validate
- * @returns {object} { isValid: boolean, value: string, error: string }
- */
+export const validateTag = (tag) => {
+  const result = validateString(tag, {
+    required: true,
+    minLength: 1,
+    maxLength: 100,
+    fieldName: "tag",
+  });
+  return convertFormat(result);
+};
+
 export const validateState = (state) => {
   const result = validateString(state, {
     required: true,
@@ -73,11 +122,6 @@ export const validateState = (state) => {
   return convertFormat(result);
 };
 
-/**
- * Validate entity name (person or organization) with security checks
- * @param {string} entity - Entity name to validate
- * @returns {object} { isValid: boolean, value: string, error: string }
- */
 export const validateEntity = (entity) => {
   const result = validateString(entity, {
     required: false,
@@ -88,12 +132,6 @@ export const validateEntity = (entity) => {
   return convertFormat(result);
 };
 
-/**
- * Validate entities (at least one must be provided)
- * @param {string} person - Person name
- * @param {string} organization - Organization name
- * @returns {object} { isValid: boolean, person: string, organization: string, error: string }
- */
 export const validateEntities = (person, organization) => {
   if (!person && !organization) {
     return {
@@ -119,25 +157,16 @@ export const validateEntities = (person, organization) => {
   };
 };
 
-/**
- * Validate today news request
- */
 export const validateTodayNews = (req) => {
   const limitValidation = validateLimit(req.query.limit, 60);
   return convertFormat(limitValidation);
 };
 
-/**
- * Validate top news request
- */
 export const validateTopNews = (req) => {
   const limitValidation = validateLimit(req.query.limit, 40);
   return convertFormat(limitValidation);
 };
 
-/**
- * Validate crime news request
- */
 export const validateCrimeNews = (req) => {
   const severityValidation = validateCrimeSeverity(req.query.severity);
   if (!severityValidation.isValid) {
@@ -157,9 +186,6 @@ export const validateCrimeNews = (req) => {
   };
 };
 
-/**
- * Validate sentiment news request
- */
 export const validateSentimentNews = (req) => {
   const sentimentValidation = validateSentiment(req.query.sentiment);
   if (!sentimentValidation.isValid) {
@@ -223,6 +249,82 @@ export const validateEntitiesNews = (req) => {
     isValid: true,
     person: entitiesValidation.person,
     organization: entitiesValidation.organization,
+    limit: limitConverted.value,
+  };
+};
+
+export const validateEmergencyNews = (req) => {
+  const emergencyValidation = validateEmergencyType(req.query.type);
+  if (!emergencyValidation.isValid) {
+    return emergencyValidation;
+  }
+
+  const limitValidation = validateLimit(req.query.limit, 30);
+  const limitConverted = convertFormat(limitValidation);
+  if (!limitConverted.isValid) {
+    return limitConverted;
+  }
+
+  return {
+    isValid: true,
+    emergencyType: emergencyValidation.value,
+    limit: limitConverted.value,
+  };
+};
+
+export const validateCategoryNews = (req) => {
+  const categoryValidation = validateCategory(req.query.category);
+  if (!categoryValidation.isValid) {
+    return categoryValidation;
+  }
+
+  const limitValidation = validateLimit(req.query.limit, 30);
+  const limitConverted = convertFormat(limitValidation);
+  if (!limitConverted.isValid) {
+    return limitConverted;
+  }
+
+  return {
+    isValid: true,
+    category: categoryValidation.value,
+    limit: limitConverted.value,
+  };
+};
+
+export const validateSearchNews = (req) => {
+  const searchValidation = validateSearchQuery(req.query.q);
+  if (!searchValidation.isValid) {
+    return searchValidation;
+  }
+
+  const limitValidation = validateLimit(req.query.limit, 30);
+  const limitConverted = convertFormat(limitValidation);
+  if (!limitConverted.isValid) {
+    return limitConverted;
+  }
+
+  return {
+    isValid: true,
+    query: searchValidation.value,
+    limit: limitConverted.value,
+  };
+};
+
+export const validateTagsNews = (req) => {
+  const tagValidation = validateTag(req.query.tag);
+  if (!tagValidation.isValid) {
+    return tagValidation;
+  }
+
+  const limitValidation = validateLimit(req.query.limit, 30);
+  const limitConverted = convertFormat(limitValidation);
+  if (!limitConverted.isValid) {
+    return limitConverted;
+  }
+
+  return {
+    isValid: true,
+    tag: tagValidation.value,
     limit: limitConverted.value,
   };
 };

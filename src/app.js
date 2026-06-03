@@ -1,6 +1,7 @@
 import express from "express";
 import { initializeSecurityMiddleware } from "./middleware/securityPipeline.js";
 import generalRoutes from "./modules/v1/general/general.route.js";
+import businessRoutes from "./modules/v1/business/business.routes.js";
 
 const app = express();
 
@@ -9,6 +10,9 @@ initializeSecurityMiddleware(app);
 
 // General API routes
 app.use("/api", generalRoutes);
+
+// Business API routes
+app.use("/api", businessRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).json({

@@ -1,9 +1,9 @@
-/**
- * Input Sanitization Middleware
- * Removes dangerous characters and prevents injection attacks
- */
+// Input sanitazation most important thing to learn -----
 
-const SANITIZATION_RULES = {
+// I think sql injection pattern here is just a over kill and regex will take extra processing time for nothing like i have done paramatrized query so no issues
+// but --- this whole project about building newsAPI + learning  so i will go with old faishon
+
+const sanitizationRules = {
   MAX_STRING_LENGTH: 1000,
   MAX_ARRAY_LENGTH: 100,
   DANGEROUS_PATTERNS: {
@@ -13,9 +13,7 @@ const SANITIZATION_RULES = {
   },
 };
 
-/**
- * Remove dangerous characters from strings
- */
+// remove dangerous strings from input first
 const removeDangerousCharacters = (inputString) => {
   if (typeof inputString !== "string") {
     return inputString;
@@ -24,27 +22,27 @@ const removeDangerousCharacters = (inputString) => {
   let sanitizedString = inputString;
 
   // Check length
-  if (sanitizedString.length > SANITIZATION_RULES.MAX_STRING_LENGTH) {
+  if (sanitizedString.length > sanitizationRules.MAX_STRING_LENGTH) {
     throw new Error(
-      `Input exceeds maximum length of ${SANITIZATION_RULES.MAX_STRING_LENGTH}`,
+      `Input exceeds maximum length of ${sanitizationRules.MAX_STRING_LENGTH}`,
     );
   }
 
   // Remove SQL injection patterns
   sanitizedString = sanitizedString.replace(
-    SANITIZATION_RULES.DANGEROUS_PATTERNS.sqlInjection,
+    sanitizationRules.DANGEROUS_PATTERNS.sqlInjection,
     "",
   );
 
   // Remove script injection patterns
   sanitizedString = sanitizedString.replace(
-    SANITIZATION_RULES.DANGEROUS_PATTERNS.scriptInjection,
+    sanitizationRules.DANGEROUS_PATTERNS.scriptInjection,
     "",
   );
 
   // Remove NoSQL injection patterns
   sanitizedString = sanitizedString.replace(
-    SANITIZATION_RULES.DANGEROUS_PATTERNS.nosqlInjection,
+    sanitizationRules.DANGEROUS_PATTERNS.nosqlInjection,
     "",
   );
 
@@ -54,18 +52,20 @@ const removeDangerousCharacters = (inputString) => {
   return sanitizedString;
 };
 
-/**
- * Recursively sanitize object
+/* recursive object depth check and arrayLength check --- serves no purpose to user this is for usecase to load the DB
+ *  with ai generated json of news but as of now i am not directly doing it so if my ip get blocks i will do it manual so need to create an
+ *  api for that
  */
+
 const sanitizeObject = (inputObject, depth = 0) => {
   if (depth > 10) {
     throw new Error("Object nesting too deep");
   }
 
   if (Array.isArray(inputObject)) {
-    if (inputObject.length > SANITIZATION_RULES.MAX_ARRAY_LENGTH) {
+    if (inputObject.length > sanitizationRules.MAX_ARRAY_LENGTH) {
       throw new Error(
-        `Array exceeds maximum length of ${SANITIZATION_RULES.MAX_ARRAY_LENGTH}`,
+        `Array exceeds maximum length of ${sanitizationRules.MAX_ARRAY_LENGTH}`,
       );
     }
     return inputObject.map((item) => sanitizeObject(item, depth + 1));
@@ -91,19 +91,28 @@ const sanitizeObject = (inputObject, depth = 0) => {
  */
 export const sanitizeAllInputs = (request, response, next) => {
   try {
-    // Sanitize query parameters
-    if (Object.keys(request.query).length > 0) {
-      request.query = sanitizeObject(request.query);
+    // Sanitize query parameters (in-place — req.query is read-only in Express 5)
+    if (request.query && Object.keys(request.query).length > 0) {
+      const sanitizedQuery = sanitizeObject(request.query);
+      for (const key of Object.keys(sanitizedQuery)) {
+        request.query[key] = sanitizedQuery[key];
+      }
     }
 
     // Sanitize request body
     if (request.body && Object.keys(request.body).length > 0) {
-      request.body = sanitizeObject(request.body);
+      const sanitizedBody = sanitizeObject(request.body);
+      for (const key of Object.keys(sanitizedBody)) {
+        request.body[key] = sanitizedBody[key];
+      }
     }
 
-    // Sanitize URL params
+    // Sanitize URL params (in-place — req.params is read-only in Express 5)
     if (request.params && Object.keys(request.params).length > 0) {
-      request.params = sanitizeObject(request.params);
+      const sanitizedParams = sanitizeObject(request.params);
+      for (const key of Object.keys(sanitizedParams)) {
+        request.params[key] = sanitizedParams[key];
+      }
     }
 
     next();

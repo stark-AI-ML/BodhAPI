@@ -1,45 +1,24 @@
-/**
-
-* =========================================================
-* GENERAL VALIDATION MODULE (Optimized)
-* * Fast (minimal regex usage)
-* * Predictable (allow-list based)
-* * Reusable across modules
-* =========================================================
-  */
-
-// ============================================
-// CONFIG
-// ============================================
+// configuration of all limits all apis
 
 export const GENERAL_CONFIG = {
   LIMIT: {
     MIN: 1,
-    MAX: 500,
+    MAX: 150,
     DEFAULT: 30,
   },
 
   STRING: {
-    MAX: 2000,
+    MAX: 500, // maybe more if we scale but who wil search for characters words for news
   },
 };
-
-// ============================================
-// CORE HELPERS
-// ============================================
 
 const normalizeString = (input) => {
   return input.trim().replace(/\s+/g, " ");
 };
 
-// ============================================
-// VALIDATORS
-// ============================================
+// validators ---
 
-/**
-
-* Validate limit (pagination)
-  */
+//limit
 export const validateLimit = (limit) => {
   if (limit === undefined || limit === null) {
     return { ok: true, value: GENERAL_CONFIG.LIMIT.DEFAULT };
@@ -62,10 +41,7 @@ export const validateLimit = (limit) => {
   return { ok: true, value: parsed };
 };
 
-/**
-
-* Validate string (allow-list driven)
-  */
+// String
 export const validateString = (
   input,
   {
@@ -87,7 +63,7 @@ export const validateString = (
     return { ok: false, error: `${fieldName} must be a string` };
   }
 
-  // Hard limit (fastest check)
+  // max limit
   if (input.length > maxLength) {
     return {
       ok: false,
@@ -96,7 +72,7 @@ export const validateString = (
   }
 
   const clean = normalizeString(input);
-
+  // minimum lenghth
   if (clean.length < minLength) {
     return {
       ok: false,
@@ -104,7 +80,7 @@ export const validateString = (
     };
   }
 
-  // Allow-list validation
+  // valid pattern of the the string
   if (pattern && !pattern.test(clean)) {
     return {
       ok: false,
@@ -115,42 +91,6 @@ export const validateString = (
   return { ok: true, value: clean };
 };
 
-/**
-
-* Validate integer
-  */
-export const validateInteger = (
-  input,
-  { required = false, min = 0, max = 999999, fieldName = "value" } = {},
-) => {
-  if (input === undefined || input === null || input === "") {
-    if (required) {
-      return { ok: false, error: `${fieldName} is required` };
-    }
-    return { ok: true, value: null };
-  }
-
-  const parsed = Number(input);
-
-  if (!Number.isInteger(parsed)) {
-    return { ok: false, error: `${fieldName} must be an integer` };
-  }
-
-  if (parsed < min) {
-    return { ok: false, error: `${fieldName} must be ≥ ${min}` };
-  }
-
-  if (parsed > max) {
-    return { ok: false, error: `${fieldName} must be ≤ ${max}` };
-  }
-
-  return { ok: true, value: parsed };
-};
-
-/**
-
-* Validate enum
-  */
 export const validateEnum = (
   input,
   allowedValues,
@@ -179,50 +119,10 @@ export const validateEnum = (
   return { ok: true, value };
 };
 
-// ============================================
-// MIDDLEWARE FACTORY
-// ============================================
-
-/**
-
-* Create validation middleware
-* Example usage:
-* createValidationMiddleware((req) => ({
-* limit: validateLimit(req.query.limit),
-* search: validateString(req.query.search, { pattern: SAFE_STRING })
-* }))
-  */
-export const createValidationMiddleware = (schemaFn) => {
-  return (req, res, next) => {
-    const result = schemaFn(req);
-    const errors = {};
-    const values = {};
-
-    for (const [key, validation] of Object.entries(result)) {
-      if (!validation.ok) {
-        errors[key] = validation.error;
-      } else {
-        values[key] = validation.value;
-      }
-    }
-
-    if (Object.keys(errors).length > 0) {
-      return res.status(400).json({
-        success: false,
-        errors,
-      });
-    }
-
-    req.validated = values;
-    next();
-  };
-};
-
 export default {
   GENERAL_CONFIG,
   validateLimit,
   validateString,
   validateInteger,
   validateEnum,
-  createValidationMiddleware,
 };

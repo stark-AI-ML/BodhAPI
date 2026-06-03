@@ -38,7 +38,7 @@ class RedisKeyGenerator {
 
       case "state":
         if (params.state) {
-          keyParts.push(params.state.replace(/\s+/g, "_")); // Replace spaces with underscores
+          keyParts.push(params.state.replace(/\s+/g, "_"));
         }
         break;
 
@@ -53,10 +53,36 @@ class RedisKeyGenerator {
         keyParts.push(organization);
         break;
 
+      case "emergency":
+        if (params.emergencyType) {
+          keyParts.push(params.emergencyType.toUpperCase());
+        }
+        break;
+
+      case "category":
+        if (params.category) {
+          keyParts.push(params.category.replace(/\s+/g, "_"));
+        }
+        break;
+
+      case "search":
+        if (params.query) {
+          keyParts.push(params.query.replace(/\s+/g, "_"));
+        }
+        break;
+
+      case "tags":
+        if (params.tag) {
+          keyParts.push(params.tag.replace(/\s+/g, "_"));
+        }
+        break;
+
+      case "tech":
+      case "finance":
       case "today":
       case "top":
       default:
-        // No additional params needed for today and top
+        // No additional params needed for today, top, tech, and finance
         break;
     }
 
@@ -114,6 +140,34 @@ class RedisKeyGenerator {
       person,
       organization,
     });
+  }
+
+  /**
+   * Generate key for emergency news
+   */
+  static emergencyKey(serviceName, emergencyType, limit = 30) {
+    return this.generate(serviceName, "emergency", limit, { emergencyType });
+  }
+
+  /**
+   * Generate key for category news
+   */
+  static categoryKey(serviceName, category, limit = 30) {
+    return this.generate(serviceName, "category", limit, { category });
+  }
+
+  /**
+   * Generate key for search news
+   */
+  static searchKey(serviceName, query, limit = 30) {
+    return this.generate(serviceName, "search", limit, { query });
+  }
+
+  /**
+   * Generate key for tags news
+   */
+  static tagsKey(serviceName, tag, limit = 30) {
+    return this.generate(serviceName, "tags", limit, { tag });
   }
 }
 

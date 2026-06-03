@@ -32,7 +32,6 @@ export const getTodayNews = async (req, res) => {
 };
 
 export const getTopNews = async (req, res) => {
-  // console.log("under Top news controller");
   try {
     const limitValidation = validation.validateTopNews(req);
     if (!limitValidation.isValid) {
@@ -61,6 +60,7 @@ export const getTopNews = async (req, res) => {
   }
 };
 
+// BUG FIX: now passes severity to service (was dropping it before)
 export const getCrimeNews = async (req, res) => {
   try {
     const validation_result = validation.validateCrimeNews(req);
@@ -74,8 +74,7 @@ export const getCrimeNews = async (req, res) => {
 
     const { severity, limit } = validation_result;
     const key = RedisKeyGenerator.crimeKey("general", severity, limit);
-
-    const data = await service.getCrimeNews(key, limit);
+    const data = await service.getCrimeNews(key, severity, limit);
 
     res.status(200).json({
       success: true,
@@ -91,6 +90,7 @@ export const getCrimeNews = async (req, res) => {
   }
 };
 
+// BUG FIX: now passes person/organization to service (was only passing limit before)
 export const getEntitiesNews = async (req, res) => {
   try {
     const validation_result = validation.validateEntitiesNews(req);
@@ -109,8 +109,7 @@ export const getEntitiesNews = async (req, res) => {
       organization,
       limit,
     );
-
-    const data = await service.getEntitiesNews(key, limit);
+    const data = await service.getEntitiesNews(key, person, organization, limit);
 
     res.status(200).json({
       success: true,
@@ -126,6 +125,7 @@ export const getEntitiesNews = async (req, res) => {
   }
 };
 
+// BUG FIX: now passes sentiment to service
 export const getSentimentNews = async (req, res) => {
   try {
     const validation_result = validation.validateSentimentNews(req);
@@ -139,8 +139,7 @@ export const getSentimentNews = async (req, res) => {
 
     const { sentiment, limit } = validation_result;
     const key = RedisKeyGenerator.sentimentKey("general", sentiment, limit);
-
-    const data = await service.getSentimentsNews(key, limit);
+    const data = await service.getSentimentsNews(key, sentiment, limit);
 
     res.status(200).json({
       success: true,
@@ -156,6 +155,7 @@ export const getSentimentNews = async (req, res) => {
   }
 };
 
+// BUG FIX: now passes state to service
 export const getStateNews = async (req, res) => {
   try {
     const validation_result = validation.validateStateNews(req);
@@ -169,8 +169,7 @@ export const getStateNews = async (req, res) => {
 
     const { state, limit } = validation_result;
     const key = RedisKeyGenerator.stateKey("general", state, limit);
-
-    const data = await service.getStateNews(key, limit);
+    const data = await service.getStateNews(key, state, limit);
 
     res.status(200).json({
       success: true,
@@ -181,6 +180,132 @@ export const getStateNews = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error fetching news by state",
+      error: error.message,
+    });
+  }
+};
+
+// ─── NEW ROUTES ───
+
+export const getEmergencyNews = async (req, res) => {
+  try {
+    const validation_result = validation.validateEmergencyNews(req);
+    if (!validation_result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
+      });
+    }
+
+    const { emergencyType, limit } = validation_result;
+    const key = RedisKeyGenerator.generate("general", "emergency", limit, {
+      emergencyType,
+    });
+    const data = await service.getEmergencyNews(key, emergencyType, limit);
+
+    res.status(200).json({
+      success: true,
+      data,
+      message: "Emergency news fetched successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching emergency news",
+      error: error.message,
+    });
+  }
+};
+
+export const getCategoryNews = async (req, res) => {
+  try {
+    const validation_result = validation.validateCategoryNews(req);
+    if (!validation_result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
+      });
+    }
+
+    const { category, limit } = validation_result;
+    const key = RedisKeyGenerator.generate("general", "category", limit, {
+      category,
+    });
+    const data = await service.getCategoryNews(key, category, limit);
+
+    res.status(200).json({
+      success: true,
+      data,
+      message: "News by category fetched successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching news by category",
+      error: error.message,
+    });
+  }
+};
+
+export const getSearchNews = async (req, res) => {
+  try {
+    const validation_result = validation.validateSearchNews(req);
+    if (!validation_result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
+      });
+    }
+
+    const { query, limit } = validation_result;
+    const key = RedisKeyGenerator.generate("general", "search", limit, {
+      query: query.replace(/\s+/g, "_"),
+    });
+    const data = await service.getSearchNews(key, query, limit);
+
+    res.status(200).json({
+      success: true,
+      data,
+      message: "Search results fetched successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error searching news",
+      error: error.message,
+    });
+  }
+};
+
+export const getTagsNews = async (req, res) => {
+  try {
+    const validation_result = validation.validateTagsNews(req);
+    if (!validation_result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "error : use correct route (url) || contrains",
+        error: validation_result.error,
+      });
+    }
+
+    const { tag, limit } = validation_result;
+    const key = RedisKeyGenerator.generate("general", "tags", limit, {
+      tag: tag.replace(/\s+/g, "_"),
+    });
+    const data = await service.getTagsNews(key, tag, limit);
+
+    res.status(200).json({
+      success: true,
+      data,
+      message: "News by tag fetched successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching news by tag",
       error: error.message,
     });
   }
