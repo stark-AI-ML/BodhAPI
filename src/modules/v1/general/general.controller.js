@@ -60,7 +60,6 @@ export const getTopNews = async (req, res) => {
   }
 };
 
-// BUG FIX: now passes severity to service (was dropping it before)
 export const getCrimeNews = async (req, res) => {
   try {
     const validation_result = validation.validateCrimeNews(req);
@@ -90,7 +89,6 @@ export const getCrimeNews = async (req, res) => {
   }
 };
 
-// BUG FIX: now passes person/organization to service (was only passing limit before)
 export const getEntitiesNews = async (req, res) => {
   try {
     const validation_result = validation.validateEntitiesNews(req);
@@ -109,7 +107,12 @@ export const getEntitiesNews = async (req, res) => {
       organization,
       limit,
     );
-    const data = await service.getEntitiesNews(key, person, organization, limit);
+    const data = await service.getEntitiesNews(
+      key,
+      person,
+      organization,
+      limit,
+    );
 
     res.status(200).json({
       success: true,
@@ -125,7 +128,6 @@ export const getEntitiesNews = async (req, res) => {
   }
 };
 
-// BUG FIX: now passes sentiment to service
 export const getSentimentNews = async (req, res) => {
   try {
     const validation_result = validation.validateSentimentNews(req);
@@ -155,7 +157,6 @@ export const getSentimentNews = async (req, res) => {
   }
 };
 
-// BUG FIX: now passes state to service
 export const getStateNews = async (req, res) => {
   try {
     const validation_result = validation.validateStateNews(req);
@@ -184,8 +185,6 @@ export const getStateNews = async (req, res) => {
     });
   }
 };
-
-// ─── NEW ROUTES ───
 
 export const getEmergencyNews = async (req, res) => {
   try {

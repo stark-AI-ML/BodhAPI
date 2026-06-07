@@ -1,25 +1,6 @@
-/**
- * Redis Key Generator for News Service
- *
- * Pattern: serviceName_queryType_[dynamicParams]_limit
- * Examples:
- * - general_today_60
- * - general_top_40
- * - general_crime_EXTREME_30
- * - general_sentiment_POSITIVE_30
- * - general_state_Maharashtra_30
- * - general_entities_AmitShah_any_30
- */
+// most unoptimised think i have done
 
 class RedisKeyGenerator {
-  /**
-   * Generate a Redis key based on service name, query type, and parameters
-   * @param {string} serviceName - Service name (general, business, socials)
-   * @param {string} queryType - Query type (today, top, crime, sentiment, entities, state)
-   * @param {number} limit - Result limit
-   * @param {object} params - Additional parameters specific to query type
-   * @returns {string} Generated Redis key
-   */
   static generate(serviceName, queryType, limit = 30, params = {}) {
     const keyParts = [serviceName, queryType];
 
@@ -82,54 +63,41 @@ class RedisKeyGenerator {
       case "today":
       case "top":
       default:
-        // No additional params needed for today, top, tech, and finance
         break;
     }
-
-    // Add limit as the last part
     keyParts.push(limit);
 
     return keyParts.join("_");
   }
 
-  /**
-   * Generate key for today's news
-   */
+  // key for today news
   static todayKey(serviceName, limit = 60) {
     return this.generate(serviceName, "today", limit);
   }
 
-  /**
-   * Generate key for top news
-   */
+  // key for top news
+
   static topKey(serviceName, limit = 40) {
     return this.generate(serviceName, "top", limit);
   }
 
-  /**
-   * Generate key for crime news
-   */
+  //for crime news
+
   static crimeKey(serviceName, severity, limit = 30) {
     return this.generate(serviceName, "crime", limit, { severity });
   }
 
-  /**
-   * Generate key for sentiment news
-   */
+  // sentiment news
   static sentimentKey(serviceName, sentiment = "POSITIVE", limit = 30) {
     return this.generate(serviceName, "sentiment", limit, { sentiment });
   }
 
-  /**
-   * Generate key for state news
-   */
+  // key for state news
   static stateKey(serviceName, state, limit = 30) {
     return this.generate(serviceName, "state", limit, { state });
   }
 
-  /**
-   * Generate key for entities news
-   */
+  // enitites News
   static entitiesKey(
     serviceName,
     person = null,
@@ -142,30 +110,23 @@ class RedisKeyGenerator {
     });
   }
 
-  /**
-   * Generate key for emergency news
-   */
+  //emergency news
   static emergencyKey(serviceName, emergencyType, limit = 30) {
     return this.generate(serviceName, "emergency", limit, { emergencyType });
   }
 
-  /**
-   * Generate key for category news
-   */
+  // category news
+
   static categoryKey(serviceName, category, limit = 30) {
     return this.generate(serviceName, "category", limit, { category });
   }
 
-  /**
-   * Generate key for search news
-   */
+  // search news
   static searchKey(serviceName, query, limit = 30) {
     return this.generate(serviceName, "search", limit, { query });
   }
 
-  /**
-   * Generate key for tags news
-   */
+  // tags news
   static tagsKey(serviceName, tag, limit = 30) {
     return this.generate(serviceName, "tags", limit, { tag });
   }
