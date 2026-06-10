@@ -8,12 +8,12 @@ export const GENERAL_CONFIG = {
   },
 
   STRING: {
-    MAX: 500, // maybe more if we scale but who wil search for characters words for news
+    MAX: 500, // maybe more if we scale but who will search for more than 500 characters words for news
   },
 };
 
 const normalizeString = (input) => {
-  return input.trim().replace(/\s+/g, " ");
+  return input.trim().replace(/\s+/g, ' ');
 };
 
 // validators ---
@@ -27,7 +27,7 @@ export const validateLimit = (limit) => {
   const parsed = Number(limit);
 
   if (!Number.isInteger(parsed)) {
-    return { ok: false, error: "Limit must be an integer" };
+    return { ok: false, error: 'Limit must be an integer' };
   }
 
   if (parsed < GENERAL_CONFIG.LIMIT.MIN) {
@@ -49,17 +49,17 @@ export const validateString = (
     minLength = 1,
     maxLength = GENERAL_CONFIG.STRING.MAX,
     pattern = null,
-    fieldName = "field",
-  } = {},
+    fieldName = 'field',
+  } = {}
 ) => {
-  if (input === undefined || input === null || input === "") {
+  if (input === undefined || input === null || input === '') {
     if (required) {
       return { ok: false, error: `${fieldName} is required` };
     }
     return { ok: true, value: null };
   }
 
-  if (typeof input !== "string") {
+  if (typeof input !== 'string') {
     return { ok: false, error: `${fieldName} must be a string` };
   }
 
@@ -94,13 +94,13 @@ export const validateString = (
 export const validateEnum = (
   input,
   allowedValues,
-  { caseSensitive = false, fieldName = "value" } = {},
+  { caseSensitive = false, fieldName = 'value' } = {}
 ) => {
   if (!input) {
     return { ok: false, error: `${fieldName} is required` };
   }
 
-  if (typeof input !== "string") {
+  if (typeof input !== 'string') {
     return { ok: false, error: `${fieldName} must be a string` };
   }
 
@@ -112,7 +112,7 @@ export const validateEnum = (
   if (!allowed.includes(value)) {
     return {
       ok: false,
-      error: `Invalid ${fieldName}. Allowed: ${allowedValues.join(", ")}`,
+      error: `Invalid ${fieldName}. Allowed: ${allowedValues.join(', ')}`,
     };
   }
 

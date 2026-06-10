@@ -4,7 +4,7 @@ import {
   validateEnum,
 } from "../../../middleware/general/generalValidation.js";
 
-// Module-specific constants (must match DB enums from schema.sql)
+// to match DB enum
 const VALID_CRIME_SEVERITIES = ["NONE", "LOW", "MODERATE", "EXTREME"];
 const VALID_SENTIMENTS = ["Positive", "Negative", "Neutral"];
 const VALID_EMERGENCY_TYPES = [
@@ -41,7 +41,7 @@ export const validateCrimeSeverity = (severity) => {
     return convertFormat(result);
   }
 
-  // Uppercase to match DB enum
+
   return { isValid: true, value: result.value.toUpperCase() };
 };
 
@@ -205,9 +205,6 @@ export const validateSentimentNews = (req) => {
   };
 };
 
-/**
- * Validate state news request
- */
 export const validateStateNews = (req) => {
   const stateValidation = validateState(req.query.state);
   if (!stateValidation.isValid) {
@@ -227,9 +224,7 @@ export const validateStateNews = (req) => {
   };
 };
 
-/**
- * Validate entities news request
- */
+
 export const validateEntitiesNews = (req) => {
   const entitiesValidation = validateEntities(
     req.query.person,

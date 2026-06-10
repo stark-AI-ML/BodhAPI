@@ -7,6 +7,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "frontend": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:install": "cd frontend && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

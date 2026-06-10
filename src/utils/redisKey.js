@@ -28,7 +28,7 @@ export async function getKey(key) {
     const value = await redis.get(key);
     if (!value) return null;
 
-    // Always try to parse JSON (array or object)
+    
     return JSON.parse(value);
   } catch (err) {
     console.error(`Error getting key "${key}":`, err);

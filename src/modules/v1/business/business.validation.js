@@ -26,9 +26,7 @@ const convertFormat = (validation) => {
   };
 };
 
-/**
- * Validate sentiment
- */
+
 export const validateSentiment = (sentiment, defaultValue = "Positive") => {
   if (!sentiment) {
     return { isValid: true, value: defaultValue };

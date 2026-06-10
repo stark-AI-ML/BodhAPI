@@ -53,8 +53,7 @@ const removeDangerousCharacters = (inputString) => {
 };
 
 /* recursive object depth check and arrayLength check --- serves no purpose to user this is for usecase to load the DB
- *  with ai generated json of news but as of now i am not directly doing it so if my ip get blocks i will do it manual so need to create an
- *  api for that
+ *  with ai generated json of news but as of now i am not directly doing it so if my ip get blocks i will do it manual so need to create api for that
  */
 
 const sanitizeObject = (inputObject, depth = 0) => {

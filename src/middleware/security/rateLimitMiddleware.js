@@ -5,7 +5,7 @@
 
 const REQUEST_LIMITS = {
   WINDOW_TIME_MS: 15 * 60 * 1000, // 15 minutes
-  MAX_REQUESTS: 10,
+  MAX_REQUESTS: 1000,
   CLEANUP_INTERVAL_MS: 60 * 1000, // Clean old entries every minute
 };
 
@@ -52,9 +52,9 @@ export const enforceRateLimit = (request, response, next) => {
   if (clientData.requestCount >= REQUEST_LIMITS.MAX_REQUESTS) {
     return response.status(429).json({
       success: false,
-      error: "Too many requests. Please try again later.",
+      error: 'Too many requests. Please try again later.',
       retryAfter: Math.ceil(
-        (REQUEST_LIMITS.WINDOW_TIME_MS - timeSinceFirstRequest) / 1000,
+        (REQUEST_LIMITS.WINDOW_TIME_MS - timeSinceFirstRequest) / 1000
       ),
     });
   }
