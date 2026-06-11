@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  redis: 
+    image : redis:latest
+    container_name: redis-bodh
+    ports:
+      - "6379:6379" 
+    restart: unless-stopped
+
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-stack
+    environment: 
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD : "#Postgress_3000"
+      POSTGRES_DB : news
+    ports: 
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql
+    restart: unless-stopped
+
+  bodhapi: 
+    build: .
+    container_name: bodhapi-container
+    depends_on: 
+      - redis 
+      - postgres
+    ports:                  
+      - "5000:5000"
+    environment: 
+      - REDIS_URL=redis://redis:6379
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASS="#Postgress_3000"
+      - DB_NAME=news
+    command: ["node", "server.js" ]
+    restart: always
+
+volumes:
+  pg_data:
+

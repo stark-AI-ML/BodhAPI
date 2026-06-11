@@ -81,7 +81,7 @@ Your `server.js` graceful shutdown closes the HTTP server but **leaks** database
 ```js
 // In src/server.js — update gracefulShutdown:
 import { closeRedis } from "./utils/redisKey.js";
-import pool from "./config/dbConfig.js";
+import {pool} from "./config/dbConfig.js";
 
 const gracefulShutdown = async (signal) => {
   console.log(`\n🛑 ${signal} received, shutting down gracefully...`);

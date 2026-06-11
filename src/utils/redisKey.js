@@ -1,19 +1,15 @@
-// redisCache.js
-import Redis from "ioredis";
+import { pool, redisConfig } from '../config/dbConfig.js';
 
-const redis = new Redis({
-  host: "localhost",
-  port: 6379,
-});
+console.log(redisConfig);
 
 export async function setKey(key, value, ttlSeconds = null) {
   try {
     const stringValue = JSON.stringify(value);
 
     if (ttlSeconds) {
-      await redis.set(key, stringValue, "EX", ttlSeconds);
+      await redisConfig.set(key, stringValue, 'EX', ttlSeconds);
     } else {
-      await redis.set(key, stringValue);
+      await redisConfig.set(key, stringValue);
     }
 
     console.log(`Key "${key}" set successfully`);
@@ -25,10 +21,9 @@ export async function setKey(key, value, ttlSeconds = null) {
 
 export async function getKey(key) {
   try {
-    const value = await redis.get(key);
+    const value = await redisConfig.get(key);
     if (!value) return null;
 
-    
     return JSON.parse(value);
   } catch (err) {
     console.error(`Error getting key "${key}":`, err);
@@ -37,5 +32,5 @@ export async function getKey(key) {
 }
 
 export async function closeRedis() {
-  await redis.quit();
+  await redisConfig.quit();
 }

@@ -1,4 +1,4 @@
-import pool from "../../../config/dbConfig.js";
+import { pool } from '../../../config/dbConfig.js';
 
 /**
  * General News Model
@@ -72,7 +72,7 @@ export const fetchCrimeNews = async (crimeSeverity, limit = 30) => {
 export const fetchEntitiesNews = async (
   personName = null,
   organizationName = null,
-  limit = 30,
+  limit = 30
 ) => {
   const query = `
     SELECT ${BASE_COLUMNS},
@@ -85,12 +85,19 @@ export const fetchEntitiesNews = async (
     LIMIT $3;
   `;
 
-  const { rows } = await pool.query(query, [personName, organizationName, limit]);
+  const { rows } = await pool.query(query, [
+    personName,
+    organizationName,
+    limit,
+  ]);
   return rows;
 };
 
 // ─── 5. Sentiment News ───
-export const fetchSentimentsNews = async (sentiment = "Positive", limit = 30) => {
+export const fetchSentimentsNews = async (
+  sentiment = 'Positive',
+  limit = 30
+) => {
   const query = `
     SELECT ${BASE_COLUMNS}
     FROM news_all

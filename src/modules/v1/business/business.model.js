@@ -1,4 +1,4 @@
-import pool from "../../../config/dbConfig.js";
+import { pool } from '../../../config/dbConfig.js';
 
 //shared column
 const BASE_COLUMNS = `
@@ -103,8 +103,8 @@ export const fetchFinanceNews = async (limit = 30) => {
 
 // 5 Business news by sentiment
 export const fetchSentimentBusinessNews = async (
-  sentiment = "Positive",
-  limit = 30,
+  sentiment = 'Positive',
+  limit = 30
 ) => {
   const query = `
     SELECT ${BASE_COLUMNS}

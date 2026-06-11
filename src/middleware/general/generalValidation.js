@@ -123,6 +123,5 @@ export default {
   GENERAL_CONFIG,
   validateLimit,
   validateString,
-  validateInteger,
   validateEnum,
 };
