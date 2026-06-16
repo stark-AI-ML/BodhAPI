@@ -59,7 +59,7 @@
 │ │ │
 │ │ └── 📁 auth/
 │ │ ├── 📄 auth.routes.js
-│ │ ├── 📄 auth.controller.js
+│ │ ├── 📄 session.controller.js
 │ │ ├── 📄 auth.service.js
 │ │ └── 📄 auth.middleware.js
 │ │

@@ -4,6 +4,9 @@ import Redis from 'ioredis';
 import dotenv from 'dotenv';
 
 dotenv.config();
+//------------------------------
+// for refrence if something breaks: please delete this before pushing to gihub when you will push by the way :)
+
 // export const pool = new Pool({
 //   user: 'postgres',
 //   host: 'localhost',
@@ -18,17 +21,8 @@ dotenv.config();
 //   port: 6379,
 // });
 
+// -----------------------------------
 // for local with .env
-
-// const data = {
-//   user: process.env.DB_USER,
-//   host: process.env.HOST,
-//   database: process.env.DB_NAME,
-
-//   password: process.env.DB_PASSWORD,
-//   // password: '#Postgress_3000',
-//   port: process.env.DB_PORT,
-// };
 
 // console.log(
 //   data.user,
@@ -50,11 +44,14 @@ export const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+// /important -------commented out thsi redisconfig just to save battery from runnig docker
+
 export const redisConfig = new Redis({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS,
 });
 
+// -------------------------------------------
 // for docker
 
 // export const pool = new Pool({

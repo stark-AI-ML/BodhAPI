@@ -6,63 +6,62 @@
 const FIELD_VALIDATION_RULES = {
   // Pagination
   pageNumber: {
-    type: "integer",
+    type: 'integer',
     min: 1,
     max: 10000,
-    fieldName: "Page number",
+    fieldName: 'Page number',
   },
   itemsPerPage: {
-    type: "integer",
+    type: 'integer',
     min: 1,
     max: 500,
     default: 10,
-    fieldName: "Items per page",
+    fieldName: 'Items per page',
   },
 
-  // Email - proper RFC 5322 compliant pattern
+  // Email
   emailAddress: {
-    type: "string",
+    type: 'string',
     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
     maxLength: 254,
-    fieldName: "Email address",
+    fieldName: 'Email address',
   },
 
   // Text search
   searchQuery: {
-    type: "string",
+    type: 'string',
     pattern: /^[a-zA-Z0-9\s._\-'&]*$/,
     maxLength: 200,
     minLength: 1,
-    fieldName: "Search query",
+    fieldName: 'Search query',
   },
 
   // Database ID
   numericId: {
-    type: "integer",
+    type: 'integer',
     min: 1,
     max: 9999999,
-    fieldName: "ID",
+    fieldName: 'ID',
   },
 
   // Username/handle
   userName: {
-    type: "string",
+    type: 'string',
     pattern: /^[a-zA-Z0-9_\-]{3,30}$/,
-    fieldName: "Username",
+    fieldName: 'Username',
   },
 
   // Generic text
   textContent: {
-    type: "string",
+    type: 'string',
     maxLength: 5000,
     minLength: 1,
-    fieldName: "Text content",
+    fieldName: 'Text content',
   },
 };
 
-/**
- * Validate single field value
- */
+// Validate single field value
+
 const validateFieldValue = (fieldValue, validationRule) => {
   const {
     type,
@@ -77,7 +76,7 @@ const validateFieldValue = (fieldValue, validationRule) => {
   } = validationRule;
 
   // Handle missing value
-  if (fieldValue === undefined || fieldValue === null || fieldValue === "") {
+  if (fieldValue === undefined || fieldValue === null || fieldValue === '') {
     if (required) {
       return {
         isValid: false,
@@ -91,7 +90,7 @@ const validateFieldValue = (fieldValue, validationRule) => {
   }
 
   // Type validation
-  if (type === "integer") {
+  if (type === 'integer') {
     const parsedNumber = parseInt(fieldValue, 10);
     if (isNaN(parsedNumber)) {
       return {
@@ -120,15 +119,15 @@ const validateFieldValue = (fieldValue, validationRule) => {
     };
   }
 
-  if (type === "string") {
-    if (typeof fieldValue !== "string") {
+  if (type === 'string') {
+    if (typeof fieldValue !== 'string') {
       return {
         isValid: false,
         errorMessage: `${fieldName} must be text`,
       };
     }
 
-    const cleanedValue = fieldValue.trim().replace(/\s+/g, " ");
+    const cleanedValue = fieldValue.trim().replace(/\s+/g, ' ');
 
     if (minLength !== undefined && cleanedValue.length < minLength) {
       return {
@@ -197,4 +196,5 @@ export const validateQueryParameters = (queryObject, rulesMapping) => {
 /**
  * Export validation rules for reuse
  */
+
 export { FIELD_VALIDATION_RULES };
