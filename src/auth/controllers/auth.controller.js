@@ -3,6 +3,7 @@ import { createSession } from './session.controller.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
+import { getTTL } from '../utils/tokenTTl.config.js';
 
 import usersession from '../../auth/routes/session.route.js';
 
@@ -50,14 +51,14 @@ export const googleCallback = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    maxAge: 15 * 60 * 1000, // 15 mins
+    maxAge: getTTL('acessToken', 'integer'),
   });
 
   res.cookie('refreshToken', refreshToken, {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    maxAge: getTTL('refresh', 'integer'),
   });
 
   res.redirect('http://localhost:3000');

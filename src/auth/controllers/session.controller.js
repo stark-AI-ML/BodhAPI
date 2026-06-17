@@ -1,5 +1,8 @@
 import * as authService from '../services/auth.service.js';
 
+import * as sessionService from '../services/session.service.js';
+import { getTTL } from '../utils/tokenTTl.config.js';
+
 export const createSession = async (user, metadata) => {
   // const { user } = req; // assume validated
 
@@ -52,12 +55,11 @@ export const refresh = async (req, res, next) => {
 
     if (!token) return res.sendStatus(401);
 
-    const { newAccessToken, newRefreshToken } = await authService.refresh(
+    const { newAccessToken, newRefreshToken } = await sessionService.refresh(
       token,
       req.ip,
-      req.headers
-
-      // req.headers['user-agent']
+      req.headers,
+      req.headers['user-agent']
     );
 
     // res.cookie('refreshToken', newRefreshToken, {
@@ -75,14 +77,38 @@ export const refresh = async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: getTTL('refreshToken', 'integer'), // 7 days
+      // maxAge: 10000 * 6,
     });
 
-    return res.json({ accessToken: newAccessToken });
+    res.cookie('accessToken', newAccessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      // maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: getTTL('accessToken', 'integer'),
+    });
 
-    next();
+    return res.json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    });
+
+    // next();
   } catch (err) {
-    return res.sendStatus(403);
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({
+        error: 'Unauthorized: Refresh token has expired. Please log in again.',
+      });
+    }
+
+    if (error.name === 'JsonWebTokenError') {
+      return res
+        .status(401)
+        .json({ error: 'Unauthorized: Invalid refresh token' });
+    }
+
+    return res.status(500).json({ error: 'Internal server error' });
   }
 };
 
@@ -95,7 +121,7 @@ export const refresh = async (req, res, next) => {
 //   headers: 'mozilla',
 // };
 
-// refresh()
+// refresh(req);
 //---------------------------------------------------------------------------------------------------------------------------------
 export const logout = async (req, res) => {
   try {

@@ -40,8 +40,9 @@ export const generateApiKey = async (user_id, keyName) => {
     let fullKey;
 
     if (await isPlanKeyExceeded(user_id, client, keyAlloted)) {
-      logger.info(`more than 5 key ${user_id}`); // /bug remove it no need i thik once you are sure its working
-      throw new error('more than 5 error ');
+      const err = new Error('number of api_keys exceeded');
+      err.statusCode = 403;
+      throw err;
     } else {
       const getKey = await createKey();
 
@@ -56,7 +57,7 @@ export const generateApiKey = async (user_id, keyName) => {
       const newAPI_expiresAt = new Date(now.getTime() + 30 * 60 * 1000);
       await client.query(
         `INSERT INTO api_keys(user_id, key_hash, key_prefix, revoked, expires_at, api_name)
-     VALUES($1, $2, $3, $4, $5)`,
+     VALUES($1, $2, $3, $4, $5, $6)`,
         [user_id, keyHash, prefix, false, newAPI_expiresAt, keyName]
       );
 
@@ -74,15 +75,17 @@ export const generateApiKey = async (user_id, keyName) => {
         ])
         .catch((error) => logger.info('promise in bg failed', error));
     }
-
     return { prefix, fullKey };
-  } catch (error) {
-    console.warn(error);
-    // logger.info('error at apiService   ', error);
-    console.log('error in DB query service layer refresh : ', error);
-    await client.query('ROLLBACK');
-  } finally {
-    await client.release();
+  } catch (err) {
+    if (err.statusCode === 403) {
+      return res.status(403).json({ message: err.message });
+    }
+    console.error('Unexpected error:', err);
+    return res.status(500).json({ message: 'Internal server error' });
+
+    console.log('Caught error:', err);
+    console.log('Message:', err.message);
+    console.log('StatusCode:', err.statusCode);
   }
 };
 
@@ -100,20 +103,57 @@ export const generateApiKey = async (user_id, keyName) => {
 
 // console.log(planDATA.rows[0]);
 
-export const getApiKey = async (user_id) => {
-  const query = `SELECT * FROM api_keys  WHERE user_id = $1`;
+export const getApiKeys = async (user_id) => {
+  try {
+    const query = `SELECT * FROM api_keys  WHERE user_id = $1`;
 
-  const result = await pool.query(query, [user_id]);
+    const result = await pool.query(query, [user_id]);
 
-  const data = result.rows.map((item) => {
-    return {
-      name: item.api_name,
-      key: item.key_prefix,
-      expiresAt: item.expires_at,
-      lastUsed: item.last_used_at,
-      revoked: item.revoked,
-    };
-  });
+    const data = result.rows.map((item) => {
+      return {
+        name: item.api_name,
+        key: item.key_prefix,
+        expiresAt: item.expires_at,
+        lastUsed: item.last_used_at,
+        revoked: item.revoked,
+      };
+    });
 
-  return data;
+    console.log('unser get api key', data);
+    return data;
+  } catch (error) {
+    console.warn('error occured at service layer getApi', error);
+  }
 };
+
+export const deleteApiKey = async (user_id, prefixKey) => {
+  try {
+    // well in your db design you have some rfinment you crated idx for user_id , key_prefix
+    // seperately on api_key i think you should merge it
+
+    const query = `DELETE FROM api_keys WHERE user_id = $1 AND key_prefix = $2`;
+
+    const result = await pool.query(query, [user_id, prefixKey]);
+
+    if (result.rowCount > 0) {
+      return { statusCode: 200, msg: 'Deletion successful' };
+    } else {
+      // No matching row found
+      throw { statusCode: 404, msg: 'API key not found' };
+    }
+  } catch (error) {
+    console.warn(error);
+    if (!error.statusCode) {
+      throw {
+        statusCode: 500,
+        msg: 'Internal server error',
+        detail: error.message,
+      };
+    }
+    throw error;
+  }
+};
+
+// const data = await getApiKeys('fa61f3e0-14ea-4ce1-bfd8-9701f5960dcd');
+
+// console.log(data);

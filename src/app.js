@@ -4,7 +4,7 @@ import { initializeSecurityMiddleware } from './middleware/securityPipeline.js';
 import generalRoutes from './modules/v1/general/general.route.js';
 
 import businessRoutes from './modules/v1/business/business.routes.js';
-
+import cors from 'cors';
 const app = express();
 
 import authRouter from './routes/auth.route.js';
@@ -15,13 +15,26 @@ import cookieParser from 'cookie-parser';
 
 // Initialize comprehensive security middleware pipeline
 
+import apiSession from './auth/routes/apiSession.route.js';
+
 app.use(cookieParser());
 initializeSecurityMiddleware(app);
 
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === 'production'
+        ? 'https://yourdomain.com'
+        : 'http://localhost:3000',
+    credentials: true,
+  })
+);
 app.use('/auth', authRouter);
 
 app.post('/refresh', sessionRouter);
 app.post('/logout', sessionRouter);
+
+app.use('/api', apiSession);
 
 // General API routes
 app.use('/api', generalRoutes);

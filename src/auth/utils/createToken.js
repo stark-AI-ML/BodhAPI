@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
+
 import { pool } from '../../config/dbConfig.js';
+import { getTTL } from './tokenTTl.config.js';
 
 export const generateAccessToken = (payload) => {
   return jwt.sign(payload, process.env.ACCESS_KEY, {
-    expiresIn: '1m',
+    expiresIn: getTTL('accessToken', 'integer'),
   });
 };
 
@@ -51,6 +53,6 @@ export const generateAccessTokenWithUser_ID = async (user_id) => {
 
 export const generateRefreshToken = (payload) => {
   return jwt.sign(payload, process.env.REFRESH_KEY, {
-    expiresIn: '7d',
+    expiresIn: getTTL('accessToken', 'integer'),
   });
 };
