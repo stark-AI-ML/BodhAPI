@@ -184,8 +184,8 @@ export const fetchSearchNews = async (searchQuery, limit = 30) => {
 };
 
 // ─── 10. Tags News [NEW] ───
+// json B object stored tags so we can accept the array of tags
 export const fetchTagsNews = async (tag, limit = 30) => {
-  // Leverages idx_news_tags_gin GIN index
   const query = `
     SELECT ${BASE_COLUMNS},
       tags

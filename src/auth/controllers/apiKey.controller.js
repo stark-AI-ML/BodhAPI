@@ -90,9 +90,7 @@ export const deleteApiKey = async (req, res, next) => {
 
     res.json(deleteKey);
   } catch (error) {
-    if (error.message == 'number of api_keys exceeded') {
-      return res.status(403).json({ error: 'number of api_keys exceeded' });
-    }
+ 
 
     if (error.name === 'TokenExpiredError') {
       return res.status(401).json({ error: 'Unauthorized: Token has expired' });

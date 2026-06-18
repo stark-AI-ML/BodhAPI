@@ -1,63 +1,72 @@
-// rateLimiter.js
-import { redisConfig as redis } from '../../config/dbConfig.js';
-
-// Lua script for token-based sliding window
-const luaScript = `
--- KEYS[1] = redis key
--- ARGV[1] = current timestamp (ms)
--- ARGV[2] = window size (ms)
--- ARGV[3] = max tokens
--- ARGV[4] = tokens requested
-
-local key = KEYS[1]
-local now = tonumber(ARGV[1])
-local window = tonumber(ARGV[2])
-local limit = tonumber(ARGV[3])
-local tokens_requested = tonumber(ARGV[4])
-
--- 1. remove old tokens from timestamp 0 to current time
-
-redis.call("ZREMRANGEBYSCORE", key, 0, now - window)
-
--- 2. Count tokens in window  -- see now-window(time) (is min time we want, to now(present) )
-
-local current_tokens = redis.call("ZCOUNT", key, now - window, now)
-
-if current_tokens + tokens_requested > limit then
-  return 0 -- reject
-end
-
--- 3. Add tokens (store with timestamp as score)
-for i=1,tokens_requested do
-  redis.call("ZADD", key, now, tostring(now) .. ":" .. tostring(i))
-end
-
--- 4. Expiry safety
-redis.call("PEXPIRE", key, window)
-
-return current_tokens + tokens_requested
-`;
-
-async function acquireTokens(key, tokensRequested, windowMs, maxTokens) {
+export async function acquireTokens(
+  apiKey,
+  tokensRequested,
+  windowMs,
+  maxTokens
+) {
   const now = Date.now();
-  const result = await redis.eval(
+
+  // 1. Per-minute limiter
+  const minuteResult = await redis.eval(
     luaScript,
     1,
-    key,
+    `rate:${apiKey}:minute`,
     now,
     windowMs,
     maxTokens,
     tokensRequested
   );
-  return result; // 0 = rejected, >0 = total tokens in window
-}
-
-// Example usage
-(async () => {
-  const allowed = await acquireTokens('rate:api:user123', 3, 60000, 10);
-  if (allowed === 0) {
-    console.log('Rate limit exceeded, reject request');
-  } else {
-    console.log(`Allowed, tokens in window: ${allowed}`);
+  if (minuteResult === 0) {
+    return { allowed: false, reason: 'minute-limit' };
   }
-})();
+
+  // 2. Daily quota counter
+  const dailyKey = `quota:${apiKey}:day`;
+
+  let planId = await redis.hget(dailyKey, 'plan');
+
+  if (!planId) {
+    // First time: fetch from DB
+    const { rows } = await db.query(
+      'SELECT plan_id FROM users WHERE api_key=$1',
+      [apiKey]
+    );
+    planId = rows[0].plan_id;
+    await redis.hset(dailyKey, 'plan', planId, 'used', 0);
+
+    const msUntilMidnight = new Date().setHours(24, 0, 0, 0) - now;
+
+    await redis.pexpire(dailyKey, msUntilMidnight);
+  }
+
+  // 3. Increment usage
+  const usedToday = await redis.hincrby(dailyKey, 'used', tokensRequested);
+
+  // 4. Lookup plan daily_max
+  let dailyMax = await redis.hget(`plan:${planId}`, 'daily_max');
+  if (!dailyMax) {
+    // Cache plan limit if missing
+    const { rows } = await db.query('SELECT daily_max FROM plans WHERE id=$1', [
+      planId,
+    ]);
+    dailyMax = rows[0].daily_max;
+    await redis.hset(`plan:${planId}`, 'daily_max', dailyMax);
+  }
+  dailyMax = parseInt(dailyMax, 10);
+
+  // 5. Enforce quota
+  if (usedToday > dailyMax) {
+    return { allowed: false, reason: 'daily-limit', usedToday, dailyMax };
+  }
+
+  // 6. Checkpoint sync
+  if (usedToday % 100 === 0) {
+    await db.query('UPDATE users SET tokens_used_today=$1 WHERE api_key=$2', [
+      usedToday,
+      apiKey,
+    ]);
+  }
+
+  // 7. Allowed
+  return { allowed: true, count: minuteResult, usedToday, dailyMax };
+}

@@ -16,6 +16,7 @@ import cookieParser from 'cookie-parser';
 // Initialize comprehensive security middleware pipeline
 
 import apiSession from './auth/routes/apiSession.route.js';
+import { apiKeyMiddleware } from './auth/middleware/apiKey.Middleware.js';
 
 app.use(cookieParser());
 initializeSecurityMiddleware(app);
@@ -29,6 +30,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use('/auth', authRouter);
 
 app.post('/refresh', sessionRouter);
@@ -37,10 +39,10 @@ app.post('/logout', sessionRouter);
 app.use('/api', apiSession);
 
 // General API routes
-app.use('/api', generalRoutes);
+app.use('/api', apiKeyMiddleware, generalRoutes);
 
 // Business API routes
-app.use('/api', businessRoutes);
+app.use('/api', apiKeyMiddleware, businessRoutes);
 
 app.get('/health', (req, res) => {
   res.status(200).json({

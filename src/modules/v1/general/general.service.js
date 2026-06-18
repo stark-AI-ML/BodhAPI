@@ -9,17 +9,13 @@ import {
   fetchCategoryNews,
   fetchSearchNews,
   fetchTagsNews,
-} from "./general.models.js";
+} from './general.models.js';
 
-import { setKey, getKey } from "../../../utils/redisKey.js";
+import { setKey, getKey } from '../../../utils/redisKey.js';
 
 // Key consistency for redis  --> general_serviceName_limits
 
-export const getGeneralTopNews = async (
-  key = "general_top_40",
-  limit = 40,
-  ttl = 3600,
-) => {
+export const getGeneralTopNews = async (key, limit = 40, ttl = 3600) => {
   const cachedNews = await getKey(key);
 
   if (!cachedNews) {
@@ -37,11 +33,7 @@ export const getGeneralTopNews = async (
   }
 };
 
-export const getGeneralTodayNews = async (
-  key = "general_today_60",
-  limit = 60,
-  ttl = 3600,
-) => {
+export const getGeneralTodayNews = async (key, limit = 60, ttl = 3600) => {
   const cachedNews = await getKey(key);
 
   if (!cachedNews) {
@@ -59,13 +51,8 @@ export const getGeneralTodayNews = async (
   }
 };
 
-// BUG FIX: now passes severity to fetchCrimeNews (was only passing limit before)
-export const getCrimeNews = async (
-  key = "general_crime_30",
-  severity,
-  limit = 30,
-  ttl = 3600,
-) => {
+// bug: now passes severity to fetchCrimeNews (was only passing limit before)
+export const getCrimeNews = async (key, severity, limit = 30, ttl = 3600) => {
   const cachedNews = await getKey(key);
 
   if (!cachedNews) {
@@ -88,7 +75,7 @@ export const getEntitiesNews = async (
   person = null,
   organization = null,
   limit = 30,
-  ttl = 3600,
+  ttl = 3600
 ) => {
   const cachedNews = await getKey(key);
 
@@ -109,10 +96,10 @@ export const getEntitiesNews = async (
 
 // BUG FIX: now passes sentiment to fetchSentimentsNews (was only passing limit before)
 export const getSentimentsNews = async (
-  key = "general_positive_30",
-  sentiment = "Positive",
+  key,
+  sentiment = 'Positive',
   limit = 30,
-  ttl = 3600,
+  ttl = 3600
 ) => {
   const cachedNews = await getKey(key);
 
@@ -132,12 +119,7 @@ export const getSentimentsNews = async (
 };
 
 // BUG FIX: was calling fetchEntitiesNews instead of fetchStateNews
-export const getStateNews = async (
-  key = "general_state_30",
-  state,
-  limit = 30,
-  ttl = 3600,
-) => {
+export const getStateNews = async (key, state, limit = 30, ttl = 3600) => {
   const cachedNews = await getKey(key);
 
   if (!cachedNews) {
@@ -161,7 +143,7 @@ export const getEmergencyNews = async (
   key,
   emergencyType,
   limit = 30,
-  ttl = 1800, // 30 min TTL — emergencies should refresh faster
+  ttl = 1800 // 30 min TTL — emergencies should refresh faster
 ) => {
   const cachedNews = await getKey(key);
 
@@ -184,7 +166,7 @@ export const getCategoryNews = async (
   key,
   category,
   limit = 30,
-  ttl = 3600,
+  ttl = 3600
 ) => {
   const cachedNews = await getKey(key);
 
@@ -207,7 +189,7 @@ export const getSearchNews = async (
   key,
   searchQuery,
   limit = 30,
-  ttl = 1800, // shorter TTL for search — results change frequently
+  ttl = 1800 // shorter TTL for search — results change frequently
 ) => {
   const cachedNews = await getKey(key);
 
@@ -226,12 +208,7 @@ export const getSearchNews = async (
   }
 };
 
-export const getTagsNews = async (
-  key,
-  tag,
-  limit = 30,
-  ttl = 3600,
-) => {
+export const getTagsNews = async (key, tag, limit = 30, ttl = 3600) => {
   const cachedNews = await getKey(key);
 
   if (!cachedNews) {
