@@ -13,6 +13,7 @@ import { pool } from '../../../config/dbConfig.js';
  */
 
 // ─── Shared column list ───
+
 const BASE_COLUMNS = `
   headline,
   summary,
@@ -152,7 +153,7 @@ export const fetchEmergencyNews = async (emergencyType, limit = 30) => {
 
 // ─── 8. Category News [NEW] ───
 export const fetchCategoryNews = async (category, limit = 30) => {
-  // Leverages idx_news_category_sentiment composite index
+  // use idx_news_category_sentiment composite index
   const query = `
     SELECT ${BASE_COLUMNS}
     FROM news_all
@@ -168,7 +169,7 @@ export const fetchCategoryNews = async (category, limit = 30) => {
 
 // ─── 9. Search News by Headline [NEW] ───
 export const fetchSearchNews = async (searchQuery, limit = 30) => {
-  // Leverages idx_news_headline_search GIN index with to_tsvector
+  // use idx_news_headline_search GIN index with to_tsvector
   const query = `
     SELECT ${BASE_COLUMNS},
       ts_rank(to_tsvector('english', headline), plainto_tsquery('english', $1)) AS relevance
@@ -184,7 +185,8 @@ export const fetchSearchNews = async (searchQuery, limit = 30) => {
 };
 
 // ─── 10. Tags News [NEW] ───
-// json B object stored tags so we can accept the array of tags
+// jsonB object stored tags so we can accept the array of tags
+
 export const fetchTagsNews = async (tag, limit = 30) => {
   const query = `
     SELECT ${BASE_COLUMNS},
@@ -199,3 +201,4 @@ export const fetchTagsNews = async (tag, limit = 30) => {
   const { rows } = await pool.query(query, [tag, limit]);
   return rows;
 };
+

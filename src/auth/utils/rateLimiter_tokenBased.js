@@ -20,6 +20,9 @@ export async function acquireTokens(
     return { allowed: false, reason: 'minute-limit' };
   }
 
+
+
+
   // 2. Daily quota counter
   const dailyKey = `quota:${apiKey}:day`;
 
@@ -55,6 +58,7 @@ export async function acquireTokens(
   dailyMax = parseInt(dailyMax, 10);
 
   // 5. Enforce quota
+  
   if (usedToday > dailyMax) {
     return { allowed: false, reason: 'daily-limit', usedToday, dailyMax };
   }

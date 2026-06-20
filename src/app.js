@@ -17,6 +17,7 @@ import cookieParser from 'cookie-parser';
 
 import apiSession from './auth/routes/apiSession.route.js';
 import { apiKeyMiddleware } from './auth/middleware/apiKey.Middleware.js';
+import { rateLimitMiddleware } from './auth/middleware/apiKey.rateLimiter.js';
 
 app.use(cookieParser());
 initializeSecurityMiddleware(app);
@@ -39,7 +40,7 @@ app.post('/logout', sessionRouter);
 app.use('/api', apiSession);
 
 // General API routes
-app.use('/api', apiKeyMiddleware, generalRoutes);
+app.use('/api', apiKeyMiddleware, rateLimitMiddleware, generalRoutes);
 
 // Business API routes
 app.use('/api', apiKeyMiddleware, businessRoutes);

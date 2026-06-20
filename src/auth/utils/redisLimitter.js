@@ -23,9 +23,11 @@ redis.call("ZREMRANGEBYSCORE", key, 0, now - window)
 
 local current_tokens = redis.call("ZCOUNT", key, now - window, now)
 
-if current_tokens + tokens_requested > limit then
-  return 0 -- reject
-end
+-- /fix see i am limiting this to return the correct order of the result
+
+-- if current_tokens + tokens_requested > limit then
+--   return 0 -- reject
+-- end
 
 -- 3. Add tokens (store with timestamp as score)
 for i=1,tokens_requested do
@@ -37,8 +39,6 @@ redis.call("PEXPIRE", key, window)
 
 return current_tokens + tokens_requested
 `;
-
-
 
 async function acquireTokens(key, tokensRequested, windowMs, maxTokens) {
   const now = Date.now();
