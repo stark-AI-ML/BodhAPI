@@ -4,7 +4,7 @@ import { redisConfig, pool } from '../config/dbConfig.js';
 // my db is has key_prefix --> and here i have used  prefix_key as variable name
 //  multiple time : so fallow that for var name
 
-// learned new thing if you fallowing srp : instead of dependingon imports of redisConfig
+// learned new thing if you are fallowing srp : instead of dependingon imports of redisConfig
 // db or pool you can pass this as a constructor which better for Testablity : yk can think of why
 
 // so i'm changing this : for production level code
@@ -33,11 +33,10 @@ export class PlanService {
     const plan = queryPlanResult.rows[0];
     console.log('plan from db:', plan);
 
-    // Use the correct variable and column names
     await this.#setPlanKey(
       plan.token_per_day,
       plan.token_per_minute,
-      plan.max_key, // adjust to match your schema
+      plan.max_key,
       planId
     );
   }
@@ -186,7 +185,9 @@ export class QuotaService {
     if (result === -1) return { allowed: false };
 
     // checkpoint DB (cheap, async safe)
-    this.#checkpointDB(prefix_key, tokens, result).catch(() => {});
+    this.#checkpointDB(prefix_key, tokens, result).catch((eror) => {
+      throw new error(e);
+    });
 
     return { allowed: true, used: result };
   }

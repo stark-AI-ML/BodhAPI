@@ -1,56 +1,92 @@
 version: "3.9"
 
 services:
-  redis: 
-    image : redis:latest
-    container_name: redis-bodh
-    ports:
-      - "6379:6379" 
-    restart: unless-stopped
+  # redis: 
+  #   image : redis:latest
+  #   container_name: redis-bodh
+  #   ports:
+  #     - "6379:6379" 
+  #   restart: unless-stopped
 
 
-  postgres:
-    image: postgres:latest
-    container_name: postgres-stack
-    environment: 
-      POSTGRES_USER : postgres
-      POSTGRES_PASSWORD : "#Postgress_3000"
-      POSTGRES_DB : news
-    ports: 
-      - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  # postgres:
+  #   image: postgres:latest
+  #   container_name: postgres-stack
+  #   environment: 
+  #     POSTGRES_USER : ${DB_USER}
+  #     POSTGRES_PASSWORD : ${DB_PASSWORD}
+  #     POSTGRES_DB : ${DB_NAME}
+  #   ports: 
+  #     - "5432:5432"
+  #   volumes:
+  #     # - ./server.key:/var/lib/postgresql/data/server.key
+  #     # - ./server.cert:/var/lib/postgresql/data/server.crt
+  #     - pg_data:/var/lib/postgresql/
+  #     - ./full_backup.sql:/docker-entrypoint-initdb.d/full_backup.sql
+  #     # - ./fix-perms.sh:/docker-entrypoint-initdb.d/fixPerm.sh
 
-    restart: unless-stopped
+  #   restart: unless-stopped
+  #   healthcheck: 
+  #     test: ["CMD-SHELL", "pg_isready -U postgres -d news"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
-  dbmate:
-    image: amacneil/dbmate:latest
-    command: ["up"]   # run migrations on startup
-    environment:
-      DATABASE_URL: postgres://myuser:mypass@postgres:5432/mydb?sslmode=disable
-    depends_on:
-      - postgres
-    volumes:
-      - ./db/migrations:/db/migrations 
+  # dbmate:
+  #   image: amacneil/dbmate:latest
+  #   command: ["up"]   # run migrations on startup
+  #   environment:
+  #     DATABASE_URL: ${DATABASE_URL}  # require || disable for without ssl
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./db:/db
+  #     # - ./db/migrations:/db/migrations 
+
+#   bodhapi: 
+#     build: .
+#     container_name: bodhapi-container
+#     depends_on: 
+#       - redis 
+#       - postgres
+#     ports:                  
+#       - "5000:5000"
+#     environment: 
+#       - REDIS_URL=${REDIS_URL}
+#       - DB_HOST=${DB_HOST}
+#       - DB_USER=${DB_USER}
+#       - DB_PASS=${DB_PASSWORD}
+#       - DB_NAME=${DB_NAME}
+#     command: ["node", "server.js" ]
+#     restart: always
+#     # volumes:
+#     #   - ./server.key:/app/server.key
+#     #   - ./server.cert:/app/server.cert
+
+# volumes:
+#   pg_data:
+
+
+# with nginx setup with pvt network no port exposed
 
   bodhapi: 
     build: .
     container_name: bodhapi-container
-    depends_on: 
-      - redis 
-      - postgres
-    ports:                  
-      - "5000:5000"
+
     environment: 
-      - REDIS_URL=redis://redis:6379
-      - DB_HOST=postgres
-      - DB_USER=postgres
-      - DB_PASS="#Postgress_3000"
-      - DB_NAME=news
-    command: ["node", "server.js" ]
+      REDIS_URL: redis://redis:6379
+      DB_HOST: db
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+
+    command: ["node", "server.js"]
     restart: always
 
-volumes:
-  pg_data:
+    networks:
+      - shared_private_net
 
+networks:
+  shared_private_net:
+    external: true

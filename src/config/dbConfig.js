@@ -3,7 +3,10 @@ import { Pool } from 'pg';
 import Redis from 'ioredis';
 import dotenv from 'dotenv';
 
+import fs from 'fs';
+
 dotenv.config();
+
 //------------------------------
 // for refrence if something breaks: please delete this before pushing to gihub when you will push by the way :)
 
@@ -36,12 +39,22 @@ dotenv.config();
 
 export const pool = new Pool({
   user: process.env.DB_USER,
-  host: process.env.HOST,
+  host: process.env.DB_HOST,
   database: process.env.DB_NAME,
 
   // password: process.env.DB_PASSWORD,
-  password: '#Postgress_3000',
+  password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+  ssl: false,
+
+  //ssl
+  // ssl: {
+  //   key: fs.readFileSync('../../server.key'),
+  //   cert: fs.readFileSync('../../server.cert'),
+  //   // ca: fs.readFileSync('/app/ca.crt'),     // if you have a CA chain
+  //   // rejectUnauthorized: true, // set false if self‑signed
+  //   rejectUnauthorized: false,
+  // },
 });
 
 // /important -------commented out thsi redisconfig just to save battery from runnig docker

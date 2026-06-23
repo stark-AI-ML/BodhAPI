@@ -35,19 +35,25 @@ const HOST = process.env.HOST || '0.0.0.0';
 // certs
 
 // const keyPath = path.dirname('./');
-const options = {
-  key: fs.readFileSync('./server.key'),
-  cert: fs.readFileSync('./server.cert'),
-};
+// const options = {
+//   key: fs.readFileSync('./server.key'),
+//   cert: fs.readFileSync('./server.cert'),
+// };
 
-console.log(options);
+// console.log(options);
 
-// app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+const server = app.listen(5000, () =>
+  console.log('Server running on http://localhost:5000')
+);
 
 // start HTTPS server
-const server = https.createServer(options, app).listen(5000, () => {
-  console.log('Server running at https://localhost:5000');
-});
+// const server = https.createServer(options, app).listen(5000, () => {
+//   console.log('Server running at  https://${HOST}:${PORT}');
+// });
+
+// const server = https.createServer(app).listen(PORT, HOST, () => {
+//   console.log(`Server running at  https://${HOST}:${PORT}`);
+// });
 
 // Handle graceful shutdown on SIGTERM or SIGINT
 

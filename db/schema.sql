@@ -1,10 +1,6 @@
---
--- PostgreSQL database dump
---
+\restrict dbmate
 
-\restrict dxdM1eGbQgQ6kzPn1ummXgyZAybkChk9sCwHqGIVtLlBVv1NlNVyWrtx5lKcfaU
-
--- Dumped from database version 18.3
+-- Dumped from database version 18.4 (Debian 18.4-1.pgdg13+1)
 -- Dumped by pg_dump version 18.3
 
 SET statement_timeout = 0;
@@ -27,14 +23,14 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 
 --
--- Name: access_type; Type: TYPE; Schema: public; Owner: postgres
+-- Name: access_type; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.access_type AS ENUM (
@@ -44,10 +40,8 @@ CREATE TYPE public.access_type AS ENUM (
 );
 
 
-ALTER TYPE public.access_type OWNER TO postgres;
-
 --
--- Name: crime_severity; Type: TYPE; Schema: public; Owner: postgres
+-- Name: crime_severity; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.crime_severity AS ENUM (
@@ -58,10 +52,8 @@ CREATE TYPE public.crime_severity AS ENUM (
 );
 
 
-ALTER TYPE public.crime_severity OWNER TO postgres;
-
 --
--- Name: emergency_type; Type: TYPE; Schema: public; Owner: postgres
+-- Name: emergency_type; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.emergency_type AS ENUM (
@@ -73,10 +65,8 @@ CREATE TYPE public.emergency_type AS ENUM (
 );
 
 
-ALTER TYPE public.emergency_type OWNER TO postgres;
-
 --
--- Name: impact_scope_type; Type: TYPE; Schema: public; Owner: postgres
+-- Name: impact_scope_type; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.impact_scope_type AS ENUM (
@@ -88,10 +78,8 @@ CREATE TYPE public.impact_scope_type AS ENUM (
 );
 
 
-ALTER TYPE public.impact_scope_type OWNER TO postgres;
-
 --
--- Name: news_category; Type: TYPE; Schema: public; Owner: postgres
+-- Name: news_category; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.news_category AS ENUM (
@@ -105,10 +93,8 @@ CREATE TYPE public.news_category AS ENUM (
 );
 
 
-ALTER TYPE public.news_category OWNER TO postgres;
-
 --
--- Name: roles; Type: TYPE; Schema: public; Owner: postgres
+-- Name: roles; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.roles AS ENUM (
@@ -118,10 +104,8 @@ CREATE TYPE public.roles AS ENUM (
 );
 
 
-ALTER TYPE public.roles OWNER TO postgres;
-
 --
--- Name: sentiment_type; Type: TYPE; Schema: public; Owner: postgres
+-- Name: sentiment_type; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.sentiment_type AS ENUM (
@@ -131,10 +115,8 @@ CREATE TYPE public.sentiment_type AS ENUM (
 );
 
 
-ALTER TYPE public.sentiment_type OWNER TO postgres;
-
 --
--- Name: create_monthly_partition(date); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: create_monthly_partition(date); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.create_monthly_partition(start_date date) RETURNS void
@@ -157,14 +139,12 @@ END;
 $$;
 
 
-ALTER FUNCTION public.create_monthly_partition(start_date date) OWNER TO postgres;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: api_keys; Type: TABLE; Schema: public; Owner: postgres
+-- Name: api_keys; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.api_keys (
@@ -182,10 +162,8 @@ CREATE TABLE public.api_keys (
 );
 
 
-ALTER TABLE public.api_keys OWNER TO postgres;
-
 --
--- Name: api_keys_new_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: api_keys_new_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.api_keys_new_id_seq
@@ -196,17 +174,15 @@ CREATE SEQUENCE public.api_keys_new_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.api_keys_new_id_seq OWNER TO postgres;
-
 --
--- Name: api_keys_new_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: api_keys_new_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.api_keys_new_id_seq OWNED BY public.api_keys.id;
 
 
 --
--- Name: channel_transcripts; Type: TABLE; Schema: public; Owner: postgres
+-- Name: channel_transcripts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.channel_transcripts (
@@ -220,10 +196,8 @@ CREATE TABLE public.channel_transcripts (
 );
 
 
-ALTER TABLE public.channel_transcripts OWNER TO postgres;
-
 --
--- Name: channel_transcripts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: channel_transcripts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.channel_transcripts_id_seq
@@ -235,17 +209,15 @@ CREATE SEQUENCE public.channel_transcripts_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.channel_transcripts_id_seq OWNER TO postgres;
-
 --
--- Name: channel_transcripts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: channel_transcripts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.channel_transcripts_id_seq OWNED BY public.channel_transcripts.id;
 
 
 --
--- Name: districts; Type: TABLE; Schema: public; Owner: postgres
+-- Name: districts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.districts (
@@ -255,10 +227,8 @@ CREATE TABLE public.districts (
 );
 
 
-ALTER TABLE public.districts OWNER TO postgres;
-
 --
--- Name: districts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: districts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.districts_id_seq
@@ -269,17 +239,15 @@ CREATE SEQUENCE public.districts_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.districts_id_seq OWNER TO postgres;
-
 --
--- Name: districts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: districts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.districts_id_seq OWNED BY public.districts.id;
 
 
 --
--- Name: news_all; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all (
@@ -311,10 +279,8 @@ CREATE TABLE public.news_all (
 PARTITION BY RANGE (broadcast_date);
 
 
-ALTER TABLE public.news_all OWNER TO postgres;
-
 --
--- Name: news_all_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: news_all_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.news_all_id_seq
@@ -325,17 +291,15 @@ CREATE SEQUENCE public.news_all_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.news_all_id_seq OWNER TO postgres;
-
 --
--- Name: news_all_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: news_all_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.news_all_id_seq OWNED BY public.news_all.id;
 
 
 --
--- Name: news_all_2026_04; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_04; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_04 (
@@ -366,10 +330,8 @@ CREATE TABLE public.news_all_2026_04 (
 );
 
 
-ALTER TABLE public.news_all_2026_04 OWNER TO postgres;
-
 --
--- Name: news_all_2026_05; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_05; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_05 (
@@ -400,10 +362,8 @@ CREATE TABLE public.news_all_2026_05 (
 );
 
 
-ALTER TABLE public.news_all_2026_05 OWNER TO postgres;
-
 --
--- Name: news_all_2026_06; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_06; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_06 (
@@ -434,10 +394,8 @@ CREATE TABLE public.news_all_2026_06 (
 );
 
 
-ALTER TABLE public.news_all_2026_06 OWNER TO postgres;
-
 --
--- Name: news_all_2026_07; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_07; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_07 (
@@ -468,10 +426,8 @@ CREATE TABLE public.news_all_2026_07 (
 );
 
 
-ALTER TABLE public.news_all_2026_07 OWNER TO postgres;
-
 --
--- Name: news_all_2026_08; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_08; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_08 (
@@ -502,10 +458,8 @@ CREATE TABLE public.news_all_2026_08 (
 );
 
 
-ALTER TABLE public.news_all_2026_08 OWNER TO postgres;
-
 --
--- Name: news_all_2026_09; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_09; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_09 (
@@ -536,10 +490,8 @@ CREATE TABLE public.news_all_2026_09 (
 );
 
 
-ALTER TABLE public.news_all_2026_09 OWNER TO postgres;
-
 --
--- Name: news_all_2026_10; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_10; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_10 (
@@ -570,10 +522,8 @@ CREATE TABLE public.news_all_2026_10 (
 );
 
 
-ALTER TABLE public.news_all_2026_10 OWNER TO postgres;
-
 --
--- Name: news_all_2026_11; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_11; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_11 (
@@ -604,10 +554,8 @@ CREATE TABLE public.news_all_2026_11 (
 );
 
 
-ALTER TABLE public.news_all_2026_11 OWNER TO postgres;
-
 --
--- Name: news_all_2026_12; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2026_12; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2026_12 (
@@ -638,10 +586,8 @@ CREATE TABLE public.news_all_2026_12 (
 );
 
 
-ALTER TABLE public.news_all_2026_12 OWNER TO postgres;
-
 --
--- Name: news_all_2027_01; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_01; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_01 (
@@ -672,10 +618,8 @@ CREATE TABLE public.news_all_2027_01 (
 );
 
 
-ALTER TABLE public.news_all_2027_01 OWNER TO postgres;
-
 --
--- Name: news_all_2027_02; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_02; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_02 (
@@ -706,10 +650,8 @@ CREATE TABLE public.news_all_2027_02 (
 );
 
 
-ALTER TABLE public.news_all_2027_02 OWNER TO postgres;
-
 --
--- Name: news_all_2027_03; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_03; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_03 (
@@ -740,10 +682,8 @@ CREATE TABLE public.news_all_2027_03 (
 );
 
 
-ALTER TABLE public.news_all_2027_03 OWNER TO postgres;
-
 --
--- Name: news_all_2027_04; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_04; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_04 (
@@ -774,10 +714,8 @@ CREATE TABLE public.news_all_2027_04 (
 );
 
 
-ALTER TABLE public.news_all_2027_04 OWNER TO postgres;
-
 --
--- Name: news_all_2027_05; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_05; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_05 (
@@ -808,10 +746,8 @@ CREATE TABLE public.news_all_2027_05 (
 );
 
 
-ALTER TABLE public.news_all_2027_05 OWNER TO postgres;
-
 --
--- Name: news_all_2027_06; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_06; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_06 (
@@ -842,10 +778,8 @@ CREATE TABLE public.news_all_2027_06 (
 );
 
 
-ALTER TABLE public.news_all_2027_06 OWNER TO postgres;
-
 --
--- Name: news_all_2027_07; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_07; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_07 (
@@ -876,10 +810,8 @@ CREATE TABLE public.news_all_2027_07 (
 );
 
 
-ALTER TABLE public.news_all_2027_07 OWNER TO postgres;
-
 --
--- Name: news_all_2027_08; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_08; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_08 (
@@ -910,10 +842,8 @@ CREATE TABLE public.news_all_2027_08 (
 );
 
 
-ALTER TABLE public.news_all_2027_08 OWNER TO postgres;
-
 --
--- Name: news_all_2027_09; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_09; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_09 (
@@ -944,10 +874,8 @@ CREATE TABLE public.news_all_2027_09 (
 );
 
 
-ALTER TABLE public.news_all_2027_09 OWNER TO postgres;
-
 --
--- Name: news_all_2027_10; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_10; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_10 (
@@ -978,10 +906,8 @@ CREATE TABLE public.news_all_2027_10 (
 );
 
 
-ALTER TABLE public.news_all_2027_10 OWNER TO postgres;
-
 --
--- Name: news_all_2027_11; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_11; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_11 (
@@ -1012,10 +938,8 @@ CREATE TABLE public.news_all_2027_11 (
 );
 
 
-ALTER TABLE public.news_all_2027_11 OWNER TO postgres;
-
 --
--- Name: news_all_2027_12; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2027_12; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2027_12 (
@@ -1046,10 +970,8 @@ CREATE TABLE public.news_all_2027_12 (
 );
 
 
-ALTER TABLE public.news_all_2027_12 OWNER TO postgres;
-
 --
--- Name: news_all_2028_01; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_01; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_01 (
@@ -1080,10 +1002,8 @@ CREATE TABLE public.news_all_2028_01 (
 );
 
 
-ALTER TABLE public.news_all_2028_01 OWNER TO postgres;
-
 --
--- Name: news_all_2028_02; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_02; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_02 (
@@ -1114,10 +1034,8 @@ CREATE TABLE public.news_all_2028_02 (
 );
 
 
-ALTER TABLE public.news_all_2028_02 OWNER TO postgres;
-
 --
--- Name: news_all_2028_03; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_03; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_03 (
@@ -1148,10 +1066,8 @@ CREATE TABLE public.news_all_2028_03 (
 );
 
 
-ALTER TABLE public.news_all_2028_03 OWNER TO postgres;
-
 --
--- Name: news_all_2028_04; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_04; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_04 (
@@ -1182,10 +1098,8 @@ CREATE TABLE public.news_all_2028_04 (
 );
 
 
-ALTER TABLE public.news_all_2028_04 OWNER TO postgres;
-
 --
--- Name: news_all_2028_05; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_05; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_05 (
@@ -1216,10 +1130,8 @@ CREATE TABLE public.news_all_2028_05 (
 );
 
 
-ALTER TABLE public.news_all_2028_05 OWNER TO postgres;
-
 --
--- Name: news_all_2028_06; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_06; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_06 (
@@ -1250,10 +1162,8 @@ CREATE TABLE public.news_all_2028_06 (
 );
 
 
-ALTER TABLE public.news_all_2028_06 OWNER TO postgres;
-
 --
--- Name: news_all_2028_07; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_07; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_07 (
@@ -1284,10 +1194,8 @@ CREATE TABLE public.news_all_2028_07 (
 );
 
 
-ALTER TABLE public.news_all_2028_07 OWNER TO postgres;
-
 --
--- Name: news_all_2028_08; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_08; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_08 (
@@ -1318,10 +1226,8 @@ CREATE TABLE public.news_all_2028_08 (
 );
 
 
-ALTER TABLE public.news_all_2028_08 OWNER TO postgres;
-
 --
--- Name: news_all_2028_09; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_09; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_09 (
@@ -1352,10 +1258,8 @@ CREATE TABLE public.news_all_2028_09 (
 );
 
 
-ALTER TABLE public.news_all_2028_09 OWNER TO postgres;
-
 --
--- Name: news_all_2028_10; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_10; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_10 (
@@ -1386,10 +1290,8 @@ CREATE TABLE public.news_all_2028_10 (
 );
 
 
-ALTER TABLE public.news_all_2028_10 OWNER TO postgres;
-
 --
--- Name: news_all_2028_11; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_11; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_11 (
@@ -1420,10 +1322,8 @@ CREATE TABLE public.news_all_2028_11 (
 );
 
 
-ALTER TABLE public.news_all_2028_11 OWNER TO postgres;
-
 --
--- Name: news_all_2028_12; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2028_12; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2028_12 (
@@ -1454,10 +1354,8 @@ CREATE TABLE public.news_all_2028_12 (
 );
 
 
-ALTER TABLE public.news_all_2028_12 OWNER TO postgres;
-
 --
--- Name: news_all_2029_01; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_01; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_01 (
@@ -1488,10 +1386,8 @@ CREATE TABLE public.news_all_2029_01 (
 );
 
 
-ALTER TABLE public.news_all_2029_01 OWNER TO postgres;
-
 --
--- Name: news_all_2029_02; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_02; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_02 (
@@ -1522,10 +1418,8 @@ CREATE TABLE public.news_all_2029_02 (
 );
 
 
-ALTER TABLE public.news_all_2029_02 OWNER TO postgres;
-
 --
--- Name: news_all_2029_03; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_03; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_03 (
@@ -1556,10 +1450,8 @@ CREATE TABLE public.news_all_2029_03 (
 );
 
 
-ALTER TABLE public.news_all_2029_03 OWNER TO postgres;
-
 --
--- Name: news_all_2029_04; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_04; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_04 (
@@ -1590,10 +1482,8 @@ CREATE TABLE public.news_all_2029_04 (
 );
 
 
-ALTER TABLE public.news_all_2029_04 OWNER TO postgres;
-
 --
--- Name: news_all_2029_05; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_05; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_05 (
@@ -1624,10 +1514,8 @@ CREATE TABLE public.news_all_2029_05 (
 );
 
 
-ALTER TABLE public.news_all_2029_05 OWNER TO postgres;
-
 --
--- Name: news_all_2029_06; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_06; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_06 (
@@ -1658,10 +1546,8 @@ CREATE TABLE public.news_all_2029_06 (
 );
 
 
-ALTER TABLE public.news_all_2029_06 OWNER TO postgres;
-
 --
--- Name: news_all_2029_07; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_07; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_07 (
@@ -1692,10 +1578,8 @@ CREATE TABLE public.news_all_2029_07 (
 );
 
 
-ALTER TABLE public.news_all_2029_07 OWNER TO postgres;
-
 --
--- Name: news_all_2029_08; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_08; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_08 (
@@ -1726,10 +1610,8 @@ CREATE TABLE public.news_all_2029_08 (
 );
 
 
-ALTER TABLE public.news_all_2029_08 OWNER TO postgres;
-
 --
--- Name: news_all_2029_09; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_09; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_09 (
@@ -1760,10 +1642,8 @@ CREATE TABLE public.news_all_2029_09 (
 );
 
 
-ALTER TABLE public.news_all_2029_09 OWNER TO postgres;
-
 --
--- Name: news_all_2029_10; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_10; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_10 (
@@ -1794,10 +1674,8 @@ CREATE TABLE public.news_all_2029_10 (
 );
 
 
-ALTER TABLE public.news_all_2029_10 OWNER TO postgres;
-
 --
--- Name: news_all_2029_11; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_11; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_11 (
@@ -1828,10 +1706,8 @@ CREATE TABLE public.news_all_2029_11 (
 );
 
 
-ALTER TABLE public.news_all_2029_11 OWNER TO postgres;
-
 --
--- Name: news_all_2029_12; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2029_12; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2029_12 (
@@ -1862,10 +1738,8 @@ CREATE TABLE public.news_all_2029_12 (
 );
 
 
-ALTER TABLE public.news_all_2029_12 OWNER TO postgres;
-
 --
--- Name: news_all_2030_01; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_01; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_01 (
@@ -1896,10 +1770,8 @@ CREATE TABLE public.news_all_2030_01 (
 );
 
 
-ALTER TABLE public.news_all_2030_01 OWNER TO postgres;
-
 --
--- Name: news_all_2030_02; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_02; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_02 (
@@ -1930,10 +1802,8 @@ CREATE TABLE public.news_all_2030_02 (
 );
 
 
-ALTER TABLE public.news_all_2030_02 OWNER TO postgres;
-
 --
--- Name: news_all_2030_03; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_03; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_03 (
@@ -1964,10 +1834,8 @@ CREATE TABLE public.news_all_2030_03 (
 );
 
 
-ALTER TABLE public.news_all_2030_03 OWNER TO postgres;
-
 --
--- Name: news_all_2030_04; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_04; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_04 (
@@ -1998,10 +1866,8 @@ CREATE TABLE public.news_all_2030_04 (
 );
 
 
-ALTER TABLE public.news_all_2030_04 OWNER TO postgres;
-
 --
--- Name: news_all_2030_05; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_05; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_05 (
@@ -2032,10 +1898,8 @@ CREATE TABLE public.news_all_2030_05 (
 );
 
 
-ALTER TABLE public.news_all_2030_05 OWNER TO postgres;
-
 --
--- Name: news_all_2030_06; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_06; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_06 (
@@ -2066,10 +1930,8 @@ CREATE TABLE public.news_all_2030_06 (
 );
 
 
-ALTER TABLE public.news_all_2030_06 OWNER TO postgres;
-
 --
--- Name: news_all_2030_07; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_07; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_07 (
@@ -2100,10 +1962,8 @@ CREATE TABLE public.news_all_2030_07 (
 );
 
 
-ALTER TABLE public.news_all_2030_07 OWNER TO postgres;
-
 --
--- Name: news_all_2030_08; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_08; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_08 (
@@ -2134,10 +1994,8 @@ CREATE TABLE public.news_all_2030_08 (
 );
 
 
-ALTER TABLE public.news_all_2030_08 OWNER TO postgres;
-
 --
--- Name: news_all_2030_09; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_09; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_09 (
@@ -2168,10 +2026,8 @@ CREATE TABLE public.news_all_2030_09 (
 );
 
 
-ALTER TABLE public.news_all_2030_09 OWNER TO postgres;
-
 --
--- Name: news_all_2030_10; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_10; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_10 (
@@ -2202,10 +2058,8 @@ CREATE TABLE public.news_all_2030_10 (
 );
 
 
-ALTER TABLE public.news_all_2030_10 OWNER TO postgres;
-
 --
--- Name: news_all_2030_11; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_11; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_11 (
@@ -2236,10 +2090,8 @@ CREATE TABLE public.news_all_2030_11 (
 );
 
 
-ALTER TABLE public.news_all_2030_11 OWNER TO postgres;
-
 --
--- Name: news_all_2030_12; Type: TABLE; Schema: public; Owner: postgres
+-- Name: news_all_2030_12; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.news_all_2030_12 (
@@ -2270,10 +2122,8 @@ CREATE TABLE public.news_all_2030_12 (
 );
 
 
-ALTER TABLE public.news_all_2030_12 OWNER TO postgres;
-
 --
--- Name: plans; Type: TABLE; Schema: public; Owner: postgres
+-- Name: plans; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.plans (
@@ -2286,10 +2136,8 @@ CREATE TABLE public.plans (
 );
 
 
-ALTER TABLE public.plans OWNER TO postgres;
-
 --
--- Name: plans_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.plans_id_seq
@@ -2301,17 +2149,15 @@ CREATE SEQUENCE public.plans_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.plans_id_seq OWNER TO postgres;
-
 --
--- Name: plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.plans_id_seq OWNED BY public.plans.id;
 
 
 --
--- Name: refresh_tokens; Type: TABLE; Schema: public; Owner: postgres
+-- Name: refresh_tokens; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.refresh_tokens (
@@ -2327,10 +2173,17 @@ CREATE TABLE public.refresh_tokens (
 );
 
 
-ALTER TABLE public.refresh_tokens OWNER TO postgres;
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
 
 --
--- Name: state_transcripts; Type: TABLE; Schema: public; Owner: postgres
+-- Name: state_transcripts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.state_transcripts (
@@ -2343,10 +2196,8 @@ CREATE TABLE public.state_transcripts (
 );
 
 
-ALTER TABLE public.state_transcripts OWNER TO postgres;
-
 --
--- Name: states; Type: TABLE; Schema: public; Owner: postgres
+-- Name: states; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.states (
@@ -2355,10 +2206,8 @@ CREATE TABLE public.states (
 );
 
 
-ALTER TABLE public.states OWNER TO postgres;
-
 --
--- Name: states_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: states_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.states_id_seq
@@ -2369,17 +2218,15 @@ CREATE SEQUENCE public.states_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.states_id_seq OWNER TO postgres;
-
 --
--- Name: states_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: states_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.states_id_seq OWNED BY public.states.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.users (
@@ -2395,451 +2242,449 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO postgres;
-
 --
--- Name: news_all_2026_04; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_04 FOR VALUES FROM ('2026-04-01') TO ('2026-05-01');
 
 
 --
--- Name: news_all_2026_05; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_05 FOR VALUES FROM ('2026-05-01') TO ('2026-06-01');
 
 
 --
--- Name: news_all_2026_06; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_06 FOR VALUES FROM ('2026-06-01') TO ('2026-07-01');
 
 
 --
--- Name: news_all_2026_07; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_07 FOR VALUES FROM ('2026-07-01') TO ('2026-08-01');
 
 
 --
--- Name: news_all_2026_08; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_08 FOR VALUES FROM ('2026-08-01') TO ('2026-09-01');
 
 
 --
--- Name: news_all_2026_09; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_09 FOR VALUES FROM ('2026-09-01') TO ('2026-10-01');
 
 
 --
--- Name: news_all_2026_10; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_10 FOR VALUES FROM ('2026-10-01') TO ('2026-11-01');
 
 
 --
--- Name: news_all_2026_11; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_11 FOR VALUES FROM ('2026-11-01') TO ('2026-12-01');
 
 
 --
--- Name: news_all_2026_12; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2026_12 FOR VALUES FROM ('2026-12-01') TO ('2027-01-01');
 
 
 --
--- Name: news_all_2027_01; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_01 FOR VALUES FROM ('2027-01-01') TO ('2027-02-01');
 
 
 --
--- Name: news_all_2027_02; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_02 FOR VALUES FROM ('2027-02-01') TO ('2027-03-01');
 
 
 --
--- Name: news_all_2027_03; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_03 FOR VALUES FROM ('2027-03-01') TO ('2027-04-01');
 
 
 --
--- Name: news_all_2027_04; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_04 FOR VALUES FROM ('2027-04-01') TO ('2027-05-01');
 
 
 --
--- Name: news_all_2027_05; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_05 FOR VALUES FROM ('2027-05-01') TO ('2027-06-01');
 
 
 --
--- Name: news_all_2027_06; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_06 FOR VALUES FROM ('2027-06-01') TO ('2027-07-01');
 
 
 --
--- Name: news_all_2027_07; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_07 FOR VALUES FROM ('2027-07-01') TO ('2027-08-01');
 
 
 --
--- Name: news_all_2027_08; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_08 FOR VALUES FROM ('2027-08-01') TO ('2027-09-01');
 
 
 --
--- Name: news_all_2027_09; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_09 FOR VALUES FROM ('2027-09-01') TO ('2027-10-01');
 
 
 --
--- Name: news_all_2027_10; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_10 FOR VALUES FROM ('2027-10-01') TO ('2027-11-01');
 
 
 --
--- Name: news_all_2027_11; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_11 FOR VALUES FROM ('2027-11-01') TO ('2027-12-01');
 
 
 --
--- Name: news_all_2027_12; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2027_12 FOR VALUES FROM ('2027-12-01') TO ('2028-01-01');
 
 
 --
--- Name: news_all_2028_01; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_01 FOR VALUES FROM ('2028-01-01') TO ('2028-02-01');
 
 
 --
--- Name: news_all_2028_02; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_02 FOR VALUES FROM ('2028-02-01') TO ('2028-03-01');
 
 
 --
--- Name: news_all_2028_03; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_03 FOR VALUES FROM ('2028-03-01') TO ('2028-04-01');
 
 
 --
--- Name: news_all_2028_04; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_04 FOR VALUES FROM ('2028-04-01') TO ('2028-05-01');
 
 
 --
--- Name: news_all_2028_05; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_05 FOR VALUES FROM ('2028-05-01') TO ('2028-06-01');
 
 
 --
--- Name: news_all_2028_06; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_06 FOR VALUES FROM ('2028-06-01') TO ('2028-07-01');
 
 
 --
--- Name: news_all_2028_07; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_07 FOR VALUES FROM ('2028-07-01') TO ('2028-08-01');
 
 
 --
--- Name: news_all_2028_08; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_08 FOR VALUES FROM ('2028-08-01') TO ('2028-09-01');
 
 
 --
--- Name: news_all_2028_09; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_09 FOR VALUES FROM ('2028-09-01') TO ('2028-10-01');
 
 
 --
--- Name: news_all_2028_10; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_10 FOR VALUES FROM ('2028-10-01') TO ('2028-11-01');
 
 
 --
--- Name: news_all_2028_11; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_11 FOR VALUES FROM ('2028-11-01') TO ('2028-12-01');
 
 
 --
--- Name: news_all_2028_12; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2028_12 FOR VALUES FROM ('2028-12-01') TO ('2029-01-01');
 
 
 --
--- Name: news_all_2029_01; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_01 FOR VALUES FROM ('2029-01-01') TO ('2029-02-01');
 
 
 --
--- Name: news_all_2029_02; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_02 FOR VALUES FROM ('2029-02-01') TO ('2029-03-01');
 
 
 --
--- Name: news_all_2029_03; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_03 FOR VALUES FROM ('2029-03-01') TO ('2029-04-01');
 
 
 --
--- Name: news_all_2029_04; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_04 FOR VALUES FROM ('2029-04-01') TO ('2029-05-01');
 
 
 --
--- Name: news_all_2029_05; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_05 FOR VALUES FROM ('2029-05-01') TO ('2029-06-01');
 
 
 --
--- Name: news_all_2029_06; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_06 FOR VALUES FROM ('2029-06-01') TO ('2029-07-01');
 
 
 --
--- Name: news_all_2029_07; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_07 FOR VALUES FROM ('2029-07-01') TO ('2029-08-01');
 
 
 --
--- Name: news_all_2029_08; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_08 FOR VALUES FROM ('2029-08-01') TO ('2029-09-01');
 
 
 --
--- Name: news_all_2029_09; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_09 FOR VALUES FROM ('2029-09-01') TO ('2029-10-01');
 
 
 --
--- Name: news_all_2029_10; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_10 FOR VALUES FROM ('2029-10-01') TO ('2029-11-01');
 
 
 --
--- Name: news_all_2029_11; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_11 FOR VALUES FROM ('2029-11-01') TO ('2029-12-01');
 
 
 --
--- Name: news_all_2029_12; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2029_12 FOR VALUES FROM ('2029-12-01') TO ('2030-01-01');
 
 
 --
--- Name: news_all_2030_01; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_01 FOR VALUES FROM ('2030-01-01') TO ('2030-02-01');
 
 
 --
--- Name: news_all_2030_02; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_02 FOR VALUES FROM ('2030-02-01') TO ('2030-03-01');
 
 
 --
--- Name: news_all_2030_03; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_03 FOR VALUES FROM ('2030-03-01') TO ('2030-04-01');
 
 
 --
--- Name: news_all_2030_04; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_04 FOR VALUES FROM ('2030-04-01') TO ('2030-05-01');
 
 
 --
--- Name: news_all_2030_05; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_05 FOR VALUES FROM ('2030-05-01') TO ('2030-06-01');
 
 
 --
--- Name: news_all_2030_06; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_06 FOR VALUES FROM ('2030-06-01') TO ('2030-07-01');
 
 
 --
--- Name: news_all_2030_07; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_07 FOR VALUES FROM ('2030-07-01') TO ('2030-08-01');
 
 
 --
--- Name: news_all_2030_08; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_08 FOR VALUES FROM ('2030-08-01') TO ('2030-09-01');
 
 
 --
--- Name: news_all_2030_09; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_09 FOR VALUES FROM ('2030-09-01') TO ('2030-10-01');
 
 
 --
--- Name: news_all_2030_10; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_10 FOR VALUES FROM ('2030-10-01') TO ('2030-11-01');
 
 
 --
--- Name: news_all_2030_11; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_11 FOR VALUES FROM ('2030-11-01') TO ('2030-12-01');
 
 
 --
--- Name: news_all_2030_12; Type: TABLE ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12; Type: TABLE ATTACH; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ATTACH PARTITION public.news_all_2030_12 FOR VALUES FROM ('2030-12-01') TO ('2031-01-01');
 
 
 --
--- Name: api_keys id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: api_keys id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.api_keys ALTER COLUMN id SET DEFAULT nextval('public.api_keys_new_id_seq'::regclass);
 
 
 --
--- Name: channel_transcripts id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: channel_transcripts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.channel_transcripts ALTER COLUMN id SET DEFAULT nextval('public.channel_transcripts_id_seq'::regclass);
 
 
 --
--- Name: districts id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: districts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.districts ALTER COLUMN id SET DEFAULT nextval('public.districts_id_seq'::regclass);
 
 
 --
--- Name: news_all id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: news_all id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all ALTER COLUMN id SET DEFAULT nextval('public.news_all_id_seq'::regclass);
 
 
 --
--- Name: plans id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: plans id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plans ALTER COLUMN id SET DEFAULT nextval('public.plans_id_seq'::regclass);
 
 
 --
--- Name: states id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: states id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.states ALTER COLUMN id SET DEFAULT nextval('public.states_id_seq'::regclass);
 
 
 --
--- Name: api_keys api_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: api_keys api_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.api_keys
@@ -2847,7 +2692,7 @@ ALTER TABLE ONLY public.api_keys
 
 
 --
--- Name: channel_transcripts channel_transcripts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: channel_transcripts channel_transcripts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.channel_transcripts
@@ -2855,7 +2700,7 @@ ALTER TABLE ONLY public.channel_transcripts
 
 
 --
--- Name: districts districts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: districts districts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.districts
@@ -2863,7 +2708,7 @@ ALTER TABLE ONLY public.districts
 
 
 --
--- Name: districts districts_state_id_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: districts districts_state_id_name_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.districts
@@ -2871,7 +2716,7 @@ ALTER TABLE ONLY public.districts
 
 
 --
--- Name: news_all news_all_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all news_all_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all
@@ -2879,7 +2724,7 @@ ALTER TABLE ONLY public.news_all
 
 
 --
--- Name: news_all_2026_04 news_all_2026_04_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_04 news_all_2026_04_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_04
@@ -2887,7 +2732,7 @@ ALTER TABLE ONLY public.news_all_2026_04
 
 
 --
--- Name: news_all_2026_05 news_all_2026_05_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_05 news_all_2026_05_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_05
@@ -2895,7 +2740,7 @@ ALTER TABLE ONLY public.news_all_2026_05
 
 
 --
--- Name: news_all_2026_06 news_all_2026_06_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_06 news_all_2026_06_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_06
@@ -2903,7 +2748,7 @@ ALTER TABLE ONLY public.news_all_2026_06
 
 
 --
--- Name: news_all_2026_07 news_all_2026_07_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_07 news_all_2026_07_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_07
@@ -2911,7 +2756,7 @@ ALTER TABLE ONLY public.news_all_2026_07
 
 
 --
--- Name: news_all_2026_08 news_all_2026_08_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_08 news_all_2026_08_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_08
@@ -2919,7 +2764,7 @@ ALTER TABLE ONLY public.news_all_2026_08
 
 
 --
--- Name: news_all_2026_09 news_all_2026_09_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_09 news_all_2026_09_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_09
@@ -2927,7 +2772,7 @@ ALTER TABLE ONLY public.news_all_2026_09
 
 
 --
--- Name: news_all_2026_10 news_all_2026_10_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_10 news_all_2026_10_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_10
@@ -2935,7 +2780,7 @@ ALTER TABLE ONLY public.news_all_2026_10
 
 
 --
--- Name: news_all_2026_11 news_all_2026_11_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_11 news_all_2026_11_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_11
@@ -2943,7 +2788,7 @@ ALTER TABLE ONLY public.news_all_2026_11
 
 
 --
--- Name: news_all_2026_12 news_all_2026_12_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2026_12 news_all_2026_12_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2026_12
@@ -2951,7 +2796,7 @@ ALTER TABLE ONLY public.news_all_2026_12
 
 
 --
--- Name: news_all_2027_01 news_all_2027_01_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_01 news_all_2027_01_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_01
@@ -2959,7 +2804,7 @@ ALTER TABLE ONLY public.news_all_2027_01
 
 
 --
--- Name: news_all_2027_02 news_all_2027_02_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_02 news_all_2027_02_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_02
@@ -2967,7 +2812,7 @@ ALTER TABLE ONLY public.news_all_2027_02
 
 
 --
--- Name: news_all_2027_03 news_all_2027_03_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_03 news_all_2027_03_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_03
@@ -2975,7 +2820,7 @@ ALTER TABLE ONLY public.news_all_2027_03
 
 
 --
--- Name: news_all_2027_04 news_all_2027_04_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_04 news_all_2027_04_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_04
@@ -2983,7 +2828,7 @@ ALTER TABLE ONLY public.news_all_2027_04
 
 
 --
--- Name: news_all_2027_05 news_all_2027_05_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_05 news_all_2027_05_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_05
@@ -2991,7 +2836,7 @@ ALTER TABLE ONLY public.news_all_2027_05
 
 
 --
--- Name: news_all_2027_06 news_all_2027_06_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_06 news_all_2027_06_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_06
@@ -2999,7 +2844,7 @@ ALTER TABLE ONLY public.news_all_2027_06
 
 
 --
--- Name: news_all_2027_07 news_all_2027_07_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_07 news_all_2027_07_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_07
@@ -3007,7 +2852,7 @@ ALTER TABLE ONLY public.news_all_2027_07
 
 
 --
--- Name: news_all_2027_08 news_all_2027_08_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_08 news_all_2027_08_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_08
@@ -3015,7 +2860,7 @@ ALTER TABLE ONLY public.news_all_2027_08
 
 
 --
--- Name: news_all_2027_09 news_all_2027_09_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_09 news_all_2027_09_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_09
@@ -3023,7 +2868,7 @@ ALTER TABLE ONLY public.news_all_2027_09
 
 
 --
--- Name: news_all_2027_10 news_all_2027_10_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_10 news_all_2027_10_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_10
@@ -3031,7 +2876,7 @@ ALTER TABLE ONLY public.news_all_2027_10
 
 
 --
--- Name: news_all_2027_11 news_all_2027_11_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_11 news_all_2027_11_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_11
@@ -3039,7 +2884,7 @@ ALTER TABLE ONLY public.news_all_2027_11
 
 
 --
--- Name: news_all_2027_12 news_all_2027_12_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2027_12 news_all_2027_12_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2027_12
@@ -3047,7 +2892,7 @@ ALTER TABLE ONLY public.news_all_2027_12
 
 
 --
--- Name: news_all_2028_01 news_all_2028_01_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_01 news_all_2028_01_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_01
@@ -3055,7 +2900,7 @@ ALTER TABLE ONLY public.news_all_2028_01
 
 
 --
--- Name: news_all_2028_02 news_all_2028_02_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_02 news_all_2028_02_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_02
@@ -3063,7 +2908,7 @@ ALTER TABLE ONLY public.news_all_2028_02
 
 
 --
--- Name: news_all_2028_03 news_all_2028_03_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_03 news_all_2028_03_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_03
@@ -3071,7 +2916,7 @@ ALTER TABLE ONLY public.news_all_2028_03
 
 
 --
--- Name: news_all_2028_04 news_all_2028_04_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_04 news_all_2028_04_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_04
@@ -3079,7 +2924,7 @@ ALTER TABLE ONLY public.news_all_2028_04
 
 
 --
--- Name: news_all_2028_05 news_all_2028_05_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_05 news_all_2028_05_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_05
@@ -3087,7 +2932,7 @@ ALTER TABLE ONLY public.news_all_2028_05
 
 
 --
--- Name: news_all_2028_06 news_all_2028_06_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_06 news_all_2028_06_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_06
@@ -3095,7 +2940,7 @@ ALTER TABLE ONLY public.news_all_2028_06
 
 
 --
--- Name: news_all_2028_07 news_all_2028_07_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_07 news_all_2028_07_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_07
@@ -3103,7 +2948,7 @@ ALTER TABLE ONLY public.news_all_2028_07
 
 
 --
--- Name: news_all_2028_08 news_all_2028_08_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_08 news_all_2028_08_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_08
@@ -3111,7 +2956,7 @@ ALTER TABLE ONLY public.news_all_2028_08
 
 
 --
--- Name: news_all_2028_09 news_all_2028_09_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_09 news_all_2028_09_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_09
@@ -3119,7 +2964,7 @@ ALTER TABLE ONLY public.news_all_2028_09
 
 
 --
--- Name: news_all_2028_10 news_all_2028_10_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_10 news_all_2028_10_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_10
@@ -3127,7 +2972,7 @@ ALTER TABLE ONLY public.news_all_2028_10
 
 
 --
--- Name: news_all_2028_11 news_all_2028_11_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_11 news_all_2028_11_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_11
@@ -3135,7 +2980,7 @@ ALTER TABLE ONLY public.news_all_2028_11
 
 
 --
--- Name: news_all_2028_12 news_all_2028_12_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2028_12 news_all_2028_12_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2028_12
@@ -3143,7 +2988,7 @@ ALTER TABLE ONLY public.news_all_2028_12
 
 
 --
--- Name: news_all_2029_01 news_all_2029_01_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_01 news_all_2029_01_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_01
@@ -3151,7 +2996,7 @@ ALTER TABLE ONLY public.news_all_2029_01
 
 
 --
--- Name: news_all_2029_02 news_all_2029_02_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_02 news_all_2029_02_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_02
@@ -3159,7 +3004,7 @@ ALTER TABLE ONLY public.news_all_2029_02
 
 
 --
--- Name: news_all_2029_03 news_all_2029_03_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_03 news_all_2029_03_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_03
@@ -3167,7 +3012,7 @@ ALTER TABLE ONLY public.news_all_2029_03
 
 
 --
--- Name: news_all_2029_04 news_all_2029_04_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_04 news_all_2029_04_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_04
@@ -3175,7 +3020,7 @@ ALTER TABLE ONLY public.news_all_2029_04
 
 
 --
--- Name: news_all_2029_05 news_all_2029_05_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_05 news_all_2029_05_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_05
@@ -3183,7 +3028,7 @@ ALTER TABLE ONLY public.news_all_2029_05
 
 
 --
--- Name: news_all_2029_06 news_all_2029_06_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_06 news_all_2029_06_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_06
@@ -3191,7 +3036,7 @@ ALTER TABLE ONLY public.news_all_2029_06
 
 
 --
--- Name: news_all_2029_07 news_all_2029_07_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_07 news_all_2029_07_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_07
@@ -3199,7 +3044,7 @@ ALTER TABLE ONLY public.news_all_2029_07
 
 
 --
--- Name: news_all_2029_08 news_all_2029_08_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_08 news_all_2029_08_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_08
@@ -3207,7 +3052,7 @@ ALTER TABLE ONLY public.news_all_2029_08
 
 
 --
--- Name: news_all_2029_09 news_all_2029_09_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_09 news_all_2029_09_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_09
@@ -3215,7 +3060,7 @@ ALTER TABLE ONLY public.news_all_2029_09
 
 
 --
--- Name: news_all_2029_10 news_all_2029_10_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_10 news_all_2029_10_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_10
@@ -3223,7 +3068,7 @@ ALTER TABLE ONLY public.news_all_2029_10
 
 
 --
--- Name: news_all_2029_11 news_all_2029_11_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_11 news_all_2029_11_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_11
@@ -3231,7 +3076,7 @@ ALTER TABLE ONLY public.news_all_2029_11
 
 
 --
--- Name: news_all_2029_12 news_all_2029_12_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2029_12 news_all_2029_12_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2029_12
@@ -3239,7 +3084,7 @@ ALTER TABLE ONLY public.news_all_2029_12
 
 
 --
--- Name: news_all_2030_01 news_all_2030_01_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_01 news_all_2030_01_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_01
@@ -3247,7 +3092,7 @@ ALTER TABLE ONLY public.news_all_2030_01
 
 
 --
--- Name: news_all_2030_02 news_all_2030_02_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_02 news_all_2030_02_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_02
@@ -3255,7 +3100,7 @@ ALTER TABLE ONLY public.news_all_2030_02
 
 
 --
--- Name: news_all_2030_03 news_all_2030_03_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_03 news_all_2030_03_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_03
@@ -3263,7 +3108,7 @@ ALTER TABLE ONLY public.news_all_2030_03
 
 
 --
--- Name: news_all_2030_04 news_all_2030_04_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_04 news_all_2030_04_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_04
@@ -3271,7 +3116,7 @@ ALTER TABLE ONLY public.news_all_2030_04
 
 
 --
--- Name: news_all_2030_05 news_all_2030_05_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_05 news_all_2030_05_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_05
@@ -3279,7 +3124,7 @@ ALTER TABLE ONLY public.news_all_2030_05
 
 
 --
--- Name: news_all_2030_06 news_all_2030_06_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_06 news_all_2030_06_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_06
@@ -3287,7 +3132,7 @@ ALTER TABLE ONLY public.news_all_2030_06
 
 
 --
--- Name: news_all_2030_07 news_all_2030_07_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_07 news_all_2030_07_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_07
@@ -3295,7 +3140,7 @@ ALTER TABLE ONLY public.news_all_2030_07
 
 
 --
--- Name: news_all_2030_08 news_all_2030_08_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_08 news_all_2030_08_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_08
@@ -3303,7 +3148,7 @@ ALTER TABLE ONLY public.news_all_2030_08
 
 
 --
--- Name: news_all_2030_09 news_all_2030_09_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_09 news_all_2030_09_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_09
@@ -3311,7 +3156,7 @@ ALTER TABLE ONLY public.news_all_2030_09
 
 
 --
--- Name: news_all_2030_10 news_all_2030_10_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_10 news_all_2030_10_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_10
@@ -3319,7 +3164,7 @@ ALTER TABLE ONLY public.news_all_2030_10
 
 
 --
--- Name: news_all_2030_11 news_all_2030_11_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_11 news_all_2030_11_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_11
@@ -3327,7 +3172,7 @@ ALTER TABLE ONLY public.news_all_2030_11
 
 
 --
--- Name: news_all_2030_12 news_all_2030_12_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all_2030_12 news_all_2030_12_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.news_all_2030_12
@@ -3335,7 +3180,7 @@ ALTER TABLE ONLY public.news_all_2030_12
 
 
 --
--- Name: plans plans_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: plans plans_name_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plans
@@ -3343,7 +3188,7 @@ ALTER TABLE ONLY public.plans
 
 
 --
--- Name: plans plans_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: plans plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plans
@@ -3351,7 +3196,7 @@ ALTER TABLE ONLY public.plans
 
 
 --
--- Name: refresh_tokens refresh_tokens_jwt_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: refresh_tokens refresh_tokens_jwt_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.refresh_tokens
@@ -3359,7 +3204,7 @@ ALTER TABLE ONLY public.refresh_tokens
 
 
 --
--- Name: refresh_tokens refresh_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: refresh_tokens refresh_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.refresh_tokens
@@ -3367,7 +3212,15 @@ ALTER TABLE ONLY public.refresh_tokens
 
 
 --
--- Name: state_transcripts state_transcripts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: state_transcripts state_transcripts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.state_transcripts
@@ -3375,7 +3228,7 @@ ALTER TABLE ONLY public.state_transcripts
 
 
 --
--- Name: states states_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: states states_name_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.states
@@ -3383,7 +3236,7 @@ ALTER TABLE ONLY public.states
 
 
 --
--- Name: states states_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: states states_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.states
@@ -3391,7 +3244,7 @@ ALTER TABLE ONLY public.states
 
 
 --
--- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -3399,7 +3252,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_google_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users users_google_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -3407,7 +3260,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -3415,6083 +3268,6083 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: idx_channel_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_channel_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_channel_id ON public.channel_transcripts USING btree (channel_id);
 
 
 --
--- Name: idx_news_broadcast_date_brin; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_broadcast_date_brin; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_broadcast_date_brin ON ONLY public.news_all USING brin (broadcast_date);
 
 
 --
--- Name: idx_news_category_sentiment; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_category_sentiment; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_category_sentiment ON ONLY public.news_all USING btree (category, sentiment);
 
 
 --
--- Name: idx_news_entities_gin; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_entities_gin; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_entities_gin ON ONLY public.news_all USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: idx_news_financial_industries; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_financial_industries; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_financial_industries ON ONLY public.news_all USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: idx_news_headline_search; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_headline_search; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_headline_search ON ONLY public.news_all USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: idx_news_state_district_date; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_state_district_date; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_state_district_date ON ONLY public.news_all USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: idx_news_tags_gin; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_news_tags_gin; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_news_tags_gin ON ONLY public.news_all USING gin (tags);
 
 
 --
--- Name: idx_prefix; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_prefix; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_prefix ON public.api_keys USING btree (key_prefix);
 
 
 --
--- Name: idx_refresh_jwt_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_refresh_jwt_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_refresh_jwt_id ON public.refresh_tokens USING btree (jwt_id);
 
 
 --
--- Name: idx_refresh_user; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_refresh_user; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_refresh_user ON public.refresh_tokens USING btree (user_id);
 
 
 --
--- Name: idx_user; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_user; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_user ON public.api_keys USING btree (user_id);
 
 
 --
--- Name: idx_users_google_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_users_google_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX idx_users_google_id ON public.users USING btree (google_id);
 
 
 --
--- Name: news_all_2026_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_broadcast_date_idx ON public.news_all_2026_04 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_category_sentiment_idx ON public.news_all_2026_04 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_04_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_entities_idx ON public.news_all_2026_04 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_financial_industries_idx ON public.news_all_2026_04 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_state_id_district_id_broadcast_date_idx ON public.news_all_2026_04 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_04_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_tags_idx ON public.news_all_2026_04 USING gin (tags);
 
 
 --
--- Name: news_all_2026_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_04_to_tsvector_idx ON public.news_all_2026_04 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_broadcast_date_idx ON public.news_all_2026_05 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_category_sentiment_idx ON public.news_all_2026_05 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_05_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_entities_idx ON public.news_all_2026_05 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_financial_industries_idx ON public.news_all_2026_05 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_state_id_district_id_broadcast_date_idx ON public.news_all_2026_05 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_05_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_tags_idx ON public.news_all_2026_05 USING gin (tags);
 
 
 --
--- Name: news_all_2026_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_05_to_tsvector_idx ON public.news_all_2026_05 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_broadcast_date_idx ON public.news_all_2026_06 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_category_sentiment_idx ON public.news_all_2026_06 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_06_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_entities_idx ON public.news_all_2026_06 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_financial_industries_idx ON public.news_all_2026_06 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_state_id_district_id_broadcast_date_idx ON public.news_all_2026_06 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_06_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_tags_idx ON public.news_all_2026_06 USING gin (tags);
 
 
 --
--- Name: news_all_2026_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_06_to_tsvector_idx ON public.news_all_2026_06 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_broadcast_date_idx ON public.news_all_2026_07 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_category_sentiment_idx ON public.news_all_2026_07 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_07_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_entities_idx ON public.news_all_2026_07 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_financial_industries_idx ON public.news_all_2026_07 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_state_id_district_id_broadcast_date_idx ON public.news_all_2026_07 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_07_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_tags_idx ON public.news_all_2026_07 USING gin (tags);
 
 
 --
--- Name: news_all_2026_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_07_to_tsvector_idx ON public.news_all_2026_07 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_broadcast_date_idx ON public.news_all_2026_08 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_category_sentiment_idx ON public.news_all_2026_08 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_08_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_entities_idx ON public.news_all_2026_08 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_financial_industries_idx ON public.news_all_2026_08 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_state_id_district_id_broadcast_date_idx ON public.news_all_2026_08 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_08_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_tags_idx ON public.news_all_2026_08 USING gin (tags);
 
 
 --
--- Name: news_all_2026_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_08_to_tsvector_idx ON public.news_all_2026_08 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_broadcast_date_idx ON public.news_all_2026_09 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_category_sentiment_idx ON public.news_all_2026_09 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_09_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_entities_idx ON public.news_all_2026_09 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_financial_industries_idx ON public.news_all_2026_09 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_state_id_district_id_broadcast_date_idx ON public.news_all_2026_09 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_09_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_tags_idx ON public.news_all_2026_09 USING gin (tags);
 
 
 --
--- Name: news_all_2026_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_09_to_tsvector_idx ON public.news_all_2026_09 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_broadcast_date_idx ON public.news_all_2026_10 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_category_sentiment_idx ON public.news_all_2026_10 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_10_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_entities_idx ON public.news_all_2026_10 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_financial_industries_idx ON public.news_all_2026_10 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_state_id_district_id_broadcast_date_idx ON public.news_all_2026_10 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_10_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_tags_idx ON public.news_all_2026_10 USING gin (tags);
 
 
 --
--- Name: news_all_2026_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_10_to_tsvector_idx ON public.news_all_2026_10 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_broadcast_date_idx ON public.news_all_2026_11 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_category_sentiment_idx ON public.news_all_2026_11 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_11_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_entities_idx ON public.news_all_2026_11 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_financial_industries_idx ON public.news_all_2026_11 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_state_id_district_id_broadcast_date_idx ON public.news_all_2026_11 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_11_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_tags_idx ON public.news_all_2026_11 USING gin (tags);
 
 
 --
--- Name: news_all_2026_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_11_to_tsvector_idx ON public.news_all_2026_11 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_broadcast_date_idx ON public.news_all_2026_12 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2026_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_category_sentiment_idx ON public.news_all_2026_12 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2026_12_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_entities_idx ON public.news_all_2026_12 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2026_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_financial_industries_idx ON public.news_all_2026_12 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2026_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_state_id_district_id_broadcast_date_idx ON public.news_all_2026_12 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2026_12_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_tags_idx ON public.news_all_2026_12 USING gin (tags);
 
 
 --
--- Name: news_all_2026_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2026_12_to_tsvector_idx ON public.news_all_2026_12 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_broadcast_date_idx ON public.news_all_2027_01 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_category_sentiment_idx ON public.news_all_2027_01 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_01_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_entities_idx ON public.news_all_2027_01 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_financial_industries_idx ON public.news_all_2027_01 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_state_id_district_id_broadcast_date_idx ON public.news_all_2027_01 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_01_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_tags_idx ON public.news_all_2027_01 USING gin (tags);
 
 
 --
--- Name: news_all_2027_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_01_to_tsvector_idx ON public.news_all_2027_01 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_broadcast_date_idx ON public.news_all_2027_02 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_category_sentiment_idx ON public.news_all_2027_02 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_02_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_entities_idx ON public.news_all_2027_02 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_financial_industries_idx ON public.news_all_2027_02 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_state_id_district_id_broadcast_date_idx ON public.news_all_2027_02 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_02_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_tags_idx ON public.news_all_2027_02 USING gin (tags);
 
 
 --
--- Name: news_all_2027_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_02_to_tsvector_idx ON public.news_all_2027_02 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_broadcast_date_idx ON public.news_all_2027_03 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_category_sentiment_idx ON public.news_all_2027_03 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_03_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_entities_idx ON public.news_all_2027_03 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_financial_industries_idx ON public.news_all_2027_03 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_state_id_district_id_broadcast_date_idx ON public.news_all_2027_03 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_03_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_tags_idx ON public.news_all_2027_03 USING gin (tags);
 
 
 --
--- Name: news_all_2027_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_03_to_tsvector_idx ON public.news_all_2027_03 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_broadcast_date_idx ON public.news_all_2027_04 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_category_sentiment_idx ON public.news_all_2027_04 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_04_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_entities_idx ON public.news_all_2027_04 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_financial_industries_idx ON public.news_all_2027_04 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_state_id_district_id_broadcast_date_idx ON public.news_all_2027_04 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_04_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_tags_idx ON public.news_all_2027_04 USING gin (tags);
 
 
 --
--- Name: news_all_2027_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_04_to_tsvector_idx ON public.news_all_2027_04 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_broadcast_date_idx ON public.news_all_2027_05 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_category_sentiment_idx ON public.news_all_2027_05 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_05_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_entities_idx ON public.news_all_2027_05 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_financial_industries_idx ON public.news_all_2027_05 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_state_id_district_id_broadcast_date_idx ON public.news_all_2027_05 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_05_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_tags_idx ON public.news_all_2027_05 USING gin (tags);
 
 
 --
--- Name: news_all_2027_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_05_to_tsvector_idx ON public.news_all_2027_05 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_broadcast_date_idx ON public.news_all_2027_06 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_category_sentiment_idx ON public.news_all_2027_06 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_06_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_entities_idx ON public.news_all_2027_06 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_financial_industries_idx ON public.news_all_2027_06 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_state_id_district_id_broadcast_date_idx ON public.news_all_2027_06 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_06_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_tags_idx ON public.news_all_2027_06 USING gin (tags);
 
 
 --
--- Name: news_all_2027_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_06_to_tsvector_idx ON public.news_all_2027_06 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_broadcast_date_idx ON public.news_all_2027_07 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_category_sentiment_idx ON public.news_all_2027_07 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_07_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_entities_idx ON public.news_all_2027_07 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_financial_industries_idx ON public.news_all_2027_07 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_state_id_district_id_broadcast_date_idx ON public.news_all_2027_07 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_07_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_tags_idx ON public.news_all_2027_07 USING gin (tags);
 
 
 --
--- Name: news_all_2027_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_07_to_tsvector_idx ON public.news_all_2027_07 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_broadcast_date_idx ON public.news_all_2027_08 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_category_sentiment_idx ON public.news_all_2027_08 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_08_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_entities_idx ON public.news_all_2027_08 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_financial_industries_idx ON public.news_all_2027_08 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_state_id_district_id_broadcast_date_idx ON public.news_all_2027_08 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_08_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_tags_idx ON public.news_all_2027_08 USING gin (tags);
 
 
 --
--- Name: news_all_2027_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_08_to_tsvector_idx ON public.news_all_2027_08 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_broadcast_date_idx ON public.news_all_2027_09 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_category_sentiment_idx ON public.news_all_2027_09 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_09_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_entities_idx ON public.news_all_2027_09 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_financial_industries_idx ON public.news_all_2027_09 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_state_id_district_id_broadcast_date_idx ON public.news_all_2027_09 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_09_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_tags_idx ON public.news_all_2027_09 USING gin (tags);
 
 
 --
--- Name: news_all_2027_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_09_to_tsvector_idx ON public.news_all_2027_09 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_broadcast_date_idx ON public.news_all_2027_10 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_category_sentiment_idx ON public.news_all_2027_10 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_10_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_entities_idx ON public.news_all_2027_10 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_financial_industries_idx ON public.news_all_2027_10 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_state_id_district_id_broadcast_date_idx ON public.news_all_2027_10 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_10_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_tags_idx ON public.news_all_2027_10 USING gin (tags);
 
 
 --
--- Name: news_all_2027_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_10_to_tsvector_idx ON public.news_all_2027_10 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_broadcast_date_idx ON public.news_all_2027_11 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_category_sentiment_idx ON public.news_all_2027_11 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_11_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_entities_idx ON public.news_all_2027_11 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_financial_industries_idx ON public.news_all_2027_11 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_state_id_district_id_broadcast_date_idx ON public.news_all_2027_11 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_11_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_tags_idx ON public.news_all_2027_11 USING gin (tags);
 
 
 --
--- Name: news_all_2027_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_11_to_tsvector_idx ON public.news_all_2027_11 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2027_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_broadcast_date_idx ON public.news_all_2027_12 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2027_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_category_sentiment_idx ON public.news_all_2027_12 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2027_12_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_entities_idx ON public.news_all_2027_12 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2027_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_financial_industries_idx ON public.news_all_2027_12 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2027_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_state_id_district_id_broadcast_date_idx ON public.news_all_2027_12 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2027_12_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_tags_idx ON public.news_all_2027_12 USING gin (tags);
 
 
 --
--- Name: news_all_2027_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2027_12_to_tsvector_idx ON public.news_all_2027_12 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_broadcast_date_idx ON public.news_all_2028_01 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_category_sentiment_idx ON public.news_all_2028_01 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_01_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_entities_idx ON public.news_all_2028_01 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_financial_industries_idx ON public.news_all_2028_01 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_state_id_district_id_broadcast_date_idx ON public.news_all_2028_01 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_01_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_tags_idx ON public.news_all_2028_01 USING gin (tags);
 
 
 --
--- Name: news_all_2028_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_01_to_tsvector_idx ON public.news_all_2028_01 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_broadcast_date_idx ON public.news_all_2028_02 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_category_sentiment_idx ON public.news_all_2028_02 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_02_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_entities_idx ON public.news_all_2028_02 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_financial_industries_idx ON public.news_all_2028_02 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_state_id_district_id_broadcast_date_idx ON public.news_all_2028_02 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_02_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_tags_idx ON public.news_all_2028_02 USING gin (tags);
 
 
 --
--- Name: news_all_2028_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_02_to_tsvector_idx ON public.news_all_2028_02 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_broadcast_date_idx ON public.news_all_2028_03 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_category_sentiment_idx ON public.news_all_2028_03 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_03_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_entities_idx ON public.news_all_2028_03 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_financial_industries_idx ON public.news_all_2028_03 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_state_id_district_id_broadcast_date_idx ON public.news_all_2028_03 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_03_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_tags_idx ON public.news_all_2028_03 USING gin (tags);
 
 
 --
--- Name: news_all_2028_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_03_to_tsvector_idx ON public.news_all_2028_03 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_broadcast_date_idx ON public.news_all_2028_04 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_category_sentiment_idx ON public.news_all_2028_04 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_04_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_entities_idx ON public.news_all_2028_04 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_financial_industries_idx ON public.news_all_2028_04 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_state_id_district_id_broadcast_date_idx ON public.news_all_2028_04 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_04_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_tags_idx ON public.news_all_2028_04 USING gin (tags);
 
 
 --
--- Name: news_all_2028_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_04_to_tsvector_idx ON public.news_all_2028_04 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_broadcast_date_idx ON public.news_all_2028_05 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_category_sentiment_idx ON public.news_all_2028_05 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_05_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_entities_idx ON public.news_all_2028_05 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_financial_industries_idx ON public.news_all_2028_05 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_state_id_district_id_broadcast_date_idx ON public.news_all_2028_05 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_05_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_tags_idx ON public.news_all_2028_05 USING gin (tags);
 
 
 --
--- Name: news_all_2028_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_05_to_tsvector_idx ON public.news_all_2028_05 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_broadcast_date_idx ON public.news_all_2028_06 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_category_sentiment_idx ON public.news_all_2028_06 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_06_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_entities_idx ON public.news_all_2028_06 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_financial_industries_idx ON public.news_all_2028_06 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_state_id_district_id_broadcast_date_idx ON public.news_all_2028_06 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_06_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_tags_idx ON public.news_all_2028_06 USING gin (tags);
 
 
 --
--- Name: news_all_2028_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_06_to_tsvector_idx ON public.news_all_2028_06 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_broadcast_date_idx ON public.news_all_2028_07 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_category_sentiment_idx ON public.news_all_2028_07 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_07_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_entities_idx ON public.news_all_2028_07 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_financial_industries_idx ON public.news_all_2028_07 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_state_id_district_id_broadcast_date_idx ON public.news_all_2028_07 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_07_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_tags_idx ON public.news_all_2028_07 USING gin (tags);
 
 
 --
--- Name: news_all_2028_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_07_to_tsvector_idx ON public.news_all_2028_07 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_broadcast_date_idx ON public.news_all_2028_08 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_category_sentiment_idx ON public.news_all_2028_08 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_08_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_entities_idx ON public.news_all_2028_08 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_financial_industries_idx ON public.news_all_2028_08 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_state_id_district_id_broadcast_date_idx ON public.news_all_2028_08 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_08_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_tags_idx ON public.news_all_2028_08 USING gin (tags);
 
 
 --
--- Name: news_all_2028_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_08_to_tsvector_idx ON public.news_all_2028_08 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_broadcast_date_idx ON public.news_all_2028_09 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_category_sentiment_idx ON public.news_all_2028_09 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_09_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_entities_idx ON public.news_all_2028_09 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_financial_industries_idx ON public.news_all_2028_09 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_state_id_district_id_broadcast_date_idx ON public.news_all_2028_09 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_09_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_tags_idx ON public.news_all_2028_09 USING gin (tags);
 
 
 --
--- Name: news_all_2028_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_09_to_tsvector_idx ON public.news_all_2028_09 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_broadcast_date_idx ON public.news_all_2028_10 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_category_sentiment_idx ON public.news_all_2028_10 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_10_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_entities_idx ON public.news_all_2028_10 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_financial_industries_idx ON public.news_all_2028_10 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_state_id_district_id_broadcast_date_idx ON public.news_all_2028_10 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_10_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_tags_idx ON public.news_all_2028_10 USING gin (tags);
 
 
 --
--- Name: news_all_2028_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_10_to_tsvector_idx ON public.news_all_2028_10 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_broadcast_date_idx ON public.news_all_2028_11 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_category_sentiment_idx ON public.news_all_2028_11 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_11_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_entities_idx ON public.news_all_2028_11 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_financial_industries_idx ON public.news_all_2028_11 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_state_id_district_id_broadcast_date_idx ON public.news_all_2028_11 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_11_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_tags_idx ON public.news_all_2028_11 USING gin (tags);
 
 
 --
--- Name: news_all_2028_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_11_to_tsvector_idx ON public.news_all_2028_11 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2028_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_broadcast_date_idx ON public.news_all_2028_12 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2028_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_category_sentiment_idx ON public.news_all_2028_12 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2028_12_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_entities_idx ON public.news_all_2028_12 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2028_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_financial_industries_idx ON public.news_all_2028_12 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2028_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_state_id_district_id_broadcast_date_idx ON public.news_all_2028_12 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2028_12_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_tags_idx ON public.news_all_2028_12 USING gin (tags);
 
 
 --
--- Name: news_all_2028_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2028_12_to_tsvector_idx ON public.news_all_2028_12 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_broadcast_date_idx ON public.news_all_2029_01 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_category_sentiment_idx ON public.news_all_2029_01 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_01_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_entities_idx ON public.news_all_2029_01 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_financial_industries_idx ON public.news_all_2029_01 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_state_id_district_id_broadcast_date_idx ON public.news_all_2029_01 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_01_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_tags_idx ON public.news_all_2029_01 USING gin (tags);
 
 
 --
--- Name: news_all_2029_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_01_to_tsvector_idx ON public.news_all_2029_01 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_broadcast_date_idx ON public.news_all_2029_02 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_category_sentiment_idx ON public.news_all_2029_02 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_02_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_entities_idx ON public.news_all_2029_02 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_financial_industries_idx ON public.news_all_2029_02 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_state_id_district_id_broadcast_date_idx ON public.news_all_2029_02 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_02_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_tags_idx ON public.news_all_2029_02 USING gin (tags);
 
 
 --
--- Name: news_all_2029_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_02_to_tsvector_idx ON public.news_all_2029_02 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_broadcast_date_idx ON public.news_all_2029_03 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_category_sentiment_idx ON public.news_all_2029_03 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_03_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_entities_idx ON public.news_all_2029_03 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_financial_industries_idx ON public.news_all_2029_03 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_state_id_district_id_broadcast_date_idx ON public.news_all_2029_03 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_03_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_tags_idx ON public.news_all_2029_03 USING gin (tags);
 
 
 --
--- Name: news_all_2029_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_03_to_tsvector_idx ON public.news_all_2029_03 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_broadcast_date_idx ON public.news_all_2029_04 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_category_sentiment_idx ON public.news_all_2029_04 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_04_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_entities_idx ON public.news_all_2029_04 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_financial_industries_idx ON public.news_all_2029_04 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_state_id_district_id_broadcast_date_idx ON public.news_all_2029_04 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_04_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_tags_idx ON public.news_all_2029_04 USING gin (tags);
 
 
 --
--- Name: news_all_2029_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_04_to_tsvector_idx ON public.news_all_2029_04 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_broadcast_date_idx ON public.news_all_2029_05 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_category_sentiment_idx ON public.news_all_2029_05 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_05_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_entities_idx ON public.news_all_2029_05 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_financial_industries_idx ON public.news_all_2029_05 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_state_id_district_id_broadcast_date_idx ON public.news_all_2029_05 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_05_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_tags_idx ON public.news_all_2029_05 USING gin (tags);
 
 
 --
--- Name: news_all_2029_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_05_to_tsvector_idx ON public.news_all_2029_05 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_broadcast_date_idx ON public.news_all_2029_06 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_category_sentiment_idx ON public.news_all_2029_06 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_06_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_entities_idx ON public.news_all_2029_06 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_financial_industries_idx ON public.news_all_2029_06 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_state_id_district_id_broadcast_date_idx ON public.news_all_2029_06 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_06_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_tags_idx ON public.news_all_2029_06 USING gin (tags);
 
 
 --
--- Name: news_all_2029_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_06_to_tsvector_idx ON public.news_all_2029_06 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_broadcast_date_idx ON public.news_all_2029_07 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_category_sentiment_idx ON public.news_all_2029_07 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_07_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_entities_idx ON public.news_all_2029_07 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_financial_industries_idx ON public.news_all_2029_07 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_state_id_district_id_broadcast_date_idx ON public.news_all_2029_07 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_07_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_tags_idx ON public.news_all_2029_07 USING gin (tags);
 
 
 --
--- Name: news_all_2029_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_07_to_tsvector_idx ON public.news_all_2029_07 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_broadcast_date_idx ON public.news_all_2029_08 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_category_sentiment_idx ON public.news_all_2029_08 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_08_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_entities_idx ON public.news_all_2029_08 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_financial_industries_idx ON public.news_all_2029_08 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_state_id_district_id_broadcast_date_idx ON public.news_all_2029_08 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_08_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_tags_idx ON public.news_all_2029_08 USING gin (tags);
 
 
 --
--- Name: news_all_2029_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_08_to_tsvector_idx ON public.news_all_2029_08 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_broadcast_date_idx ON public.news_all_2029_09 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_category_sentiment_idx ON public.news_all_2029_09 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_09_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_entities_idx ON public.news_all_2029_09 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_financial_industries_idx ON public.news_all_2029_09 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_state_id_district_id_broadcast_date_idx ON public.news_all_2029_09 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_09_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_tags_idx ON public.news_all_2029_09 USING gin (tags);
 
 
 --
--- Name: news_all_2029_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_09_to_tsvector_idx ON public.news_all_2029_09 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_broadcast_date_idx ON public.news_all_2029_10 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_category_sentiment_idx ON public.news_all_2029_10 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_10_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_entities_idx ON public.news_all_2029_10 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_financial_industries_idx ON public.news_all_2029_10 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_state_id_district_id_broadcast_date_idx ON public.news_all_2029_10 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_10_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_tags_idx ON public.news_all_2029_10 USING gin (tags);
 
 
 --
--- Name: news_all_2029_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_10_to_tsvector_idx ON public.news_all_2029_10 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_broadcast_date_idx ON public.news_all_2029_11 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_category_sentiment_idx ON public.news_all_2029_11 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_11_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_entities_idx ON public.news_all_2029_11 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_financial_industries_idx ON public.news_all_2029_11 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_state_id_district_id_broadcast_date_idx ON public.news_all_2029_11 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_11_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_tags_idx ON public.news_all_2029_11 USING gin (tags);
 
 
 --
--- Name: news_all_2029_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_11_to_tsvector_idx ON public.news_all_2029_11 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2029_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_broadcast_date_idx ON public.news_all_2029_12 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2029_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_category_sentiment_idx ON public.news_all_2029_12 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2029_12_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_entities_idx ON public.news_all_2029_12 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2029_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_financial_industries_idx ON public.news_all_2029_12 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2029_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_state_id_district_id_broadcast_date_idx ON public.news_all_2029_12 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2029_12_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_tags_idx ON public.news_all_2029_12 USING gin (tags);
 
 
 --
--- Name: news_all_2029_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2029_12_to_tsvector_idx ON public.news_all_2029_12 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_broadcast_date_idx ON public.news_all_2030_01 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_category_sentiment_idx ON public.news_all_2030_01 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_01_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_entities_idx ON public.news_all_2030_01 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_financial_industries_idx ON public.news_all_2030_01 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_state_id_district_id_broadcast_date_idx ON public.news_all_2030_01 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_01_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_tags_idx ON public.news_all_2030_01 USING gin (tags);
 
 
 --
--- Name: news_all_2030_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_01_to_tsvector_idx ON public.news_all_2030_01 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_broadcast_date_idx ON public.news_all_2030_02 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_category_sentiment_idx ON public.news_all_2030_02 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_02_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_entities_idx ON public.news_all_2030_02 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_financial_industries_idx ON public.news_all_2030_02 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_state_id_district_id_broadcast_date_idx ON public.news_all_2030_02 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_02_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_tags_idx ON public.news_all_2030_02 USING gin (tags);
 
 
 --
--- Name: news_all_2030_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_02_to_tsvector_idx ON public.news_all_2030_02 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_broadcast_date_idx ON public.news_all_2030_03 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_category_sentiment_idx ON public.news_all_2030_03 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_03_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_entities_idx ON public.news_all_2030_03 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_financial_industries_idx ON public.news_all_2030_03 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_state_id_district_id_broadcast_date_idx ON public.news_all_2030_03 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_03_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_tags_idx ON public.news_all_2030_03 USING gin (tags);
 
 
 --
--- Name: news_all_2030_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_03_to_tsvector_idx ON public.news_all_2030_03 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_broadcast_date_idx ON public.news_all_2030_04 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_category_sentiment_idx ON public.news_all_2030_04 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_04_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_entities_idx ON public.news_all_2030_04 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_financial_industries_idx ON public.news_all_2030_04 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_state_id_district_id_broadcast_date_idx ON public.news_all_2030_04 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_04_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_tags_idx ON public.news_all_2030_04 USING gin (tags);
 
 
 --
--- Name: news_all_2030_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_04_to_tsvector_idx ON public.news_all_2030_04 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_broadcast_date_idx ON public.news_all_2030_05 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_category_sentiment_idx ON public.news_all_2030_05 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_05_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_entities_idx ON public.news_all_2030_05 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_financial_industries_idx ON public.news_all_2030_05 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_state_id_district_id_broadcast_date_idx ON public.news_all_2030_05 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_05_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_tags_idx ON public.news_all_2030_05 USING gin (tags);
 
 
 --
--- Name: news_all_2030_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_05_to_tsvector_idx ON public.news_all_2030_05 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_broadcast_date_idx ON public.news_all_2030_06 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_category_sentiment_idx ON public.news_all_2030_06 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_06_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_entities_idx ON public.news_all_2030_06 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_financial_industries_idx ON public.news_all_2030_06 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_state_id_district_id_broadcast_date_idx ON public.news_all_2030_06 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_06_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_tags_idx ON public.news_all_2030_06 USING gin (tags);
 
 
 --
--- Name: news_all_2030_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_06_to_tsvector_idx ON public.news_all_2030_06 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_broadcast_date_idx ON public.news_all_2030_07 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_category_sentiment_idx ON public.news_all_2030_07 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_07_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_entities_idx ON public.news_all_2030_07 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_financial_industries_idx ON public.news_all_2030_07 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_state_id_district_id_broadcast_date_idx ON public.news_all_2030_07 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_07_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_tags_idx ON public.news_all_2030_07 USING gin (tags);
 
 
 --
--- Name: news_all_2030_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_07_to_tsvector_idx ON public.news_all_2030_07 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_broadcast_date_idx ON public.news_all_2030_08 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_category_sentiment_idx ON public.news_all_2030_08 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_08_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_entities_idx ON public.news_all_2030_08 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_financial_industries_idx ON public.news_all_2030_08 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_state_id_district_id_broadcast_date_idx ON public.news_all_2030_08 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_08_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_tags_idx ON public.news_all_2030_08 USING gin (tags);
 
 
 --
--- Name: news_all_2030_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_08_to_tsvector_idx ON public.news_all_2030_08 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_broadcast_date_idx ON public.news_all_2030_09 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_category_sentiment_idx ON public.news_all_2030_09 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_09_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_entities_idx ON public.news_all_2030_09 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_financial_industries_idx ON public.news_all_2030_09 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_state_id_district_id_broadcast_date_idx ON public.news_all_2030_09 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_09_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_tags_idx ON public.news_all_2030_09 USING gin (tags);
 
 
 --
--- Name: news_all_2030_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_09_to_tsvector_idx ON public.news_all_2030_09 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_broadcast_date_idx ON public.news_all_2030_10 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_category_sentiment_idx ON public.news_all_2030_10 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_10_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_entities_idx ON public.news_all_2030_10 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_financial_industries_idx ON public.news_all_2030_10 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_state_id_district_id_broadcast_date_idx ON public.news_all_2030_10 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_10_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_tags_idx ON public.news_all_2030_10 USING gin (tags);
 
 
 --
--- Name: news_all_2030_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_10_to_tsvector_idx ON public.news_all_2030_10 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_broadcast_date_idx ON public.news_all_2030_11 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_category_sentiment_idx ON public.news_all_2030_11 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_11_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_entities_idx ON public.news_all_2030_11 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_financial_industries_idx ON public.news_all_2030_11 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_state_id_district_id_broadcast_date_idx ON public.news_all_2030_11 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_11_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_tags_idx ON public.news_all_2030_11 USING gin (tags);
 
 
 --
--- Name: news_all_2030_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_11_to_tsvector_idx ON public.news_all_2030_11 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2030_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_broadcast_date_idx ON public.news_all_2030_12 USING brin (broadcast_date);
 
 
 --
--- Name: news_all_2030_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_category_sentiment_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_category_sentiment_idx ON public.news_all_2030_12 USING btree (category, sentiment);
 
 
 --
--- Name: news_all_2030_12_entities_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_entities_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_entities_idx ON public.news_all_2030_12 USING gin (entities) WHERE (entities <> '{}'::jsonb);
 
 
 --
--- Name: news_all_2030_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_financial_industries_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_financial_industries_idx ON public.news_all_2030_12 USING gin (financial_industries jsonb_path_ops);
 
 
 --
--- Name: news_all_2030_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_state_id_district_id_broadcast_date_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_state_id_district_id_broadcast_date_idx ON public.news_all_2030_12 USING btree (state_id, district_id, broadcast_date);
 
 
 --
--- Name: news_all_2030_12_tags_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_tags_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_tags_idx ON public.news_all_2030_12 USING gin (tags);
 
 
 --
--- Name: news_all_2030_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX news_all_2030_12_to_tsvector_idx ON public.news_all_2030_12 USING gin (to_tsvector('english'::regconfig, headline));
 
 
 --
--- Name: news_all_2026_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_04_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_04_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_04_entities_idx;
 
 
 --
--- Name: news_all_2026_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_04_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_04_pkey;
 
 
 --
--- Name: news_all_2026_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_04_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_04_tags_idx;
 
 
 --
--- Name: news_all_2026_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_04_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_05_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_05_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_05_entities_idx;
 
 
 --
--- Name: news_all_2026_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_05_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_05_pkey;
 
 
 --
--- Name: news_all_2026_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_05_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_05_tags_idx;
 
 
 --
--- Name: news_all_2026_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_05_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_06_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_06_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_06_entities_idx;
 
 
 --
--- Name: news_all_2026_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_06_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_06_pkey;
 
 
 --
--- Name: news_all_2026_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_06_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_06_tags_idx;
 
 
 --
--- Name: news_all_2026_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_06_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_07_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_07_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_07_entities_idx;
 
 
 --
--- Name: news_all_2026_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_07_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_07_pkey;
 
 
 --
--- Name: news_all_2026_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_07_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_07_tags_idx;
 
 
 --
--- Name: news_all_2026_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_07_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_08_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_08_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_08_entities_idx;
 
 
 --
--- Name: news_all_2026_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_08_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_08_pkey;
 
 
 --
--- Name: news_all_2026_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_08_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_08_tags_idx;
 
 
 --
--- Name: news_all_2026_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_08_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_09_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_09_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_09_entities_idx;
 
 
 --
--- Name: news_all_2026_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_09_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_09_pkey;
 
 
 --
--- Name: news_all_2026_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_09_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_09_tags_idx;
 
 
 --
--- Name: news_all_2026_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_09_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_10_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_10_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_10_entities_idx;
 
 
 --
--- Name: news_all_2026_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_10_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_10_pkey;
 
 
 --
--- Name: news_all_2026_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_10_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_10_tags_idx;
 
 
 --
--- Name: news_all_2026_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_10_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_11_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_11_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_11_entities_idx;
 
 
 --
--- Name: news_all_2026_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_11_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_11_pkey;
 
 
 --
--- Name: news_all_2026_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_11_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_11_tags_idx;
 
 
 --
--- Name: news_all_2026_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_11_to_tsvector_idx;
 
 
 --
--- Name: news_all_2026_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2026_12_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2026_12_category_sentiment_idx;
 
 
 --
--- Name: news_all_2026_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2026_12_entities_idx;
 
 
 --
--- Name: news_all_2026_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2026_12_financial_industries_idx;
 
 
 --
--- Name: news_all_2026_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2026_12_pkey;
 
 
 --
--- Name: news_all_2026_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2026_12_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2026_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2026_12_tags_idx;
 
 
 --
--- Name: news_all_2026_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2026_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2026_12_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_01_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_01_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_01_entities_idx;
 
 
 --
--- Name: news_all_2027_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_01_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_01_pkey;
 
 
 --
--- Name: news_all_2027_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_01_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_01_tags_idx;
 
 
 --
--- Name: news_all_2027_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_01_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_02_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_02_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_02_entities_idx;
 
 
 --
--- Name: news_all_2027_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_02_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_02_pkey;
 
 
 --
--- Name: news_all_2027_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_02_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_02_tags_idx;
 
 
 --
--- Name: news_all_2027_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_02_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_03_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_03_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_03_entities_idx;
 
 
 --
--- Name: news_all_2027_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_03_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_03_pkey;
 
 
 --
--- Name: news_all_2027_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_03_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_03_tags_idx;
 
 
 --
--- Name: news_all_2027_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_03_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_04_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_04_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_04_entities_idx;
 
 
 --
--- Name: news_all_2027_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_04_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_04_pkey;
 
 
 --
--- Name: news_all_2027_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_04_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_04_tags_idx;
 
 
 --
--- Name: news_all_2027_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_04_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_05_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_05_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_05_entities_idx;
 
 
 --
--- Name: news_all_2027_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_05_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_05_pkey;
 
 
 --
--- Name: news_all_2027_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_05_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_05_tags_idx;
 
 
 --
--- Name: news_all_2027_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_05_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_06_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_06_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_06_entities_idx;
 
 
 --
--- Name: news_all_2027_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_06_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_06_pkey;
 
 
 --
--- Name: news_all_2027_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_06_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_06_tags_idx;
 
 
 --
--- Name: news_all_2027_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_06_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_07_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_07_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_07_entities_idx;
 
 
 --
--- Name: news_all_2027_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_07_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_07_pkey;
 
 
 --
--- Name: news_all_2027_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_07_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_07_tags_idx;
 
 
 --
--- Name: news_all_2027_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_07_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_08_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_08_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_08_entities_idx;
 
 
 --
--- Name: news_all_2027_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_08_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_08_pkey;
 
 
 --
--- Name: news_all_2027_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_08_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_08_tags_idx;
 
 
 --
--- Name: news_all_2027_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_08_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_09_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_09_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_09_entities_idx;
 
 
 --
--- Name: news_all_2027_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_09_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_09_pkey;
 
 
 --
--- Name: news_all_2027_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_09_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_09_tags_idx;
 
 
 --
--- Name: news_all_2027_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_09_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_10_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_10_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_10_entities_idx;
 
 
 --
--- Name: news_all_2027_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_10_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_10_pkey;
 
 
 --
--- Name: news_all_2027_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_10_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_10_tags_idx;
 
 
 --
--- Name: news_all_2027_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_10_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_11_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_11_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_11_entities_idx;
 
 
 --
--- Name: news_all_2027_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_11_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_11_pkey;
 
 
 --
--- Name: news_all_2027_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_11_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_11_tags_idx;
 
 
 --
--- Name: news_all_2027_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_11_to_tsvector_idx;
 
 
 --
--- Name: news_all_2027_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2027_12_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2027_12_category_sentiment_idx;
 
 
 --
--- Name: news_all_2027_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2027_12_entities_idx;
 
 
 --
--- Name: news_all_2027_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2027_12_financial_industries_idx;
 
 
 --
--- Name: news_all_2027_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2027_12_pkey;
 
 
 --
--- Name: news_all_2027_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2027_12_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2027_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2027_12_tags_idx;
 
 
 --
--- Name: news_all_2027_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2027_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2027_12_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_01_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_01_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_01_entities_idx;
 
 
 --
--- Name: news_all_2028_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_01_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_01_pkey;
 
 
 --
--- Name: news_all_2028_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_01_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_01_tags_idx;
 
 
 --
--- Name: news_all_2028_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_01_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_02_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_02_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_02_entities_idx;
 
 
 --
--- Name: news_all_2028_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_02_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_02_pkey;
 
 
 --
--- Name: news_all_2028_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_02_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_02_tags_idx;
 
 
 --
--- Name: news_all_2028_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_02_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_03_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_03_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_03_entities_idx;
 
 
 --
--- Name: news_all_2028_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_03_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_03_pkey;
 
 
 --
--- Name: news_all_2028_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_03_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_03_tags_idx;
 
 
 --
--- Name: news_all_2028_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_03_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_04_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_04_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_04_entities_idx;
 
 
 --
--- Name: news_all_2028_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_04_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_04_pkey;
 
 
 --
--- Name: news_all_2028_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_04_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_04_tags_idx;
 
 
 --
--- Name: news_all_2028_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_04_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_05_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_05_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_05_entities_idx;
 
 
 --
--- Name: news_all_2028_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_05_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_05_pkey;
 
 
 --
--- Name: news_all_2028_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_05_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_05_tags_idx;
 
 
 --
--- Name: news_all_2028_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_05_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_06_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_06_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_06_entities_idx;
 
 
 --
--- Name: news_all_2028_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_06_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_06_pkey;
 
 
 --
--- Name: news_all_2028_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_06_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_06_tags_idx;
 
 
 --
--- Name: news_all_2028_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_06_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_07_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_07_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_07_entities_idx;
 
 
 --
--- Name: news_all_2028_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_07_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_07_pkey;
 
 
 --
--- Name: news_all_2028_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_07_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_07_tags_idx;
 
 
 --
--- Name: news_all_2028_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_07_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_08_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_08_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_08_entities_idx;
 
 
 --
--- Name: news_all_2028_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_08_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_08_pkey;
 
 
 --
--- Name: news_all_2028_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_08_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_08_tags_idx;
 
 
 --
--- Name: news_all_2028_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_08_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_09_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_09_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_09_entities_idx;
 
 
 --
--- Name: news_all_2028_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_09_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_09_pkey;
 
 
 --
--- Name: news_all_2028_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_09_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_09_tags_idx;
 
 
 --
--- Name: news_all_2028_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_09_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_10_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_10_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_10_entities_idx;
 
 
 --
--- Name: news_all_2028_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_10_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_10_pkey;
 
 
 --
--- Name: news_all_2028_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_10_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_10_tags_idx;
 
 
 --
--- Name: news_all_2028_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_10_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_11_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_11_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_11_entities_idx;
 
 
 --
--- Name: news_all_2028_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_11_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_11_pkey;
 
 
 --
--- Name: news_all_2028_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_11_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_11_tags_idx;
 
 
 --
--- Name: news_all_2028_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_11_to_tsvector_idx;
 
 
 --
--- Name: news_all_2028_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2028_12_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2028_12_category_sentiment_idx;
 
 
 --
--- Name: news_all_2028_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2028_12_entities_idx;
 
 
 --
--- Name: news_all_2028_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2028_12_financial_industries_idx;
 
 
 --
--- Name: news_all_2028_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2028_12_pkey;
 
 
 --
--- Name: news_all_2028_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2028_12_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2028_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2028_12_tags_idx;
 
 
 --
--- Name: news_all_2028_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2028_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2028_12_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_01_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_01_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_01_entities_idx;
 
 
 --
--- Name: news_all_2029_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_01_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_01_pkey;
 
 
 --
--- Name: news_all_2029_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_01_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_01_tags_idx;
 
 
 --
--- Name: news_all_2029_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_01_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_02_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_02_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_02_entities_idx;
 
 
 --
--- Name: news_all_2029_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_02_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_02_pkey;
 
 
 --
--- Name: news_all_2029_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_02_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_02_tags_idx;
 
 
 --
--- Name: news_all_2029_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_02_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_03_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_03_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_03_entities_idx;
 
 
 --
--- Name: news_all_2029_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_03_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_03_pkey;
 
 
 --
--- Name: news_all_2029_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_03_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_03_tags_idx;
 
 
 --
--- Name: news_all_2029_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_03_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_04_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_04_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_04_entities_idx;
 
 
 --
--- Name: news_all_2029_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_04_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_04_pkey;
 
 
 --
--- Name: news_all_2029_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_04_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_04_tags_idx;
 
 
 --
--- Name: news_all_2029_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_04_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_05_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_05_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_05_entities_idx;
 
 
 --
--- Name: news_all_2029_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_05_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_05_pkey;
 
 
 --
--- Name: news_all_2029_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_05_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_05_tags_idx;
 
 
 --
--- Name: news_all_2029_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_05_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_06_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_06_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_06_entities_idx;
 
 
 --
--- Name: news_all_2029_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_06_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_06_pkey;
 
 
 --
--- Name: news_all_2029_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_06_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_06_tags_idx;
 
 
 --
--- Name: news_all_2029_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_06_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_07_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_07_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_07_entities_idx;
 
 
 --
--- Name: news_all_2029_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_07_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_07_pkey;
 
 
 --
--- Name: news_all_2029_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_07_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_07_tags_idx;
 
 
 --
--- Name: news_all_2029_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_07_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_08_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_08_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_08_entities_idx;
 
 
 --
--- Name: news_all_2029_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_08_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_08_pkey;
 
 
 --
--- Name: news_all_2029_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_08_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_08_tags_idx;
 
 
 --
--- Name: news_all_2029_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_08_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_09_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_09_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_09_entities_idx;
 
 
 --
--- Name: news_all_2029_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_09_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_09_pkey;
 
 
 --
--- Name: news_all_2029_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_09_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_09_tags_idx;
 
 
 --
--- Name: news_all_2029_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_09_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_10_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_10_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_10_entities_idx;
 
 
 --
--- Name: news_all_2029_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_10_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_10_pkey;
 
 
 --
--- Name: news_all_2029_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_10_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_10_tags_idx;
 
 
 --
--- Name: news_all_2029_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_10_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_11_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_11_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_11_entities_idx;
 
 
 --
--- Name: news_all_2029_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_11_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_11_pkey;
 
 
 --
--- Name: news_all_2029_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_11_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_11_tags_idx;
 
 
 --
--- Name: news_all_2029_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_11_to_tsvector_idx;
 
 
 --
--- Name: news_all_2029_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2029_12_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2029_12_category_sentiment_idx;
 
 
 --
--- Name: news_all_2029_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2029_12_entities_idx;
 
 
 --
--- Name: news_all_2029_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2029_12_financial_industries_idx;
 
 
 --
--- Name: news_all_2029_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2029_12_pkey;
 
 
 --
--- Name: news_all_2029_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2029_12_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2029_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2029_12_tags_idx;
 
 
 --
--- Name: news_all_2029_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2029_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2029_12_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_01_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_01_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_01_entities_idx;
 
 
 --
--- Name: news_all_2030_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_01_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_01_pkey;
 
 
 --
--- Name: news_all_2030_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_01_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_01_tags_idx;
 
 
 --
--- Name: news_all_2030_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_01_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_01_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_02_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_02_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_02_entities_idx;
 
 
 --
--- Name: news_all_2030_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_02_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_02_pkey;
 
 
 --
--- Name: news_all_2030_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_02_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_02_tags_idx;
 
 
 --
--- Name: news_all_2030_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_02_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_02_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_03_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_03_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_03_entities_idx;
 
 
 --
--- Name: news_all_2030_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_03_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_03_pkey;
 
 
 --
--- Name: news_all_2030_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_03_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_03_tags_idx;
 
 
 --
--- Name: news_all_2030_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_03_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_03_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_04_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_04_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_04_entities_idx;
 
 
 --
--- Name: news_all_2030_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_04_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_04_pkey;
 
 
 --
--- Name: news_all_2030_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_04_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_04_tags_idx;
 
 
 --
--- Name: news_all_2030_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_04_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_04_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_05_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_05_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_05_entities_idx;
 
 
 --
--- Name: news_all_2030_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_05_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_05_pkey;
 
 
 --
--- Name: news_all_2030_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_05_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_05_tags_idx;
 
 
 --
--- Name: news_all_2030_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_05_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_05_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_06_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_06_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_06_entities_idx;
 
 
 --
--- Name: news_all_2030_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_06_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_06_pkey;
 
 
 --
--- Name: news_all_2030_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_06_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_06_tags_idx;
 
 
 --
--- Name: news_all_2030_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_06_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_06_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_07_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_07_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_07_entities_idx;
 
 
 --
--- Name: news_all_2030_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_07_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_07_pkey;
 
 
 --
--- Name: news_all_2030_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_07_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_07_tags_idx;
 
 
 --
--- Name: news_all_2030_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_07_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_07_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_08_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_08_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_08_entities_idx;
 
 
 --
--- Name: news_all_2030_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_08_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_08_pkey;
 
 
 --
--- Name: news_all_2030_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_08_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_08_tags_idx;
 
 
 --
--- Name: news_all_2030_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_08_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_08_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_09_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_09_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_09_entities_idx;
 
 
 --
--- Name: news_all_2030_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_09_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_09_pkey;
 
 
 --
--- Name: news_all_2030_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_09_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_09_tags_idx;
 
 
 --
--- Name: news_all_2030_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_09_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_09_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_10_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_10_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_10_entities_idx;
 
 
 --
--- Name: news_all_2030_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_10_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_10_pkey;
 
 
 --
--- Name: news_all_2030_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_10_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_10_tags_idx;
 
 
 --
--- Name: news_all_2030_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_10_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_10_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_11_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_11_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_11_entities_idx;
 
 
 --
--- Name: news_all_2030_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_11_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_11_pkey;
 
 
 --
--- Name: news_all_2030_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_11_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_11_tags_idx;
 
 
 --
--- Name: news_all_2030_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_11_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_11_to_tsvector_idx;
 
 
 --
--- Name: news_all_2030_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_broadcast_date_brin ATTACH PARTITION public.news_all_2030_12_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_category_sentiment_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_category_sentiment ATTACH PARTITION public.news_all_2030_12_category_sentiment_idx;
 
 
 --
--- Name: news_all_2030_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_entities_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_entities_gin ATTACH PARTITION public.news_all_2030_12_entities_idx;
 
 
 --
--- Name: news_all_2030_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_financial_industries_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_financial_industries ATTACH PARTITION public.news_all_2030_12_financial_industries_idx;
 
 
 --
--- Name: news_all_2030_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_pkey; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.news_all_pkey ATTACH PARTITION public.news_all_2030_12_pkey;
 
 
 --
--- Name: news_all_2030_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_state_id_district_id_broadcast_date_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_state_district_date ATTACH PARTITION public.news_all_2030_12_state_id_district_id_broadcast_date_idx;
 
 
 --
--- Name: news_all_2030_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_tags_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_tags_gin ATTACH PARTITION public.news_all_2030_12_tags_idx;
 
 
 --
--- Name: news_all_2030_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: postgres
+-- Name: news_all_2030_12_to_tsvector_idx; Type: INDEX ATTACH; Schema: public; Owner: -
 --
 
 ALTER INDEX public.idx_news_headline_search ATTACH PARTITION public.news_all_2030_12_to_tsvector_idx;
 
 
 --
--- Name: api_keys api_keys_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: api_keys api_keys_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.api_keys
@@ -9499,7 +9352,7 @@ ALTER TABLE ONLY public.api_keys
 
 
 --
--- Name: districts districts_state_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: districts districts_state_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.districts
@@ -9507,7 +9360,7 @@ ALTER TABLE ONLY public.districts
 
 
 --
--- Name: refresh_tokens fk_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: refresh_tokens fk_user; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.refresh_tokens
@@ -9515,7 +9368,7 @@ ALTER TABLE ONLY public.refresh_tokens
 
 
 --
--- Name: news_all news_all_district_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all news_all_district_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE public.news_all
@@ -9523,7 +9376,7 @@ ALTER TABLE public.news_all
 
 
 --
--- Name: news_all news_all_state_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: news_all news_all_state_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE public.news_all
@@ -9531,7 +9384,7 @@ ALTER TABLE public.news_all
 
 
 --
--- Name: users users_plan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users users_plan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -9542,5 +9395,12 @@ ALTER TABLE ONLY public.users
 -- PostgreSQL database dump complete
 --
 
-\unrestrict dxdM1eGbQgQ6kzPn1ummXgyZAybkChk9sCwHqGIVtLlBVv1NlNVyWrtx5lKcfaU
+\unrestrict dbmate
 
+
+--
+-- Dbmate schema migrations
+--
+
+INSERT INTO public.schema_migrations (version) VALUES
+    ('20260620104547');

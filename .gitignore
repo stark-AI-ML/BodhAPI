@@ -6,6 +6,20 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+.VSCodeCounter/
+
+
+del
+del/
+
+#certs 
+server.cert
+
+.cert
+.key
+
+server.key
+
 # Environment variables
 .env
 .env.local

@@ -1,14 +1,11 @@
 class RedisKeyGenerator {
-  /**
-   * Core generator: Sanitizes parts and joins them with standard Redis colons (:)
-   */
+  //   main generator combines the name:type:limit with the : --- which creates a perfect folder strucuture on redis
   static buildKey(serviceName, queryType, identifiers = [], limit = 30) {
     // clean up identifiers (handle nulls, convert to lowercase, replace spaces with underscores)
     const cleanIdentifiers = identifiers
       .filter(Boolean) // to remove null val
       .map((id) => String(id).trim().replace(/\s+/g, '_').toLowerCase());
 
-    // Construct the standard Redis key array: [namespace, type, ...ids, limit]
     const keyParts = [serviceName, queryType, ...cleanIdentifiers, limit];
 
     return keyParts.join(':');
