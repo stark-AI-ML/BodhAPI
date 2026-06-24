@@ -58,11 +58,11 @@ export const getCurrentKeys = async (req, res, next) => {
       return res.status(403).json({ error: 'number of api_keys exceeded' });
     }
 
-    if (error.name === 'TokenExpiredError') {
+    if (error.message === 'TokenExpiredError') {
       return res.status(401).json({ error: 'Unauthorized: Token has expired' });
     }
 
-    if (error.name === 'JsonWebTokenError') {
+    if (error.message === 'JsonWebTokenError') {
       return res.status(401).json({ error: 'Unauthorized: Invalid token' });
     }
 
@@ -90,8 +90,6 @@ export const deleteApiKey = async (req, res, next) => {
 
     res.json(deleteKey);
   } catch (error) {
- 
-
     if (error.name === 'TokenExpiredError') {
       return res.status(401).json({ error: 'Unauthorized: Token has expired' });
     }

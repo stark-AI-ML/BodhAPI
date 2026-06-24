@@ -7,7 +7,8 @@ import { getTTL } from '../utils/tokenTTl.config.js';
 
 import usersession from '../../auth/routes/session.route.js';
 
-// /fix -- i you need to change the uri of redirect from oAuth as localhost now to when you will be in production
+// /fix -- i you need to change the uri of redirect from oAuth as
+// localhost now to when you will be in production
 
 // router.get(
 //   '/google/callback',
@@ -61,7 +62,9 @@ export const googleCallback = async (req, res) => {
     maxAge: getTTL('refresh', 'integer'),
   });
 
-  res.redirect('http://localhost:3000');
+  console.log('/googleCallBack : res sends to the user');
+
+  res.redirect('https://stark-AI-ML.github.io/bodh_frontend');
 };
 
 export const authMeVerification = async (req, res) => {
@@ -79,12 +82,13 @@ export const authMeVerification = async (req, res) => {
     // 3. Fetch the latest user data from your DB (optional, or just use decoded)
     // const user = await pool.query('SELECT * FROM users WHERE id = $1', [decoded.id]);
 
-    // 4. Send the user back to the frontend
+    console.log('/auth/me : res sends to the user');
+
     res.json({
       id: decoded.google_id,
       display_name: decoded.display_name,
       email: decoded.email,
-      picture: decoded.picture, // Google profile image URL
+      picture: decoded.picture,
     });
   } catch (error) {
     // If token is expired or invalid

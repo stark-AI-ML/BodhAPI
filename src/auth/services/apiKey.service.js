@@ -83,11 +83,11 @@ export const generateApiKey = async (user_id, keyName) => {
     return { prefix, fullKey };
   } catch (err) {
     if (err.statusCode === 403) {
-      return res.status(403).json({ message: err.message });
+      err.message;
+      err.status = 403;
+    } else {
+      err.status === 500;
     }
-    console.error('Unexpected error:', err);
-    return res.status(500).json({ message: 'Internal server error' });
-
     console.log('Caught error:', err);
     console.log('Message:', err.message);
     console.log('StatusCode:', err.statusCode);

@@ -89,6 +89,8 @@ export const refresh = async (req, res, next) => {
       maxAge: getTTL('accessToken', 'integer'),
     });
 
+    console.log('newAcessToken & refreshToken created');
+
     return res.json({
       accessToken: newAccessToken,
       refreshToken: newRefreshToken,
@@ -96,17 +98,18 @@ export const refresh = async (req, res, next) => {
 
     // next();
   } catch (err) {
-    if (error.name === 'TokenExpiredError') {
+    if (err.name === 'TokenExpiredError') {
       return res.status(401).json({
-        error: 'Unauthorized: Refresh token has expired. Please log in again.',
+        err: 'Unauthorized: Refresh token has expired. Please log in again.',
       });
     }
 
-    if (error.name === 'JsonWebTokenError') {
+    if (err.name === 'JsonWebTokenError') {
       return res
         .status(401)
-        .json({ error: 'Unauthorized: Invalid refresh token' });
+        .json({ err: 'Unauthorized: Invalid refresh token' });
     }
+    console.log('error at refresh ', err);
 
     return res.status(500).json({ error: 'Internal server error' });
   }
@@ -129,10 +132,12 @@ export const logout = async (req, res) => {
     if (token) {
       await authService.logout(token);
     }
+    console.log('logging out');
     res.clearCookie('accessToken');
     res.clearCookie('refreshToken');
     res.sendStatus(204);
-  } catch {
+  } catch (err) {
+    console.log(err);
     res.sendStatus(500);
   }
 };
