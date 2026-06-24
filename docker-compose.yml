@@ -71,7 +71,8 @@ services:
 # with nginx setup with pvt network no port exposed
 
   bodhapi: 
-    build : . 
+    # build : . 
+    image: bodhapi:0.1
     container_name: bodhapi-container
 
     environment: 

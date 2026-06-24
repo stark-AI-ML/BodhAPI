@@ -22,12 +22,22 @@ import { rateLimitMiddleware } from './auth/middleware/apiKey.rateLimiter.js';
 app.use(cookieParser());
 initializeSecurityMiddleware(app);
 
+// fix for prod  : as i have face this recreation of img so will put config in .env always
+// and in future mayhave multiple origins to call from so processing it as array :
+
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(',').map((o) => o.trim())
+  : [];
+
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? 'https://yourdomain.com'
-        : 'http://localhost:3000',
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
