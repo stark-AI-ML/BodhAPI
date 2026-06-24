@@ -1,5 +1,3 @@
-import { redisConfig, pool } from '../config/dbConfig.js';
-
 // some convention if you comeback or anyone replicating this repo :
 // my db is has key_prefix --> and here i have used  prefix_key as variable name
 //  multiple time : so fallow that for var name
@@ -276,6 +274,8 @@ export class RateLimiter {
 }
 
 //-----------test
+
+// import { redisConfig, pool } from '../config/dbConfig.js';
 
 // const planService = new PlanService(redisConfig, pool);
 // const quotaService = new QuotaService(redisConfig, pool);

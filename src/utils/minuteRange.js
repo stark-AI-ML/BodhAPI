@@ -31,7 +31,7 @@ end
 
 redis.call("PEXPIRE", key, window)
 
-return current + tokens_requested   
+return current + tokens_requested
 `;
 
 async function getMinuteUsage(
@@ -63,8 +63,11 @@ async function getMinuteUsage(
 (async () => {
   const userId = 'user123';
   const windowMs = 60000; // 1 minute
-  const maxRequests = 10;
-  const res = await getMinuteUsage(userId, 2, windowMs, maxRequests);
+  const maxRequests = 20; // fix
+  // fix -->  token per request i just put 5 as of now
+  //  ---inital thaught was to  calculate based on compute, for now pushing it to prod
+
+  const res = await getMinuteUsage(userId, 5, windowMs, maxRequests);
 
   console.log(res);
   //   for (let i = 1; i <= 7; i++) {
@@ -79,17 +82,13 @@ async function getMinuteUsage(
   redis.quit();
 })();
 
-
-
-
 export class RateLimitforApiKeys{
-  #plan_id 
-  #prefix 
-
+  #plan_id
+  #prefix
 
   constructor(prefix_key, planId){
-    #plan_id = planId; 
-    #prefix = prefix_key; 
+    #plan_id = planId;
+    #prefix = prefix_key;
   }
 
   async #setPlanKey(dailyMax, minuteMax, maxKeys, planId) {
@@ -121,7 +120,6 @@ async #getPlanKey(planId) {
   }
 }
 
-
 async #setDailyKeyQuota(prefix_key, planId) {
   try {
     const now = Date.now();
@@ -136,7 +134,6 @@ async #setDailyKeyQuota(prefix_key, planId) {
     throw err;
   }
 }
-
 
 async #getDailyKeyQuota(prefix_key) {
   try {
@@ -153,6 +150,7 @@ async #updateDailyKeyQuotaUsedToday(prefix_key, tokenRequested) {
   const dailyMaxLimit = `quota:${prefix_key}:day`;
 
   // hincrby returns the update value so we don't have worry
+
   const updateUsedToday = await redis.hincrby(
     dailyMaxLimit,
     'used',

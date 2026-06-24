@@ -16,7 +16,9 @@ export const rateLimitMiddleware = async (req, res, next) => {
     const prefix_key = req.apiKeyPrefix;
     const planId = req.planId;
     const user_id = req.user_id;
+
     // /fix need to create token calculator class or fx based on compute complexity
+
     const tokens = 3;
 
     const result = await rateLimiter.check(prefix_key, planId, tokens, user_id);

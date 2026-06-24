@@ -1,4 +1,4 @@
-version: "3.9"
+version: "17"
 
 services:
   # redis: 
@@ -71,15 +71,21 @@ services:
 # with nginx setup with pvt network no port exposed
 
   bodhapi: 
-    build: .
+    build : . 
     container_name: bodhapi-container
 
     environment: 
-      REDIS_URL: redis://redis:6379
-      DB_HOST: db
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      JWT_SECRET: ${JWT_SECRET}
+      ACCESS_KEY: ${ACCESS_KEY}
+      REFRESH_KEY: ${REFRESH_KEY}
 
     command: ["node", "server.js"]
     restart: always

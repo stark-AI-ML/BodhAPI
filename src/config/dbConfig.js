@@ -57,13 +57,6 @@ export const pool = new Pool({
   // },
 });
 
-// /important -------commented out thsi redisconfig just to save battery from runnig docker
-
-export const redisConfig = new Redis({
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS,
-});
-
 // -------------------------------------------
 // for docker
 
@@ -80,3 +73,11 @@ export const redisConfig = new Redis({
 //   port: 6379, // internal Redis port
 //   family: 4,
 // });
+
+export const redisConfig = new Redis({
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  family: 4,
+});
+
+// export const redisConfig = new Redis(process.env.REDIS_URL);
