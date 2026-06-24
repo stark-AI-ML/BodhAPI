@@ -54,7 +54,12 @@ export const generateApiKey = async (user_id, keyName) => {
       const keyHash = crypto.createHash('sha256').update(fullKey).digest('hex');
 
       // /feature to add
-      const newAPI_expiresAt = new Date(now.getTime() + 30 * 60 * 1000);
+
+      // /fix moving for production so not 30 min anymore but for now i will give max 60d expiry
+
+      const newAPI_expiresAt = new Date(
+        now.getTime() + 60 * 24 * 60 * 60 * 1000
+      );
       await client.query(
         `INSERT INTO api_keys(user_id, key_hash, key_prefix, revoked, expires_at, api_name)
      VALUES($1, $2, $3, $4, $5, $6)`,
@@ -63,7 +68,7 @@ export const generateApiKey = async (user_id, keyName) => {
 
       await client.query('COMMIT');
       // /bug /fixed -- just let it be  cuz as i have added this max_key element and earlier
-      // i had expires_at so there is expired key too  so all expired key but max_key is greater than 5
+      // and i had expires_at so there is expired key too  so all expired key but max_key is greater than 5
       // i fixed it with query
 
       // second fix ---- bruteforce /bug its just my quick thinking corn job will be better
