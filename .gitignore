@@ -9,6 +9,7 @@ pnpm-debug.log*
 .VSCodeCounter/
 
 
+..fake update
 schema.sql
 del
 del/
