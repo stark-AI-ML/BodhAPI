@@ -9,6 +9,7 @@ pnpm-debug.log*
 .VSCodeCounter/
 
 
+schema.sql
 del
 del/
 
