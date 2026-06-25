@@ -80,6 +80,8 @@ export const generateApiKey = async (user_id, keyName) => {
         ])
         .catch((error) => logger.info('promise in bg failed', error));
     }
+    console.log('prefix key ', prefix);
+
     return { prefix, fullKey };
   } catch (err) {
     if (err.statusCode === 403) {

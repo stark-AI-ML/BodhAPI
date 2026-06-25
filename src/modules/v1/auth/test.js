@@ -1,5 +1,5 @@
 // test server on localhost
-
+/*
 import e from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -137,3 +137,6 @@ console.log(options);
 https.createServer(options, app).listen(5000, () => {
   console.log('Server running at https://localhost:5000');
 });
+
+
+*/

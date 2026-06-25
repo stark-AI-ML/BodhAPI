@@ -29,12 +29,17 @@ export const generateApiKey = async (req, res, next) => {
     console.error('Error generating API key:', error);
 
     // Handle specific JWT Errors
-    if (error.name === 'TokenExpiredError') {
+    if (error.message === 'TokenExpiredError') {
       return res.status(401).json({ error: 'Unauthorized: Token has expired' });
     }
 
-    if (error.name === 'JsonWebTokenError') {
+    if (error.message === 'JsonWebTokenError') {
       return res.status(401).json({ error: 'Unauthorized: Invalid token' });
+    }
+
+    // Key expired
+    if (error.message === 'number of api_keys exceeded') {
+      return res.status(403).json({ error: 'number of api_keys exceeded' });
     }
 
     // Fallback for database or other internal server errors
