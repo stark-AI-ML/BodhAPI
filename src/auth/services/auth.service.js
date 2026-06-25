@@ -72,16 +72,17 @@ export const logout = async (refreshToken) => {
   // revoke that session
   await pool.query(
     `UPDATE refresh_tokens 
-     SET revoked = true 
+     SET revoked_at = NOW() 
      WHERE jwt_id = $1`,
     [jwt_id]
   );
+  return;
 };
 
 export const logoutAll = async (userId) => {
   await pool.query(
     `UPDATE refresh_tokens 
-     SET revoked = true 
+     SET revoked_at = NOW() 
      WHERE user_id = $1`,
     [userId]
   );

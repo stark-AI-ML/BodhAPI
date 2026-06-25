@@ -40,22 +40,33 @@ export const apiKeyMiddleware = async (req, res, next) => {
       return next();
     }
 
+    // /fix fixes error i had changed the schema but didn't updated the  revoked ->
+    // const result = await db.query(
+    //   `SELECT user_id, key_hash, expires_at
+    //    FROM api_keys
+    //    WHERE key_prefix = $1 AND revoked = false`,
+    //   [prefix]
+    // );
     const result = await db.query(
-      `SELECT user_id, key_hash, expires_at 
-       FROM api_keys 
-       WHERE key_prefix = $1 AND revoked = false`,
+      `SELECT user_id, key_hash, expires_at
+      FROM api_keys
+      WHERE key_prefix = $1
+     AND revoked_at IS NULL
+     AND expires_at > NOW()`,
       [prefix]
     );
 
     const key = result.rows[0];
 
     if (!key) {
-      return res.status(401).json({ message: 'Invalid API key' });
+      return res
+        .status(401)
+        .json({ message: 'Invalid API key or expired relogin' });
     }
 
-    if (key.expires_at && new Date() > key.expires_at) {
-      return res.status(401).json({ message: 'API key expired' });
-    }
+    // if (key.expires_at && new Date() > key.expires_at) {
+    //   return res.status(401).json({ message: 'API key expired' });
+    // }
 
     const isValid = await compareAPIHash(apiKey, key.key_hash);
 

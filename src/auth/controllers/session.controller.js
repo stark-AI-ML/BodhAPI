@@ -1,3 +1,4 @@
+import logger from '../../config/logger.js';
 import * as authService from '../services/auth.service.js';
 
 import * as sessionService from '../services/session.service.js';
@@ -55,9 +56,17 @@ export const refresh = async (req, res, next) => {
 
     if (!token) return res.sendStatus(401);
 
+    logger.log(
+      'looging ip and user address \n',
+      req.ip,
+      '\n',
+      req.headers['user-agent']
+    );
+
     const { newAccessToken, newRefreshToken } = await sessionService.refresh(
       token,
       req.ip,
+      // req.headers,  / maybe /fix
       req.headers['user-agent']
     );
 
@@ -110,7 +119,7 @@ export const refresh = async (req, res, next) => {
     }
     console.log('error at refresh ', err);
 
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ err: 'Internal server error' });
   }
 };
 

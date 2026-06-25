@@ -12,12 +12,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 import dotenv from 'dotenv';
 import logger from '../../config/logger.js';
+import { getTTL } from '../utils/tokenTTl.config.js';
 
 dotenv.config();
 
 const revokeAllUserSessions = async (userId) => {
   await pool.query(
-    `UPDATE refresh_tokens SET revoked = true WHERE user_id = $1`,
+    `UPDATE refresh_tokens SET revoked_at = NOW() WHERE user_id = $1`,
     [userId]
   );
 };
@@ -62,7 +63,7 @@ export const refresh = async (token, ip, userAgent) => {
     // Network issue period.
 
     // if (storedToken.revoked_at) {
-    //   const revokedTime = new Date(storedToken.revoked_at).getTime();
+    //   const revokedTime = new Date(storedToken._at).getTime();
     //   const now = Date.now();
     //   const timeSinceRevoked = now - revokedTime;
 
@@ -85,7 +86,7 @@ export const refresh = async (token, ip, userAgent) => {
 
     const isMatch = await compareToken(token, storedToken.token_hash);
 
-    console.log('if is match is true ', isMatch);
+    console.log('if isMatch is true ', isMatch);
 
     if (!isMatch) {
       console.log('revoking all user but why');
@@ -120,7 +121,9 @@ export const refresh = async (token, ip, userAgent) => {
     const newRefreshToken = jwt.sign(
       { id: userId, jwt_id: newjwt_id },
       process.env.REFRESH_KEY,
-      { expiresIn: '7d' }
+
+      // /fix ---
+      { expiresIn: getTTL('refreshToken', 'string') }
     );
 
     console.log('After new_Acess');
