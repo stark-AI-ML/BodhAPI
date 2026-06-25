@@ -16,6 +16,20 @@ import { getTTL } from '../utils/tokenTTl.config.js';
 
 dotenv.config();
 
+export const createSession = async (user, metadata) => {
+  // const { user } = req; // assume validated
+
+  console.log('under the createSEssion');
+
+  const { accessToken, refreshToken } = await authService.login(
+    user,
+    metadata.ip,
+    metadata.userAgent
+  );
+
+  return { accessToken, refreshToken };
+};
+
 const revokeAllUserSessions = async (userId) => {
   await pool.query(
     `UPDATE refresh_tokens SET revoked_at = NOW() WHERE user_id = $1`,
@@ -101,7 +115,7 @@ export const refresh = async (token, ip, userAgent) => {
         `[Suspicious Activity] IP or Device changed for user ${userId}`
       );
     } else {
-      throw new error(`error due to suscupicious activity `);
+      throw new Error(`error due to suscupicious activity `);
     }
 
     // token rotation

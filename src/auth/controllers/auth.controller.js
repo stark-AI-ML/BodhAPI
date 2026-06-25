@@ -1,11 +1,10 @@
-import { createSession } from './session.controller.js';
-
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 import { getTTL } from '../utils/tokenTTl.config.js';
 
 import usersession from '../../auth/routes/session.route.js';
+import { createSession } from '../services/session.service.js';
 
 // /fix -- i you need to change the uri of redirect from oAuth as
 // localhost now to when you will be in production

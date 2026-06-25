@@ -20,7 +20,7 @@ dotenv.config();
 // its fine with this now........
 
 export const login = async (user, ip, userAgent) => {
-  console.log('log from the login', user);
+  console.log('log from the login', user, 'ip : ', ip);
 
   const accessToken = generateAccessToken({
     user_id: user.user_id,

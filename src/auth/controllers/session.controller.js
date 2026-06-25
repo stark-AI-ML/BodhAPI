@@ -4,18 +4,34 @@ import * as authService from '../services/auth.service.js';
 import * as sessionService from '../services/session.service.js';
 import { getTTL } from '../utils/tokenTTl.config.js';
 
-export const createSession = async (user, metadata) => {
-  // const { user } = req; // assume validated
+export const login = async (req, res, next) => {
+  const metadata = {
+    ip: req.ip,
+    userAgent: req.headers['user-agent'],
+  };
 
-  console.log('under the createSEssion');
+  const { accessToken, refreshToken } = await createSession(req.user, metadata);
 
-  const { accessToken, refreshToken } = await authService.login(
-    user,
-    metadata.ip,
-    metadata.userAgent
+  console.log(
+    'logging the acessToken and refreshToken : ',
+    accessToken,
+    '   :   ',
+    refreshToken
   );
 
-  return { accessToken, refreshToken };
+  res.cookie('accessToken', accessToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    maxAge: getTTL('acessToken', 'integer'),
+  });
+
+  res.cookie('refreshToken', refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    maxAge: getTTL('refresh', 'integer'),
+  });
 };
 
 // /test-debug --> during this test i found that user refresh token must have uuid which is good,
