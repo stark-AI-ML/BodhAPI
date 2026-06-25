@@ -41,10 +41,10 @@ export const refresh = async (token, ip, userAgent) => {
   const client = await pool.connect();
 
   try {
-    // Start Transaction
+    //------------------- Start Transaction
+
     await client.query('BEGIN');
 
-    // 3. Find token by jwt_id
     const result = await client.query(
       `SELECT * FROM refresh_tokens WHERE jwt_id = $1`,
       [jwt_id]
@@ -136,7 +136,7 @@ export const refresh = async (token, ip, userAgent) => {
     );
     console.log('after query');
 
-    //COMMIT TRANSACTION ---- if we made it here without errors, permanently save all pool changes
+    //------------------------------end transactions
     await client.query('COMMIT');
 
     console.log(
@@ -151,6 +151,9 @@ export const refresh = async (token, ip, userAgent) => {
     console.warn('error in DB query service layer refresh : ', error);
     await client.query('ROLLBACK');
     throw error;
+    client.release();
+  } finally {
+    // caused me bug  /learn
     client.release();
   }
 };

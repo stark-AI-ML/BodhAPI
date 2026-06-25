@@ -30,7 +30,10 @@ export const generateApiKey = async (user_id, keyName) => {
   try {
     const now = new Date();
 
+    // got error so cuz of transaction...
     await client.query('BEGIN');
+
+    //-start transaction --------------------------------
 
     const api_keyQuery = `SELECT * FROM api_keys where user_id = $1 AND expires_at > $2`;
     const result = await client.query(api_keyQuery, [user_id, now]);
@@ -62,11 +65,13 @@ export const generateApiKey = async (user_id, keyName) => {
       );
       await client.query(
         `INSERT INTO api_keys(user_id, key_hash, key_prefix, revoked, expires_at, api_name)
-     VALUES($1, $2, $3, $4, $5, $6)`,
+        VALUES($1, $2, $3, $4, $5, $6)`,
         [user_id, keyHash, prefix, false, newAPI_expiresAt, keyName]
       );
 
       await client.query('COMMIT');
+      //--------------------------------end of transcation
+
       // /bug /fixed -- just let it be  cuz as i have added this max_key element and earlier
       // and i had expires_at so there is expired key too  so all expired key but max_key is greater than 5
       // i fixed it with query
@@ -93,6 +98,8 @@ export const generateApiKey = async (user_id, keyName) => {
     console.log('Caught error:', err);
     console.log('Message:', err.message);
     console.log('StatusCode:', err.statusCode);
+  } finally {
+    client.release();
   }
 };
 

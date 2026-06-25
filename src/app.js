@@ -42,12 +42,13 @@ app.use(
   })
 );
 
+app.set('trust proxy', true); // for user agents and a req.ip
 app.use('/auth', authRouter);
 
 app.post('/refresh', sessionRouter);
 app.post('/logout', sessionRouter);
 
-app.use('/api', apiSession);
+app.use('/api', apiKeyMiddleware, apiSession);
 
 // General API routes
 app.use('/api', apiKeyMiddleware, rateLimitMiddleware, generalRoutes);

@@ -49,13 +49,7 @@ export const generateApiKey = async (req, res, next) => {
 
 export const getCurrentKeys = async (req, res, next) => {
   try {
-    const token = req.cookies.accessToken;
-
-    if (!token) return res.sendStatus(401);
-
-    const payload = jwt.verify(token, process.env.ACCESS_KEY);
-
-    const keys = await apiKeyServices.getApiKeys(payload.user_id);
+    const keys = await apiKeyServices.getApiKeys(req.user_id);
 
     res.json(keys);
   } catch (error) {
@@ -84,13 +78,9 @@ export const deleteApiKey = async (req, res, next) => {
   try {
     const token = req.cookies.accessToken;
 
-    if (!token) return res.sendStatus(401);
-
-    const payload = jwt.verify(token, process.env.ACCESS_KEY);
-
     const deleteKey = await apiKeyServices.deleteApiKey(
-      payload.user_id,
-      req.key
+      req.user_id,
+      req.apiKeyPrefix
     );
 
     res.json(deleteKey);

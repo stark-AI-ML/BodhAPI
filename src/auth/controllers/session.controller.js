@@ -58,7 +58,6 @@ export const refresh = async (req, res, next) => {
     const { newAccessToken, newRefreshToken } = await sessionService.refresh(
       token,
       req.ip,
-      req.headers,
       req.headers['user-agent']
     );
 
