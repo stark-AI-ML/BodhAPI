@@ -13,7 +13,7 @@ pnpm-debug.log*
 schema.sql
 del
 del/
-
+dockerCp
 #certs 
 server.cert
 

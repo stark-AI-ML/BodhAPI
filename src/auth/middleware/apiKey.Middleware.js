@@ -51,7 +51,7 @@ export const apiKeyMiddleware = async (req, res, next) => {
       `SELECT user_id, key_hash, expires_at
       FROM api_keys
       WHERE key_prefix = $1
-     AND revoked_at IS NULL
+     AND revoked IS false
      AND expires_at > NOW()`,
       [prefix]
     );

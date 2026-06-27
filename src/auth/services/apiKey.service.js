@@ -63,10 +63,12 @@ export const generateApiKey = async (user_id, keyName) => {
       const newAPI_expiresAt = new Date(
         now.getTime() + 60 * 24 * 60 * 60 * 1000
       );
+
+      // here revoked is boolean and its fine never compare this with refreshToken revoked_at
       await client.query(
-        `INSERT INTO api_keys(user_id, key_hash, key_prefix, revoked_at, expires_at, api_name)
+        `INSERT INTO api_keys(user_id, key_hash, key_prefix, revoked, expires_at, api_name)
         VALUES($1, $2, $3, $4, $5, $6)`,
-        [user_id, keyHash, prefix, null, newAPI_expiresAt, keyName]
+        [user_id, keyHash, prefix, false, newAPI_expiresAt, keyName]
       );
 
       await client.query('COMMIT');
@@ -126,7 +128,7 @@ export const getApiKeys = async (user_id) => {
         key: item.key_prefix,
         expiresAt: item.expires_at,
         lastUsed: item.last_used_at,
-        revokedAt: item.revoked_at,
+        revoked: item.revoked,
       };
     });
 

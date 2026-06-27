@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
 import logger from '../../config/logger.js';
 import { getTTL } from '../utils/tokenTTl.config.js';
+import { login } from './auth.service.js';
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ export const createSession = async (user, metadata) => {
 
   console.log('under the createSEssion');
 
-  const { accessToken, refreshToken } = await authService.login(
+  const { accessToken, refreshToken } = await login(
     user,
     metadata.ip,
     metadata.userAgent
@@ -110,13 +111,9 @@ export const refresh = async (token, ip, userAgent) => {
       throw new Error('Token mismatch');
     }
 
-    if (storedToken.ip !== ip || storedToken.user_agent !== userAgent) {
-      console.warn(
-        `[Suspicious Activity] IP or Device changed for user ${userId}`
-      );
-    } else {
-      throw new Error(`error due to suscupicious activity `);
-    }
+    // if (storedToken.ip !== ip || storedToken.user_agent !== userAgent) {
+    //   throw new Error('Suspicious activity detected');
+    // }
 
     // token rotation
     console.log(' logging storedToken :  ', storedToken);

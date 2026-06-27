@@ -49,7 +49,7 @@ export const generateApiKey = async (req, res, next) => {
 
 export const getCurrentKeys = async (req, res, next) => {
   try {
-    const keys = await apiKeyServices.getApiKeys(req.user_id);
+    const keys = await apiKeyServices.getApiKeys(req.user.user_id);
 
     res.json(keys);
   } catch (error) {
@@ -75,12 +75,13 @@ export const getCurrentKeys = async (req, res, next) => {
 };
 
 export const deleteApiKey = async (req, res, next) => {
+  console.log('unser delete apiKey');
   try {
-    const token = req.cookies.accessToken;
+    console.log('user id : ', req.user.user_id, '\n key  : ', req.body.key);
 
     const deleteKey = await apiKeyServices.deleteApiKey(
-      req.user_id,
-      req.apiKeyPrefix
+      req.user.user_id,
+      req.body.key
     );
 
     res.json(deleteKey);

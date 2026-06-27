@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-export const authMiddleware = (req, res, next) => {
+export const authMiddleware = async (req, res, next) => {
   const token = req.cookies.accessToken;
-  const cookie = req.cookie;
+  const cookie = req.cookies;
 
   const ip = req.ip;
 
@@ -12,12 +12,11 @@ export const authMiddleware = (req, res, next) => {
   console.log('ip', ip);
 
   if (!token) {
-    return res.status(401).json({ message: 'No token' });
+    return res.status(401).json({ message: 'auth Middleware failed' });
   }
 
   try {
-    const payload = jwt.verify(token, process.env.ACCESS_KEY);
-
+    const payload = await jwt.verify(token, process.env.ACCESS_KEY);
     req.user = payload;
     next();
   } catch (err) {

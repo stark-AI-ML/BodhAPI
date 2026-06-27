@@ -5,8 +5,6 @@ import passport from '../auth/config/googleOauthConfigAndSave.js';
 import * as apiController from '../auth/controllers/apiKey.controller.js';
 const router = express.Router();
 
-import { createSession } from '../auth/controllers/session.controller.js';
-
 // import usersession from '../auth/routes/session.route.js';
 import * as controller from '../auth/controllers/auth.controller.js';
 

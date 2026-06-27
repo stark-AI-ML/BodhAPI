@@ -10,7 +10,10 @@ export const login = async (req, res, next) => {
     userAgent: req.headers['user-agent'],
   };
 
-  const { accessToken, refreshToken } = await createSession(req.user, metadata);
+  const { accessToken, refreshToken } = await sessionService.createSession(
+    req.user,
+    metadata
+  );
 
   console.log(
     'logging the acessToken and refreshToken : ',

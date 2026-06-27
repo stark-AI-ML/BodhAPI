@@ -18,8 +18,10 @@ import cookieParser from 'cookie-parser';
 import apiSession from './auth/routes/apiSession.route.js';
 import { apiKeyMiddleware } from './auth/middleware/apiKey.Middleware.js';
 import { rateLimitMiddleware } from './auth/middleware/apiKey.rateLimiter.js';
+import { authMiddleware } from './auth/middleware/authMiddleware.js';
 
 app.use(cookieParser());
+app.use(express.json());
 initializeSecurityMiddleware(app);
 
 // fix for prod  : as i have face this recreation of img so will put config in .env always
@@ -46,16 +48,16 @@ app.set('trust proxy', true); // for user agents and a req.ip
 app.use('/auth', authRouter);
 
 app.post('/refresh', sessionRouter);
-app.post('/login', sessionRouter);
+// app.post('/login', sessionRouter);
 app.post('/logout', sessionRouter);
 
-app.use('/api', apiKeyMiddleware, apiSession);
+app.use('/api/session', authMiddleware, apiSession);
 
 // General API routes
 app.use('/api', apiKeyMiddleware, rateLimitMiddleware, generalRoutes);
 
 // Business API routes
-app.use('/api', apiKeyMiddleware, businessRoutes);
+app.use('/api', apiKeyMiddleware, rateLimitMiddleware, businessRoutes);
 
 app.get('/health', (req, res) => {
   res.status(200).json({
