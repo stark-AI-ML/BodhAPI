@@ -1,5 +1,8 @@
 # BodhAPI — Indian News Intelligence Engine
 
+
+<!-- i patched the issues as there were too many routes so i creted this readme.md intilally with ai but fixed the issues with it so for learning purpose it is good -->
+
 > A high-performance REST API that transforms raw Indian news broadcasts into structured, machine-readable intelligence. Built with Express 5, PostgreSQL (partitioned tables + BRIN indexes), Redis caching, Google OAuth authentication, JWT sessions, and API key–gated access.
 
 ---
@@ -105,7 +108,14 @@ Client Request
 
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone [production_branch](https://github.com/stark-AI-ML/BodhAPI/tree/prod)
+
+# so if you are setting whole thing with docker clone prod branch
+
+git clone [main_branch](https://github.com/stark-AI-ML/BodhAPI/tree/main)
+
+# although i don't think any one needs to copy this 
+
 cd BodhAPI
 
 # Install dependencies
