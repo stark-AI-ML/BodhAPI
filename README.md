@@ -1,7 +1,7 @@
 # BodhAPI — Indian News Intelligence Engine
 
 
-<!-- i patched the issues as there were too many routes so i creted this readme.md intilally with ai but fixed the issues with it so for learning purpose it is good -->
+*i patched the issues as there were too many routes so i creted this readme.md intilally with ai but fixed the issues with it so for learning purpose it is good *
 
 > A high-performance REST API that transforms raw Indian news broadcasts into structured, machine-readable intelligence. Built with Express 5, PostgreSQL (partitioned tables + BRIN indexes), Redis caching, Google OAuth authentication, JWT sessions, and API key–gated access.
 
